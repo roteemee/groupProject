@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "your.repositories.package")
+@EnableJpaRepositories(basePackages = "com.fdmgroup.repos")
 @EntityScan(basePackages = "your.entities.package")
 
 public class CoronaApplication {
