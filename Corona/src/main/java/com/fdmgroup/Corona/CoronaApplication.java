@@ -11,6 +11,26 @@ public class CoronaApplication {
 	// dummy change 
 	// more dummy changes
 	// yet another dummy change
+<<<<<<< HEAD
+=======
+
+
+	
+	//Mark was here
+	// Hello everybody!! How are you doing today?
+	// Timi is also here..
+	
+	
+	
+
+	//paul edited
+
+
+	//Wendy was here
+	
+	// Kevin is here
+	
+>>>>>>> 94b3145c13d0ef3bb9374ff358e58aaca2686489
 	
 	
 	
