@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity(name="sysadmin")
-public class Sysadmin {
+public class Sysadmin extends User {
 	
 	public void listTrades() {
 		
