@@ -28,10 +28,6 @@ public class CoronaApplication {
 	
 	
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> 0be84691f138f7f5993065af049a768d4950f303
 	public static void main(String[] args) {
 		SpringApplication.run(CoronaApplication.class, args);
 	}
