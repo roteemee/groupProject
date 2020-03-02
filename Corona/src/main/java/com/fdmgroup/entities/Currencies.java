@@ -1,4 +1,4 @@
-package com.fdmgroup.Entities;
+package com.fdmgroup.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Currencies {
 	@Id
+	@Column
 	private int currency_id;
 	@Column
 	private String symbol;
