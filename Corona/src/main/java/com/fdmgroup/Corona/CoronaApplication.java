@@ -8,27 +8,6 @@ public class CoronaApplication {
 
 	
 	
-	// dummy change 
-	// more dummy changes
-	// yet another dummy change
-
-
-	
-	//Mark was here
-	// Hello everybody!! How are you doing today?
-	// Timi is also here..
-	
-	
-	
-
-	//Wendy was here
-	
-	// Kevin is here
-	
-	// made in my branch...
-	
-	
-	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(CoronaApplication.class, args);
