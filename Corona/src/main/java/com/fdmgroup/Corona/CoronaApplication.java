@@ -11,8 +11,6 @@ public class CoronaApplication {
 	// dummy change 
 	// more dummy changes
 	// yet another dummy change
-<<<<<<< HEAD
-=======
 
 
 	
@@ -30,8 +28,7 @@ public class CoronaApplication {
 	
 	// Kevin is here
 	
->>>>>>> 94b3145c13d0ef3bb9374ff358e58aaca2686489
-	
+
 	
 	
 	public static void main(String[] args) {
