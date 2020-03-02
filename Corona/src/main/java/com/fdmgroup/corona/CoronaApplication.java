@@ -1,4 +1,4 @@
-package com.fdmgroup.Corona;
+package com.fdmgroup.corona;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = "com.fdmgroup.repos")
 @EntityScan(basePackages = "com.fdmgroup.entities")
 
+
 public class CoronaApplication {
-	
-	
-	
+
+
 	public static void main(String[] args) {
 		SpringApplication.run(CoronaApplication.class, args);
 	}
