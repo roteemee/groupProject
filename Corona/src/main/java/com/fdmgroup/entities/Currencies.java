@@ -7,6 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class Currencies {
 	@Id
+	@Column
 	private int currency_id;
 	@Column
 	private String symbol;
