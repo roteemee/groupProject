@@ -7,7 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Shares {
+public class Share {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
