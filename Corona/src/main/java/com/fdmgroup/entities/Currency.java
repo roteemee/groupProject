@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Currencies {
+public class Currency {
 	@Id
 	@Column
 	private int currency_id;
