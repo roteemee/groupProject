@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.fdmgroup.repos")
-@EntityScan(basePackages = "your.entities.package")
+@EntityScan(basePackages = "com.fdmgroup.entities")
 
 public class CoronaApplication {
 	
