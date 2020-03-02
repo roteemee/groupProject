@@ -1,4 +1,4 @@
-package com.fdmgroup.Corona;
+package com.fdmgroup.corona;
 
 import java.util.List;
 import java.util.Optional;
