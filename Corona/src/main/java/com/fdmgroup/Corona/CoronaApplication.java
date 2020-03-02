@@ -15,6 +15,7 @@ public class CoronaApplication {
 	
 	
 	
+	// trying to merge
 	public static void main(String[] args) {
 		SpringApplication.run(CoronaApplication.class, args);
 	}
