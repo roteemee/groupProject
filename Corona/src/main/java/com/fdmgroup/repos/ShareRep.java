@@ -2,6 +2,8 @@ package com.fdmgroup.repos;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ShareRep extends JpaRepository<SharePriceRep, Integer> {
+import com.fdmgroup.entities.Share;
+
+public interface ShareRep extends JpaRepository<Share, Integer> {
 
 }
