@@ -1,10 +1,13 @@
 package com.fdmgroup.entities;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -14,15 +17,18 @@ public class Trade {
 @Id
 @Column(name =  "trade_id")
 private int tradeId;
-@OneToMany
-@Column(name =  "share_id")
-private int shareId;
+
+@ManyToOne
+private Share theShare;
+
 @OneToMany
 @Column(name =  "broker_id")
-private int brokerId;
+private List<Broker> brokerlist = new ArrayList<>();
 @OneToMany
 @Column(name =  "stock_ex_id")
-private int stockExchangeId;
+private List<StockExchange> stockExList = new ArrayList<>();;
+
+
 @Temporal(TemporalType.TIMESTAMP)
 @Column(name =  "transaction_time")
 private Date orderDate;	
@@ -42,17 +48,19 @@ public int getShareId() {
 public void setShareId(int shareId) {
 	this.shareId = shareId;
 }
-public int getBrokerId() {
-	return brokerId;
+
+
+public List<Broker> getBrokerlist() {
+	return brokerlist;
 }
-public void setBrokerId(int brokerId) {
-	this.brokerId = brokerId;
+public void setBrokerlist(List<Broker> brokerlist) {
+	this.brokerlist = brokerlist;
 }
-public int getStockExchangeId() {
-	return stockExchangeId;
+public List<StockExchange> getStockExList() {
+	return stockExList;
 }
-public void setStockExchangeId(int stockExchangeId) {
-	this.stockExchangeId = stockExchangeId;
+public void setStockExList(List<StockExchange> stockExList) {
+	this.stockExList = stockExList;
 }
 public Date getOrderDate() {
 	return orderDate;
@@ -72,6 +80,16 @@ public int getPriceTotal() {
 public void setPriceTotal(int priceTotal) {
 	this.priceTotal = priceTotal;
 } 
+
+public void addStockExchange(StockExchange se) {
+	stockExList.add(se);
+}
+
+public void addBroker(Broker broker) {
+	brokerlist.add(broker);
+}
+
+
 
 
 

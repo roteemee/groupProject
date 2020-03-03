@@ -1,5 +1,8 @@
 package com.fdmgroup.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,6 +23,10 @@ public class Share {
 	private double price;
 	@Column
 	private String currency;
+	@OneToMany(mappedBy = "theShare" )
+	List<Trade> tradeList = new ArrayList<Trade>();
+	
+	
 	@Column
 	private String name;
 	public int getShareId() {
