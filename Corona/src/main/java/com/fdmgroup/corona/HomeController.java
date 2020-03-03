@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 @Controller
 @SessionAttributes("userName")
 public class HomeController {
+	
+	
 
-	// general page
+	// general page stuff
 	@GetMapping("/home")
 	public String doWork() {
 		return "home";
@@ -23,7 +25,7 @@ public class HomeController {
 	public String register() {
 		return "register";
 	}
-
+	
 	@GetMapping("/ViewShares")
 	public String viewShares() {
 		return "ViewShares";
@@ -59,5 +61,4 @@ public class HomeController {
 	public String manageUser() {
 		return "manageUser";
 	}
-
 }
