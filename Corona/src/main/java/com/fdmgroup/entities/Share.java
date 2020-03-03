@@ -16,6 +16,8 @@ public class Share {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="share_id")
+	
+	
 	private int shareId;
 	@Column
 	private double price;

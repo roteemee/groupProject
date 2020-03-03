@@ -43,7 +43,7 @@ public class HomeController {
 
 	@GetMapping("/register")
 	public String register() {
-		return "register";
+		return "ToSendingRequest";
 	}
 
 	@GetMapping("/ViewShares")
@@ -65,6 +65,11 @@ public class HomeController {
 	public String brokerRequestPage() {
 		return "BrokerRequestPage";
 	}
+	
+	@GetMapping("/BrokerTradePage")
+	public String brokerTradePage() {
+		return "BrokerTradePage";
+	}
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
@@ -85,6 +90,14 @@ public class HomeController {
 		return "manageUser";
 	}
 
+
+	
+	@GetMapping("/Wallet")
+	public String Wallet() {
+		return "Wallet";
+	}
+
+
 	@PostMapping("/addBroker")
 	public String addBroker(@RequestParam String userid, String username, String usercountry) {
 		Broker broker = new Broker();
@@ -104,5 +117,10 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
+<<<<<<< HEAD
 
+
+=======
+
+>>>>>>> d3e873e1340101808339532b3502d788e513d22a
 }
