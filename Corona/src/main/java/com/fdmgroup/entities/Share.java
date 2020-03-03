@@ -53,7 +53,10 @@ public class Share {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	public void addTrade(Trade trade) {
+		tradeList.add(trade);
+		
+	}
 
 	
 }

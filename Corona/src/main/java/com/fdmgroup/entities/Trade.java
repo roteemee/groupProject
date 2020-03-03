@@ -21,6 +21,11 @@ private int tradeId;
 @ManyToOne
 private Share theShare;
 
+@ManyToOne
+private StockExchange se;
+
+
+
 @OneToMany
 @Column(name =  "broker_id")
 private List<Broker> brokerlist = new ArrayList<>();
@@ -42,14 +47,15 @@ public int getTradeId() {
 public void setTradeId(int tradeId) {
 	this.tradeId = tradeId;
 }
-public int getShareId() {
-	return shareId;
-}
-public void setShareId(int shareId) {
-	this.shareId = shareId;
-}
 
 
+
+public Share getTheShare() {
+	return theShare;
+}
+public void setTheShare(Share theShare) {
+	this.theShare = theShare;
+}
 public List<Broker> getBrokerlist() {
 	return brokerlist;
 }
@@ -90,7 +96,12 @@ public void addBroker(Broker broker) {
 }
 
 
-
+public StockExchange getSe() {
+	return se;
+}
+public void setSe(StockExchange se) {
+	this.se = se;
+}
 
 
 
