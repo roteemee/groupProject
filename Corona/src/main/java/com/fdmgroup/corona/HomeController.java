@@ -67,13 +67,13 @@ public class HomeController {
 	public String manageUser() {
 		return "manageUser";
 	}
-<<<<<<< HEAD
+
 	
 	@GetMapping("/Wallet")
 	public String Wallet() {
 		return "Wallet";
 	}
-=======
+
 
 	@PostMapping("/addBroker")
 	public String addBroker(@RequestParam String userid, String username, String usercountry) {
@@ -95,5 +95,5 @@ public class HomeController {
 		return "/home";
 	}
 
->>>>>>> d15b284d9e905ea61a71a533fcce90145126854f
+
 }
