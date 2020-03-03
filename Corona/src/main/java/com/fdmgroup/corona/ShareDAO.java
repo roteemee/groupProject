@@ -17,7 +17,7 @@ public class ShareDAO {
 	List<Share> allShares;
 
 	public void addShare(Share share) {
-		shares = repp.findById(share.getShare_id());
+		shares = repp.findById(share.getShareId());
 		if (!shares.isPresent()) {
 
 			repp.save(share);
@@ -49,7 +49,7 @@ public class ShareDAO {
 
 	public void updateShare(Share share) {
 
-		shares = repp.findById(share.getShare_id());
+		shares = repp.findById(share.getShareId());
 		if (shares.isPresent()) {
 			repp.save(share);
 			System.out.println("share changed");
