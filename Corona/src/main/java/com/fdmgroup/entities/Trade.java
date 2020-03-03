@@ -1,4 +1,4 @@
-package com.fdmgroup.repos;
+package com.fdmgroup.entities;
 
 import java.util.Date;
 
