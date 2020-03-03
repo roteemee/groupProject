@@ -23,7 +23,7 @@ public class HomeController {
 
 	@GetMapping("/register")
 	public String register() {
-		return "register";
+		return "ToSendingRequest";
 	}
 	
 	@GetMapping("/ViewShares")
@@ -61,4 +61,5 @@ public class HomeController {
 	public String manageUser() {
 		return "manageUser";
 	}
+	
 }
