@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import com.fdm.LibrarySystem.Account;
 import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
 import com.fdmgroup.entities.Shareholder;
+import com.fdmgroup.entities.UserRequest;
 
 @Controller
 @SessionAttributes("userName")
@@ -25,7 +25,14 @@ public class HomeController {
 	BasicUserDAO buserve = new BasicUserDAO();
 	UserRequestDAO rserve = new UserRequestDAO();
 	BrokerDAO bserve = new BrokerDAO();
+	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
+	
+	@ModelAttribute("userName")
+	private BasicUser usermaking() {
+		return new BasicUser();
+	}
+
 
 	// general page stuff
 	@GetMapping("/")
@@ -73,6 +80,11 @@ public class HomeController {
 	public String brokerRequestPage() {
 		return "BrokerRequestPage";
 	}
+	
+	@GetMapping("/BrokerTradePage")
+	public String brokerTradePage() {
+		return "BrokerTradePage";
+	}
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
@@ -80,16 +92,24 @@ public class HomeController {
 	}
 
 	// user
-	@GetMapping("/UserRequest")
-	public String addUser(Model model) {
-		List<String> user = Arrays.asList("Mark","Tom","Timi");
-		model.addAttribute("user", user);
-		return "UserRequest";
+	@GetMapping("/ViewUserRequest")
+	public String addUser(@ModelAttribute(name = "userName") BasicUser user,Model model) {
+		
+		model.addAttribute("username", user.getUsername());
+		model.addAttribute("username", user.getUserType());
+		return "ViewUserRequest";
 	}
 
 	@GetMapping("/manageUser")
 	public String manageUser() {
 		return "manageUser";
+	}
+
+
+	
+	@GetMapping("/Wallet")
+	public String Wallet() {
+		return "Wallet";
 	}
 
 
@@ -112,5 +132,12 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
+
+	
+	@GetMapping("/ShareholderTransactions")
+	public String viewTransactions() {
+		return "ShareholderTransactions";
+	}
+
 
 }
