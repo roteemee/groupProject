@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 @Entity(name="brokers")
 public class Broker extends User{
 	
-	Broker b = new Broker();
+	//Broker b = new Broker();
 	
 	protected void acceptRequest() {
 		

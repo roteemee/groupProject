@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fdmgroup.entities.Shareholder;
 import com.fdmgroup.repos.ShareholderRep;
-<<<<<<< HEAD
+
 @Service
 public class ShareholderDAO {
 	@Autowired
@@ -67,67 +67,4 @@ public class ShareholderDAO {
 
 	}
 
-	
 }
-=======
-@Service
-public class ShareholderDAO {
-	@Autowired
-	private ShareholderRep repp;
-
-	private Optional<Shareholder> shareholders;
-	private List<Shareholder> allShareholders;
-
-	public void addShareholder(Shareholder shareholder) {
-		shareholders = repp.findById(shareholder.getUserId());
-		if (!shareholders.isPresent()) {
-
-			repp.save(shareholder);
-		}
-	}
-
-	public Shareholder getShareholder(int shareholder) {
-		shareholders = repp.findById(shareholder);
-		if (shareholders.isPresent()) {
-
-			return shareholders.get();
-		} else {
-			System.out.print("No phareholder whith this id therefore is ");
-			return null;
-		}
-	}
-
-	public void removeShareholder(int shareholder) {
-		shareholders = repp.findById(shareholder);
-
-		if (shareholders.isPresent()) {
-			repp.delete(shareholders.get());
-			System.out.println("shareholder removed");
-		} else {
-			System.out.println("No shareholder under this id");
-		}
-
-	}
-
-	public void updateShareholder(Shareholder shareholder) {
-
-		shareholders = repp.findById(shareholder.getUserId());
-		if (shareholders.isPresent()) {
-			repp.save(shareholder);
-			System.out.println("shareholder changed");
-		}
-	}
-
-	public List<Shareholder> listShareholders() {
-		allShareholders = repp.findAll();
-
-		return allShareholders;
-	}
-
-	public ShareholderDAO() {
-
-	}
-
-	
-}
->>>>>>> 9e103a59d82de4486d8a2c126b025ebe258f1701
