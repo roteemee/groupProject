@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity(name="shares")
 public class Share {
@@ -12,6 +13,8 @@ public class Share {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="share_id")
+	
+	
 	private int shareId;
 	@Column
 	private double price;
