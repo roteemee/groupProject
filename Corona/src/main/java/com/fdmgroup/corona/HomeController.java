@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+
 import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
 import com.fdmgroup.entities.Shareholder;
@@ -21,6 +22,8 @@ import com.fdmgroup.entities.UserRequest;
 public class HomeController {
 
 	@Autowired
+	BasicUserDAO buserve = new BasicUserDAO();
+	UserRequestDAO rserve = new UserRequestDAO();
 	BrokerDAO bserve = new BrokerDAO();
 	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
@@ -46,7 +49,18 @@ public class HomeController {
 
 	@GetMapping("/register")
 	public String register() {
+		return "register";
+	}
+	
+	@GetMapping("/registerNewUser")
+	public String registerNewUser(@ModelAttribute BasicUser bu) {
+		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
+	}
+	@GetMapping("/sendRequest")
+	public String sendRequest(@ModelAttribute UserRequest ur) {
+		rserve.addUserRequest(ur);
+		return "waitForApproval";
 	}
 
 	@GetMapping("/ViewShares")
@@ -120,10 +134,12 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-<<<<<<< HEAD
+
+	
+	@GetMapping("/ShareholderTransactions")
+	public String viewTransactions() {
+		return "ShareholderTransactions";
+	}
 
 
-=======
-
->>>>>>> d3e873e1340101808339532b3502d788e513d22a
 }

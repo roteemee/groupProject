@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fdmgroup.entities.Shareholder;
 import com.fdmgroup.repos.ShareholderRep;
+
 @Service
 public class ShareholderDAO {
 	@Autowired
@@ -66,5 +67,4 @@ public class ShareholderDAO {
 
 	}
 
-	
 }
