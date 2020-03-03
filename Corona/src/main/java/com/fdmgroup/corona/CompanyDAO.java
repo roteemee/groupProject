@@ -51,7 +51,7 @@ public class CompanyDAO {
 
 		companies = repp.findById(company.getCompanyId());
 		if (companies.isPresent()) {
-			repp.save(companies.get());
+			repp.save(company);
 			System.out.println("company changed");
 		}
 	}

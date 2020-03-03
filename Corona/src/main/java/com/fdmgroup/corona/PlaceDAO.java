@@ -51,7 +51,8 @@ public class PlaceDAO {
 
 		places = repp.findById(place.getPlaceId());
 		if (places.isPresent()) {
-			repp.save(places.get());
+
+			repp.save(place);
 			System.out.println("place changed");
 		}
 	}

@@ -54,7 +54,7 @@ public class BrokerDAO {
 
 		brokers = repp.findById(broker.getUserId());
 		if (brokers.isPresent()) {
-			repp.save(brokers.get());
+			repp.save(broker);
 			System.out.println("broker changed");
 		}
 	}

@@ -13,22 +13,22 @@ public class SharePriceDAO {
 	@Autowired
 	private SharePriceRep repp;
 
-	Optional<SharePrice> sharePrice;
+	Optional<SharePrice> sharePrices;
 	List<SharePrice> allSharePrices;
 
 	public void addSharePrice(SharePrice sharePrice) {
-		sharePrice = repp.findById(sharePrice.getSharePriceId());
-		if (!sharePrice.isPresent()) {
+		sharePrices = repp.findById(sharePrice.getSharePriceId());
+		if (!sharePrices.isPresent()) {
 
 			repp.save(sharePrice);
 		}
 	}
 
 	public SharePrice getSharePrice(int sharePriceId) {
-		sharePrice = repp.findById(sharePriceId);
-		if (sharePrice.isPresent()) {
+		sharePrices = repp.findById(sharePriceId);
+		if (sharePrices.isPresent()) {
 
-			return sharePrice.get();
+			return sharePrices.get();
 		} else {
 			System.out.print("No share price whith this id therefore is ");
 			return null;
@@ -36,10 +36,10 @@ public class SharePriceDAO {
 	}
 
 	public void removeSharePrice(int sharePriceId) {
-		sharePrice = repp.findById(sharePriceId);
+		sharePrices = repp.findById(sharePriceId);
 
-		if (sharePrice.isPresent()) {
-			repp.delete(sharePrice.get());
+		if (sharePrices.isPresent()) {
+			repp.delete(sharePrices.get());
 			System.out.println("sharePrice removed");
 		} else {
 			System.out.println("No share price under this id");
@@ -49,9 +49,9 @@ public class SharePriceDAO {
 
 	public void updateSharePrice(SharePrice sharePrice) {
 
-		sharePrice = repp.findById(sharePrice.getSharePriceId());
-		if (sharePrice.isPresent()) {
-			repp.save(sharePrice.get());
+		sharePrices = repp.findById(sharePrice.getSharePriceId());
+		if (sharePrices.isPresent()) {
+			repp.save(sharePrice);
 			System.out.println("share price changed");
 		}
 	}

@@ -22,6 +22,26 @@ public class HomeController {
 		return "register";
 	}
 	
+	@GetMapping("/ViewShares")
+	public String viewShares() {
+		return "ViewShares";
+	}
+	
+	@GetMapping("/Shareholder")
+	public String shareholder() {
+		return "Shareholder";
+	}
+	
+	@GetMapping("/Broker")
+	public String broker() {
+		return "Broker";
+	}
+	
+	@GetMapping("/BrokerRequestPage")
+	public String brokerRequestPage() {
+		return "BrokerRequestPage";
+	}
+	
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
 		return "helloAdmin";
