@@ -10,7 +10,6 @@ import com.fdmgroup.entities.Broker;
 import com.fdmgroup.repos.BrokerRep;
 
 
-
 @Service
 public class BrokersDAO {
 	@Autowired
