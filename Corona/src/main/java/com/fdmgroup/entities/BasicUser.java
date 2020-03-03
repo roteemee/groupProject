@@ -4,29 +4,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity (name = "basic_users")
+@Entity(name = "basic_users")
 public class BasicUser {
-	
+
 	@Id
-	@Column (name = "username" ,length= 50)
+	@Column(name = "username", length = 50)
 	private String username;
 	@Column
 	private String name;
 	@Column
 	private String country;
-	@Column (name = "user_type")
+	@Column(name = "user_type")
 	private int userType;
 	@Column
 	private String password;
-	
-	
+
 	public BasicUser() {
 		// TODO Auto-generated constructor stub
 	}
-
-
-	
-
 
 	public BasicUser(String username, String name, String country, int userType, String password) {
 		super();
@@ -37,68 +32,45 @@ public class BasicUser {
 		this.password = password;
 	}
 
-
-
-
-
 	public String getUsername() {
 		return username;
 	}
-
 
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
-
 	public String getName() {
 		return name;
 	}
-
 
 	public void setName(String name) {
 		this.name = name;
 	}
 
-
 	public String getCountry() {
 		return country;
 	}
-
 
 	public void setCountry(String country) {
 		this.country = country;
 	}
 
-
 	public int getUserType() {
 		return userType;
 	}
-
 
 	public void setUserType(int userType) {
 		this.userType = userType;
 	}
 
-
-
-
-
 	public String getPassword() {
 		return password;
 	}
 
-
-
-
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-
-
-
 
 	@Override
 	public int hashCode() {
@@ -111,10 +83,6 @@ public class BasicUser {
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
 	}
-
-
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -149,10 +117,5 @@ public class BasicUser {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 
 }
