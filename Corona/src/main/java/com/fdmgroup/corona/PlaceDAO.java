@@ -9,26 +9,26 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.entities.Place;
 import com.fdmgroup.repos.PlaceRep;
 @Service
-public class PlacesDAO {
+public class PlaceDAO {
 	@Autowired
 	private PlaceRep repp;
 
-	Optional<Place> place;
+	Optional<Place> places;
 	List<Place> allPlaces;
 
 	public void addPlace(Place place) {
-		place = repp.findById(place.getPlaceId());
-		if (!place.isPresent()) {
+		places = repp.findById(place.getPlaceId());
+		if (!places.isPresent()) {
 
 			repp.save(place);
 		}
 	}
 
 	public Place getPlace(int placeId) {
-		place = repp.findById(placeId);
-		if (place.isPresent()) {
+		places = repp.findById(placeId);
+		if (places.isPresent()) {
 
-			return place.get();
+			return places.get();
 		} else {
 			System.out.print("No place whith this id therefore is ");
 			return null;
@@ -36,10 +36,10 @@ public class PlacesDAO {
 	}
 
 	public void removePlace(int placeId) {
-		place = repp.findById(placeId);
+		places = repp.findById(placeId);
 
-		if (place.isPresent()) {
-			repp.delete(place.get());
+		if (places.isPresent()) {
+			repp.delete(places.get());
 			System.out.println("place removed");
 		} else {
 			System.out.println("No place under this id");
@@ -49,9 +49,9 @@ public class PlacesDAO {
 
 	public void updatePlace(Place place) {
 
-		place = repp.findById(place.getPlaceId());
-		if (place.isPresent()) {
-			repp.save(place.get());
+		places = repp.findById(place.getPlaceId());
+		if (places.isPresent()) {
+			repp.save(places.get());
 			System.out.println("place changed");
 		}
 	}
@@ -62,7 +62,7 @@ public class PlacesDAO {
 		return allPlaces;
 	}
 
-	public PlacesDAO() {
+	public PlaceDAO() {
 
 	}
 
