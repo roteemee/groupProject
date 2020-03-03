@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fdmgroup.entities.Currency;
 import com.fdmgroup.repos.CurrencyRep;
 
 @Service
@@ -17,7 +18,7 @@ public class CurrenciesDAO {
 	List<Currency> allCurrencies;
 
 	public void addCurrency(Currency currency) {
-		currencies = repp.findById(Currency.getCurrencyId());
+		currencies = repp.findById(Currency.getCurrency_id());
 		if (!currencies.isPresent()) {
 
 			repp.save(Currency);

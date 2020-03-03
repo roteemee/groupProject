@@ -16,5 +16,7 @@ public class Broker extends User{
 	protected void updateFee() {
 		
 	}
+
+	
 	
 }
