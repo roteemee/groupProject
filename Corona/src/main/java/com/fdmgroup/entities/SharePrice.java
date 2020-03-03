@@ -5,11 +5,16 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Entity
-public class SharePrice 
+public class SharePrice {
 //the id needs to be changed to composite primary key
-{	@Column(name="share_id")
+	@Id
+	@Column(name="share_price_id")
+	private int sharePriceId;
+	
+	@Column(name="share_id")
 	private int shareId;
 	@Column
 	private double price;

@@ -61,5 +61,5 @@ public class HomeController {
 	public String manageUser() {
 		return "manageUser";
 	}
-	
+
 }
