@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fdmgroup.entities.SharePrice;
 import com.fdmgroup.repos.SharePriceRep;
 @Service
 public class SharePricesDAO {
