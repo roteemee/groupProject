@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>BrokerTradePage</title>
+</head>
+<body>
+<p>List All Trades</p>
+<table>
+<thead>
+<tr>
+<th>Trade Id</th>
+<th>Share Id</th>
+<th>Stock Ex</th>
+<th>Trade Id</th>
+<th>Broker</th>
+<th>Stock Ex list</th>
+<th>Order Date</th>
+<th>Share amount</th>
+<th>Price Total</th>
+
+</tr></thead>
+<tbody>
+<tr th:each="trade : ${trades}">
+<td th:text="${trade.tradeId}"></td>
+<td th:text="${trade.theShare}"></td>
+<td th:text="${trade.se}"></td>
+<td th:text="${trade.brokerList}"></td>
+<td th:text="${trade.stockExList}"></td>
+<td th:text="${trade.orderDate}"></td>
+<td th:text="${trade.shareAmount}"></td>
+<td th:text="${trade.priceTotal}"></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

@@ -45,6 +45,11 @@ public class HomeController {
 	public String brokerRequestPage() {
 		return "BrokerRequestPage";
 	}
+	
+	@GetMapping("/BrokerTradePage")
+	public String brokerTradePage() {
+		return "BrokerTradePage";
+	}
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
