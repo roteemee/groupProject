@@ -11,7 +11,7 @@ import com.fdmgroup.repos.StockExchangeRep;
 
 
 @Service
-public class StockExchangesDAO {
+public class StockExchangeDAO {
 
 	@Autowired
 	private StockExchangeRep repp;
@@ -65,7 +65,7 @@ public class StockExchangesDAO {
 		return allStockExchanges;
 	}
 
-	public StockExchangesDAO() {
+	public StockExchangeDAO() {
 
 	}
 	

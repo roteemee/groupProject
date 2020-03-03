@@ -12,7 +12,7 @@ import com.fdmgroup.repos.BrokerRep;
 
 
 @Service
-public class BrokersDAO {
+public class BrokerDAO {
 	@Autowired
 	private BrokerRep repp;
 
@@ -65,7 +65,7 @@ public class BrokersDAO {
 		return allBrokers;
 	}
 
-	public BrokersDAO() {
+	public BrokerDAO() {
 
 	}
 

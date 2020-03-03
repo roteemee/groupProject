@@ -10,7 +10,7 @@ import com.fdmgroup.entities.Currency;
 import com.fdmgroup.repos.CurrencyRep;
 
 @Service
-public class CurrenciesDAO {
+public class CurrencyDAO {
 	@Autowired
 	private CurrencyRep repp;
 
@@ -63,7 +63,7 @@ public class CurrenciesDAO {
 		return allCurrencies;
 	}
 
-	public CurrenciesDAO() {
+	public CurrencyDAO() {
 
 	}
 

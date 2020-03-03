@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.entities.Share;
 import com.fdmgroup.repos.ShareRep;
 @Service
-public class SharesDAO {
+public class ShareDAO {
 	@Autowired
 	private ShareRep repp;
 
@@ -62,7 +62,7 @@ public class SharesDAO {
 		return allShares;
 	}
 
-	public SharesDAO() {
+	public ShareDAO() {
 
 	}
 

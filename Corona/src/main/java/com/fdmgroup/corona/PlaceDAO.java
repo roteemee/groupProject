@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.entities.Place;
 import com.fdmgroup.repos.PlaceRep;
 @Service
-public class PlacesDAO {
+public class PlaceDAO {
 	@Autowired
 	private PlaceRep repp;
 
@@ -62,7 +62,7 @@ public class PlacesDAO {
 		return allPlaces;
 	}
 
-	public PlacesDAO() {
+	public PlaceDAO() {
 
 	}
 

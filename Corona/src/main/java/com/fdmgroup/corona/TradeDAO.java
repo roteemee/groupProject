@@ -10,7 +10,7 @@ import com.fdmgroup.repos.Trade;
 import com.fdmgroup.repos.TradeRep;
 
 @Service
-public class TradesDAO {
+public class TradeDAO {
 	@Autowired
 	private TradeRep repp;
 
@@ -63,7 +63,7 @@ public class TradesDAO {
 		return allTrades;
 	}
 
-	public TradesDAO() {
+	public TradeDAO() {
 
 	}
 
