@@ -3,13 +3,15 @@ package com.fdmgroup.corona;
 import java.util.Arrays;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
+import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
 import com.fdmgroup.entities.Shareholder;
 
@@ -17,8 +19,16 @@ import com.fdmgroup.entities.Shareholder;
 @SessionAttributes("userName")
 public class HomeController {
 
+	@Autowired
 	BrokerDAO bserve = new BrokerDAO();
+	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
+	
+	@ModelAttribute("userName")
+	private BasicUser usermaking() {
+		return new BasicUser();
+	}
+
 
 	// general page stuff
 	@GetMapping("/")
@@ -62,11 +72,12 @@ public class HomeController {
 	}
 
 	// user
-	@GetMapping("/UserRequest")
-	public String addUser(Model model) {
-		List<String> user = Arrays.asList("Mark","Tom","Timi");
-		model.addAttribute("user", user);
-		return "UserRequest";
+	@GetMapping("/ViewUserRequest")
+	public String addUser(@ModelAttribute(name = "userName") BasicUser user,Model model) {
+		
+		model.addAttribute("username", user.getUsername());
+		model.addAttribute("username", user.getUserType());
+		return "ViewUserRequest";
 	}
 
 	@GetMapping("/manageUser")
