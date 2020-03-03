@@ -16,8 +16,8 @@ public class StockExchangeDAO {
 	@Autowired
 	private StockExchangeRep repp;
 
-	Optional<StockExchange> stockExchanges;
-	List<StockExchange> allStockExchanges;
+	private Optional<StockExchange> stockExchanges;
+	private List<StockExchange> allStockExchanges;
 
 	public void addStockExchange(StockExchange stockExchange) {
 		stockExchanges = repp.findById(stockExchange.getStockExId());
@@ -54,7 +54,7 @@ public class StockExchangeDAO {
 
 		stockExchanges = repp.findById(stockExchange.getStockExId());
 		if (stockExchanges.isPresent()) {
-			repp.save(stockExchanges.get());
+			repp.save(stockExchange);
 			System.out.println("stockExchange changed");
 		}
 	}

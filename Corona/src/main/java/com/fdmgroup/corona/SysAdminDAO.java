@@ -13,11 +13,11 @@ public class SysAdminDAO {
 	@Autowired
 	private SysAdminRep repp;
 
-	Optional<Sysadmin> sysadmins;
-	List<Sysadmin> allSysadmins;
+	private Optional<Sysadmin> sysadmins;
+	private List<Sysadmin> allSysadmins;
 
 	public void addSysadmin(Sysadmin sysadmin) {
-		sysadmins = repp.findById(sysadmin.getSysadminId());
+		sysadmins = repp.findById(sysadmin.getUserId());
 		if (!sysadmins.isPresent()) {
 
 			repp.save(sysadmin);
@@ -49,7 +49,7 @@ public class SysAdminDAO {
 
 	public void updateSysadmin(Sysadmin sysadmin) {
 
-		sysadmins = repp.findById(sysadmin.getSysadminId());
+		sysadmins = repp.findById(sysadmin.getUserId());
 		if (sysadmins.isPresent()) {
 			repp.save(sysadmin);
 			System.out.println("system admin changed");

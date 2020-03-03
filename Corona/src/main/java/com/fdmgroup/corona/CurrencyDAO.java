@@ -14,8 +14,8 @@ public class CurrencyDAO {
 	@Autowired
 	private CurrencyRep repp;
 
-	Optional<Currency> currencies;
-	List<Currency> allCurrencies;
+	private Optional<Currency> currencies;
+	private List<Currency> allCurrencies;
 
 	public void addCurrency(Currency currency) {
 		currencies = repp.findById(currency.getCurrencyId());

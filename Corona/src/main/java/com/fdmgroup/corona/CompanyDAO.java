@@ -13,8 +13,8 @@ public class CompanyDAO {
 	@Autowired
 	private CompanyRep repp;
 
-	Optional<Company> companies;
-	List<Company> allCompanies;
+	private Optional<Company> companies;
+	private List<Company> allCompanies;
 
 	public void addCompany(Company company) {
 		companies = repp.findById(company.getCompanyId());

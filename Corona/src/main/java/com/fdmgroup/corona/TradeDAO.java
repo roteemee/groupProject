@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fdmgroup.repos.Trade;
+import com.fdmgroup.entities.Trade;
 import com.fdmgroup.repos.TradeRep;
 
 @Service
@@ -14,8 +14,8 @@ public class TradeDAO {
 	@Autowired
 	private TradeRep repp;
 
-	Optional<Trade> trades;
-	List<Trade> allTrades;
+	private Optional<Trade> trades;
+	private List<Trade> allTrades;
 
 	public void addTrade(Trade trade) {
 		trades = repp.findById(trade.getTradeId());
@@ -52,7 +52,7 @@ public class TradeDAO {
 
 		trades = repp.findById(trade.getTradeId());
 		if (trades.isPresent()) {
-			repp.save(trades.get());
+			repp.save(trade);
 			System.out.println("trade changed");
 		}
 	}
