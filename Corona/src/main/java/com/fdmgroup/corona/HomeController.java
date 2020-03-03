@@ -61,4 +61,9 @@ public class HomeController {
 	public String manageUser() {
 		return "manageUser";
 	}
+	
+	@GetMapping("/Wallet")
+	public String Wallet() {
+		return "Wallet";
+	}
 }
