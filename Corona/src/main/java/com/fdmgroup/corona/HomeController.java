@@ -11,7 +11,7 @@ public class HomeController {
 	
 
 	// general page stuff
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String doWork() {
 		return "home";
 	}
