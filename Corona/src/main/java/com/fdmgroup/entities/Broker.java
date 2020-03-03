@@ -19,6 +19,9 @@ public class Broker extends User{
 		
 	}
 
+	
+	
+	
 	@Override
 	public int getUserId() {
 		// TODO Auto-generated method stub
