@@ -1,63 +1,68 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+<link rel="stylesheet" href="home.css" />
 <meta charset="ISO-8859-1">
 <title>Corona</title>
-<link rel="stylesheet" href="styles.css" />
-<style>
-.page-container {
-	margin: 0 auto;
-}
 
-.row {
-	clear: both;
-	padding: 0 0 0 1%; /* THAT'S THE NAME ;) */
-}
-.col {
-	float: left;
-	margin: 0 0% 0 0;
-}
-.last-col {
-	margin: 0;
-}
-
-.col1 { width: 75%; }
-.col2 { width: 10%; }
-.col3 { width: 20%; }
-.col4 { width: 60%; }
-.box1 {
-	border: solid 2px black;
-	background: white;
-	text-align: center;
-}
-.box2 {
-	border: none;
-	background: white;
-	text-align: left;
-}
-</style>
 </head>
 <body>
 <div class="page-container">
+<<<<<<< HEAD
 	<div class="row">
-		<div class="col box2">
-			<h1>Corona</h1>
+		<div class="col box3">
+			<h1><a href="/">Corona</a></h1>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col col3 box2">
+			<h1></h1>
 		</div>
-		<div class="col col4 box1">
+		<div class="col col3 box1">
 			<div class="row">
 				<h3>Sign up your account</h3>
 			</div>
 			<div class="row">
-				<h3>Sign up your account</h3>
+				<form action="#" th:action="@{/register}" method="get">
+    				<p>Username: <input type="text" /></p>
+        			<p>Password: <input type="text" /></p>
+ 					<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    			</form>
 			</div>
 		</div>
 		<div class="col col3 box2">
 		</div>
 	</div>
+=======
+       <div class="row">
+              <div class="col box3">
+                     <h1><a href="/">Corona</a></h1>
+              </div>
+       </div>
+       <div class="row">
+              <div class="col col3 box2">
+                     <h1></h1>
+              </div>
+              <div class="col col3 box1">
+                     <div class="row">
+                           <h3>Sign up your account</h3>
+                     </div>
+                     <div class="row">
+                           <form action="#" th:action="@{/register}" method="post">
+                           <p>Username: <input type="text" /></p>
+                           <p>Password: <input type="text" /></p>
+                           <input type="checkbox" id="shareholder" name="shareholder" value="Shareholder">
+                                  <label for="shareholder"> shareholder</label><br>
+                                  <input type="checkbox" id="broker" name="broker" value="Broker">
+                                 <label for="broker"> broker</label><br>
+                                 <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+                    </form>
+                     </div>
+              </div>
+              <div class="col col3 box2">
+              </div>
+       </div>
+>>>>>>> branch 'master' of https://git.fdmgroup.com/Kevin.Wright2/corona.git
 </div>
 </body>
 </html>

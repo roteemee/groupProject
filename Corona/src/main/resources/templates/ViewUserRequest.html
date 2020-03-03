@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form  method = "post" action = "userAdded">
+<form id="selecting" method="post" action="/">
+							<div>
+							<table>
+							    
+								<tr th:each="item : ${user}" > 
+									<td th:text="|${item} wants to be a ${item}|" />
+									<br />									
+									<td>Accept <input type="checkbox" name="cb" th:value="${item}" /></td>
+									<td>Reject <input type="checkbox" name="cb" th:value="${item}" /></td>
+								</tr>
+								
+								</table>
+							</div>
+						<input type="submit" value = "Submit" >
+						</form>
+</form>
+</body>
+</html>

@@ -24,13 +24,6 @@ public class BrokerController {
 	@GetMapping("tradeList")
 	public String showUpdateForm(Model model) {
 		
-		Trade t = new Trade();
-		
-		t.setTradeId(45);
-		t.setShareAmmount(4555);
-		t.setPriceTotal(555);
-		model.addAttribute("trades",t);
-		tradeRepository.save(t);
 		model.addAttribute("trades", tradeRepository.findAll());
 		return "BrokerTradePage";
 	}
