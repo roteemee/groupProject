@@ -19,18 +19,12 @@
 		</div>
 		<div class="col col3 box1">
 			<div class="row">
-				<h3>Login to corona</h3>
+				<h3>Request roles</h3>
 			</div>
 			<div class="row">
-				<form action="#" th:action="@{/login}" method="post">
+				<form action="#" th:action="@{/register}" method="post">
     				<p>Username: <input type="text" /></p>
-        			<p>Password: <input type="text" /></p>
-        			<input type="checkbox" id="shareholder" name="shareholder" value="Shareholder">
-  					<label for="shareholder"> shareholder</label><br>
-  					<input type="checkbox" id="broker" name="broker" value="Broker">
- 					<label for="broker"> broker</label><br>
- 					<input type="checkbox" id="admin" name="admin" value="Admin">
- 					<label for="admin"> admin</label><br>
+        			<p>Role: <input type="text" /></p>
  					<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
     			</form>
 			</div>

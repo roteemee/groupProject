@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form  method = "post" action = "userAdded" >
+
+							<div th:each="item : ${username}" >
+							<table>
+							    
+								<tr > 
+									<td th:text="|${item} wants to be a ${item}|" />			
+									<td>Accept <input type="radio" name="cb" th:value="Yes" /></td>
+									<td>Reject <input type="radio" name="cb" th:value="No" /></td>
+								</tr>
+								
+								</table>
+							</div>
+					
+						<input type="submit" value = "Submit" >
+</form>
+</body>
+</html>

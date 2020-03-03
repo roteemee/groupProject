@@ -1,11 +1,17 @@
 package com.fdmgroup.corona;
 
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
+import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
 import com.fdmgroup.entities.Shareholder;
 
@@ -13,8 +19,16 @@ import com.fdmgroup.entities.Shareholder;
 @SessionAttributes("userName")
 public class HomeController {
 
+	@Autowired
 	BrokerDAO bserve = new BrokerDAO();
+	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
+	
+	@ModelAttribute("userName")
+	private BasicUser usermaking() {
+		return new BasicUser();
+	}
+
 
 	// general page stuff
 	@GetMapping("/")
@@ -29,7 +43,7 @@ public class HomeController {
 
 	@GetMapping("/register")
 	public String register() {
-		return "register";
+		return "ToSendingRequest";
 	}
 
 	@GetMapping("/ViewShares")
@@ -51,6 +65,11 @@ public class HomeController {
 	public String brokerRequestPage() {
 		return "BrokerRequestPage";
 	}
+	
+	@GetMapping("/BrokerTradePage")
+	public String brokerTradePage() {
+		return "BrokerTradePage";
+	}
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
@@ -58,15 +77,26 @@ public class HomeController {
 	}
 
 	// user
-	@GetMapping("/addUser")
-	public String addUser() {
-		return "addUser";
+	@GetMapping("/ViewUserRequest")
+	public String addUser(@ModelAttribute(name = "userName") BasicUser user,Model model) {
+		
+		model.addAttribute("username", user.getUsername());
+		model.addAttribute("username", user.getUserType());
+		return "ViewUserRequest";
 	}
 
 	@GetMapping("/manageUser")
 	public String manageUser() {
 		return "manageUser";
 	}
+
+
+	
+	@GetMapping("/Wallet")
+	public String Wallet() {
+		return "Wallet";
+	}
+
 
 	@PostMapping("/addBroker")
 	public String addBroker(@RequestParam String userid, String username, String usercountry) {
@@ -93,5 +123,4 @@ public class HomeController {
 		return "ShareholderTransactions";
 	}
 
-	
 }
