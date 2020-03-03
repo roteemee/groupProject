@@ -31,6 +31,18 @@ public class Place {
 		this.country = country;
 	}
 
+	
+	
+	
+	public int getPlaceId() {
+		return placeId;
+	}
+
+
+	public void setPlaceId(int placeId) {
+		this.placeId = placeId;
+	}
+
 
 	public String getCity() {
 		return city;
@@ -76,6 +88,9 @@ public class Place {
 			return false;
 		return true;
 	}
+
+
+	
 	
 	
 	
