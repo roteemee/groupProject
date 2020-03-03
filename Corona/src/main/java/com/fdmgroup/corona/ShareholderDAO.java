@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package com.fdmgroup.corona;
 
 import java.util.List;
@@ -13,8 +14,8 @@ public class ShareholderDAO {
 	@Autowired
 	private ShareholderRep repp;
 
-	Optional<Shareholder> shareholders;
-	List<Shareholder> allShareholders;
+	private Optional<Shareholder> shareholders;
+	private List<Shareholder> allShareholders;
 
 	public void addShareholder(Shareholder shareholder) {
 		shareholders = repp.findById(shareholder.getUserId());
@@ -68,3 +69,4 @@ public class ShareholderDAO {
 
 	
 }
+>>>>>>> c4c67eafaacd39806149df67b46352ca62e9f8f0

@@ -15,8 +15,8 @@ public class BrokerDAO {
 	@Autowired
 	private BrokerRep repp;
 
-	Optional<Broker> brokers;
-	List<Broker> allBrokers;
+	private Optional<Broker> brokers;
+	private List<Broker> allBrokers;
 
 	public void addBroker(Broker broker) {
 		brokers = repp.findById(broker.getUserId());

@@ -12,8 +12,8 @@ public class UserDAO {
 	@Autowired
 	private UserRep repp;
 
-	Optional<User> users;
-	List<User> allUsers;
+	private Optional<User> users;
+	private List<User> allUsers;
 
 	public void addUser(User user) {
 		users = repp.findById(user.getUserId());

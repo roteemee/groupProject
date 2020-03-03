@@ -13,8 +13,8 @@ public class PlaceDAO {
 	@Autowired
 	private PlaceRep repp;
 
-	Optional<Place> places;
-	List<Place> allPlaces;
+	private Optional<Place> places;
+	private List<Place> allPlaces;
 
 	public void addPlace(Place place) {
 		places = repp.findById(place.getPlaceId());

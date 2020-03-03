@@ -14,8 +14,8 @@ public class TradeDAO {
 	@Autowired
 	private TradeRep repp;
 
-	Optional<Trade> trades;
-	List<Trade> allTrades;
+	private Optional<Trade> trades;
+	private List<Trade> allTrades;
 
 	public void addTrade(Trade trade) {
 		trades = repp.findById(trade.getTradeId());

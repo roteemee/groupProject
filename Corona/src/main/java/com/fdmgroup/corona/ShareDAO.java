@@ -13,8 +13,8 @@ public class ShareDAO {
 	@Autowired
 	private ShareRep repp;
 
-	Optional<Share> shares;
-	List<Share> allShares;
+	private Optional<Share> shares;
+	private List<Share> allShares;
 
 	public void addShare(Share share) {
 		shares = repp.findById(share.getShareId());

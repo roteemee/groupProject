@@ -13,8 +13,8 @@ public class SysAdminDAO {
 	@Autowired
 	private SysAdminRep repp;
 
-	Optional<Sysadmin> sysadmins;
-	List<Sysadmin> allSysadmins;
+	private Optional<Sysadmin> sysadmins;
+	private List<Sysadmin> allSysadmins;
 
 	public void addSysadmin(Sysadmin sysadmin) {
 		sysadmins = repp.findById(sysadmin.getUserId());
