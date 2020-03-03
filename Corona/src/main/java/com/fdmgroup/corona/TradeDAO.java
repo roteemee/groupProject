@@ -52,7 +52,7 @@ public class TradeDAO {
 
 		trades = repp.findById(trade.getTradeId());
 		if (trades.isPresent()) {
-			repp.save(trades.get());
+			repp.save(trade);
 			System.out.println("trade changed");
 		}
 	}

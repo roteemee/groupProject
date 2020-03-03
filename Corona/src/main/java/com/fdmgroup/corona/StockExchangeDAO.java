@@ -54,7 +54,7 @@ public class StockExchangeDAO {
 
 		stockExchanges = repp.findById(stockExchange.getStockExId());
 		if (stockExchanges.isPresent()) {
-			repp.save(stockExchanges.get());
+			repp.save(stockExchange);
 			System.out.println("stockExchange changed");
 		}
 	}
