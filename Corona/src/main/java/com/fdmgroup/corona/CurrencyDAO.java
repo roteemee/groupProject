@@ -18,7 +18,7 @@ public class CurrencyDAO {
 	List<Currency> allCurrencies;
 
 	public void addCurrency(Currency currency) {
-		currencies = repp.findById(currency.getCurrency_id());
+		currencies = repp.findById(currency.getCurrencyId());
 		if (!currencies.isPresent()) {
 
 			repp.save(currency);
@@ -50,7 +50,7 @@ public class CurrencyDAO {
 
 	public void updateCurrency(Currency currency) {
 
-		currencies = repp.findById(currency.getCurrency_id());
+		currencies = repp.findById(currency.getCurrencyId());
 		if (currencies.isPresent()) {
 			repp.save(currency);
 			System.out.println("Currency changed");

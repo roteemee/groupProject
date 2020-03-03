@@ -17,7 +17,7 @@ public class SharePriceDAO {
 	List<SharePrice> allSharePrices;
 
 	public void addSharePrice(SharePrice sharePrice) {
-		sharePrices = repp.findById(sharePrice.getSharePriceId());
+		sharePrices = repp.findById(sharePrice.getShareId());
 		if (!sharePrices.isPresent()) {
 
 			repp.save(sharePrice);
@@ -49,7 +49,7 @@ public class SharePriceDAO {
 
 	public void updateSharePrice(SharePrice sharePrice) {
 
-		sharePrices = repp.findById(sharePrice.getSharePriceId());
+		sharePrices = repp.findById(sharePrice.getShareId());
 		if (sharePrices.isPresent()) {
 			repp.save(sharePrice);
 			System.out.println("share price changed");

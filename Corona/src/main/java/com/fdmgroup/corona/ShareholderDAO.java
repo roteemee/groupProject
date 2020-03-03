@@ -17,7 +17,7 @@ public class ShareholderDAO {
 	List<Shareholder> allShareholders;
 
 	public void addShareholder(Shareholder shareholder) {
-		shareholders = repp.findById(shareholder.getShareholderId());
+		shareholders = repp.findById(shareholder.getUserId());
 		if (!shareholders.isPresent()) {
 
 			repp.save(shareholder);
@@ -49,7 +49,7 @@ public class ShareholderDAO {
 
 	public void updateShareholder(Shareholder shareholder) {
 
-		shareholders = repp.findById(shareholder.getShareholderId());
+		shareholders = repp.findById(shareholder.getUserId());
 		if (shareholders.isPresent()) {
 			repp.save(shareholder);
 			System.out.println("shareholder changed");
