@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,9 +17,10 @@ public class Trade {
 @Id
 @Column(name =  "trade_id")
 private int tradeId;
-@OneToMany
-@Column(name =  "share_id")
-private int shareId;
+
+@ManyToOne
+private Share theShare;
+
 @OneToMany
 @Column(name =  "broker_id")
 private List<Broker> brokerlist = new ArrayList<>();
