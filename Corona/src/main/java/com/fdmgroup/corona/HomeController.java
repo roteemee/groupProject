@@ -1,6 +1,10 @@
 package com.fdmgroup.corona;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -29,7 +33,7 @@ public class HomeController {
 
 	@GetMapping("/register")
 	public String register() {
-		return "register";
+		return "ToSendingRequest";
 	}
 
 	@GetMapping("/ViewShares")
@@ -51,6 +55,11 @@ public class HomeController {
 	public String brokerRequestPage() {
 		return "BrokerRequestPage";
 	}
+	
+	@GetMapping("/BrokerTradePage")
+	public String brokerTradePage() {
+		return "BrokerTradePage";
+	}
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
@@ -58,15 +67,18 @@ public class HomeController {
 	}
 
 	// user
-	@GetMapping("/addUser")
-	public String addUser() {
-		return "addUser";
+	@GetMapping("/UserRequest")
+	public String addUser(Model model) {
+		List<String> user = Arrays.asList("Mark","Tom","Timi");
+		model.addAttribute("user", user);
+		return "UserRequest";
 	}
 
 	@GetMapping("/manageUser")
 	public String manageUser() {
 		return "manageUser";
 	}
+
 
 	
 	@GetMapping("/Wallet")
@@ -94,6 +106,10 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
+<<<<<<< HEAD
 
 
+=======
+
+>>>>>>> d3e873e1340101808339532b3502d788e513d22a
 }
