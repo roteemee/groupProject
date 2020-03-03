@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package com.fdmgroup.corona;
 
 import java.util.List;
@@ -69,4 +68,3 @@ public class ShareholderDAO {
 
 	
 }
->>>>>>> c4c67eafaacd39806149df67b46352ca62e9f8f0
