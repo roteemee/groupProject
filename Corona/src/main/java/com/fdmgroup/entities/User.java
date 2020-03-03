@@ -10,7 +10,7 @@ import javax.persistence.InheritanceType;
 @Inheritance(
 	    strategy = InheritanceType.JOINED
 )
-public abstract class User {
+public  class User {
 
 	@Id
 	@Column(name="user_id")
