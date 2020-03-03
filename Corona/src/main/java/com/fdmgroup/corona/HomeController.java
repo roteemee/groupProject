@@ -1,6 +1,10 @@
 package com.fdmgroup.corona;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -58,9 +62,11 @@ public class HomeController {
 	}
 
 	// user
-	@GetMapping("/addUser")
-	public String addUser() {
-		return "addUser";
+	@GetMapping("/UserRequest")
+	public String addUser(Model model) {
+		List<String> user = Arrays.asList("Mark","Tom","Timi");
+		model.addAttribute("user", user);
+		return "UserRequest";
 	}
 
 	@GetMapping("/manageUser")
