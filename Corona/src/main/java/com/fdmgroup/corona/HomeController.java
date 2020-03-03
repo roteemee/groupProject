@@ -24,10 +24,7 @@ public class HomeController {
 		return "register";
 	}
 	
-<<<<<<< HEAD
 
-=======
->>>>>>> 78a7739175b38d61a155bb4f09113888d24936da
 	@GetMapping("/ViewShares")
 	public String viewShares() {
 		return "ViewShares";
@@ -48,10 +45,6 @@ public class HomeController {
 		return "BrokerRequestPage";
 	}
 	
-<<<<<<< HEAD
-
-=======
->>>>>>> 78a7739175b38d61a155bb4f09113888d24936da
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
 		return "helloAdmin";
@@ -72,8 +65,5 @@ public class HomeController {
 	}
 	
 	
-<<<<<<< HEAD
 
-=======
->>>>>>> 78a7739175b38d61a155bb4f09113888d24936da
 }
