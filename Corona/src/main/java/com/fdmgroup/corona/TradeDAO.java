@@ -10,26 +10,26 @@ import com.fdmgroup.repos.Trade;
 import com.fdmgroup.repos.TradeRep;
 
 @Service
-public class TradesDAO {
+public class TradeDAO {
 	@Autowired
 	private TradeRep repp;
 
-	Optional<Trade> trade;
+	Optional<Trade> trades;
 	List<Trade> allTrades;
 
 	public void addTrade(Trade trade) {
-		trade = repp.findById(trade.getTradeId());
-		if (!trade.isPresent()) {
+		trades = repp.findById(trade.getTradeId());
+		if (!trades.isPresent()) {
 
 			repp.save(trade);
 		}
 	}
 
 	public Trade getTrade(int tradeId) {
-		trade = repp.findById(tradeId);
-		if (trade.isPresent()) {
+		trades = repp.findById(tradeId);
+		if (trades.isPresent()) {
 
-			return trade.get();
+			return trades.get();
 		} else {
 			System.out.print("No trade whith this id therefore is ");
 			return null;
@@ -37,10 +37,10 @@ public class TradesDAO {
 	}
 
 	public void removeTrade(int tradeId) {
-		trade = repp.findById(tradeId);
+		trades = repp.findById(tradeId);
 
-		if (trade.isPresent()) {
-			repp.delete(trade.get());
+		if (trades.isPresent()) {
+			repp.delete(trades.get());
 			System.out.println("trade removed");
 		} else {
 			System.out.println("No trade under this id");
@@ -50,9 +50,9 @@ public class TradesDAO {
 
 	public void updateTrade(Trade trade) {
 
-		trade = repp.findById(trade.getTradeId());
-		if (trade.isPresent()) {
-			repp.save(trade.get());
+		trades = repp.findById(trade.getTradeId());
+		if (trades.isPresent()) {
+			repp.save(trades.get());
 			System.out.println("trade changed");
 		}
 	}
@@ -63,7 +63,7 @@ public class TradesDAO {
 		return allTrades;
 	}
 
-	public TradesDAO() {
+	public TradeDAO() {
 
 	}
 

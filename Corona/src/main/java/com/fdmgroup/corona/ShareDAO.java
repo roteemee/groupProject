@@ -9,26 +9,26 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.entities.Share;
 import com.fdmgroup.repos.ShareRep;
 @Service
-public class SharesDAO {
+public class ShareDAO {
 	@Autowired
 	private ShareRep repp;
 
-	Optional<Share> share;
+	Optional<Share> shares;
 	List<Share> allShares;
 
 	public void addShare(Share share) {
-		share = repp.findById(share.getShareId());
-		if (!share.isPresent()) {
+		shares = repp.findById(share.getShare_id());
+		if (!shares.isPresent()) {
 
 			repp.save(share);
 		}
 	}
 
 	public Share getShare(int shareId) {
-		share = repp.findById(shareId);
-		if (share.isPresent()) {
+		shares = repp.findById(shareId);
+		if (shares.isPresent()) {
 
-			return share.get();
+			return shares.get();
 		} else {
 			System.out.print("No share whith this id therefore is ");
 			return null;
@@ -36,10 +36,10 @@ public class SharesDAO {
 	}
 
 	public void removeShare(int shareId) {
-		share = repp.findById(shareId);
+		shares = repp.findById(shareId);
 
-		if (share.isPresent()) {
-			repp.delete(share.get());
+		if (shares.isPresent()) {
+			repp.delete(shares.get());
 			System.out.println("share removed");
 		} else {
 			System.out.println("No share under this id");
@@ -49,9 +49,9 @@ public class SharesDAO {
 
 	public void updateShare(Share share) {
 
-		share = repp.findById(share.getShareId());
-		if (share.isPresent()) {
-			repp.save(share.get());
+		shares = repp.findById(share.getShare_id());
+		if (shares.isPresent()) {
+			repp.save(share);
 			System.out.println("share changed");
 		}
 	}
@@ -62,7 +62,7 @@ public class SharesDAO {
 		return allShares;
 	}
 
-	public SharesDAO() {
+	public ShareDAO() {
 
 	}
 

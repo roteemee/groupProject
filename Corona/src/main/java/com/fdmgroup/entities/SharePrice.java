@@ -1,24 +1,26 @@
+
 package com.fdmgroup.entities;
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Entity
-public class Share {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name="share_id")
+public class SharePrice 
+//the id needs to be changed to composite primary key
+{	@Column(name="share_id")
 	private int shareId;
 	@Column
 	private double price;
+	@Column(name="time_start")
+	private Date timeStart;
+	@Column(name="time_end")
+	private Date timeEnd;
 	@Column
 	private String currency;
-	@Column
-	private String name;
+	
+	
 	public int getShareId() {
 		return shareId;
 	}
@@ -31,19 +33,25 @@ public class Share {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public Date getTimeStart() {
+		return timeStart;
+	}
+	public void setTimeStart(Date timeStart) {
+		this.timeStart = timeStart;
+	}
+	public Date getTimeEnd() {
+		return timeEnd;
+	}
+	public void setTimeEnd(Date timeEnd) {
+		this.timeEnd = timeEnd;
+	}
 	public String getCurrency() {
 		return currency;
 	}
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
+	
 	
 
-	
 }

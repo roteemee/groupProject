@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeController {
 
+	// general page
 	@GetMapping("/home")
 	public String doWork() {
 		return "home";
@@ -21,6 +22,7 @@ public class HomeController {
 		return "register";
 	}
 	
+<<<<<<< HEAD:Corona/src/main/java/com/fdmgroup/Corona/HomeController.java
 	@GetMapping("/ViewShares")
 	public String viewShares() {
 		return "ViewShares";
@@ -41,4 +43,26 @@ public class HomeController {
 		return "BrokerRequestPage";
 	}
 	
+=======
+	@GetMapping("/helloAdmin")
+	public String helloAdmin() {
+		return "helloAdmin";
+	}
+	
+	
+	//user 
+	@GetMapping("/addUser")
+	public String addUser() {
+		return "addUser";
+	}
+	
+	
+	
+	@GetMapping("/manageUser")
+	public String manageUser() {
+		return "manageUser";
+	}
+	
+	
+>>>>>>> d84b841e908114a54ec35a4e196625b84143881a:Corona/src/main/java/com/fdmgroup/corona/HomeController.java
 }

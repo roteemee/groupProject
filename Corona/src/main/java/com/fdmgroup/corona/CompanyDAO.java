@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.entities.Company;
 import com.fdmgroup.repos.CompanyRep;
 @Service
-public class CompaniesDAO {
+public class CompanyDAO {
 	@Autowired
 	private CompanyRep repp;
 
@@ -51,7 +51,7 @@ public class CompaniesDAO {
 
 		companies = repp.findById(company.getCompanyId());
 		if (companies.isPresent()) {
-			repp.save(companies.get());
+			repp.save(company);
 			System.out.println("company changed");
 		}
 	}
@@ -62,7 +62,7 @@ public class CompaniesDAO {
 		return allCompanies;
 	}
 
-	public CompaniesDAO() {
+	public CompanyDAO() {
 
 	}
 
