@@ -2,8 +2,10 @@ package com.fdmgroup.corona;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("userName")
 public class HomeController {
 
 	// general page
@@ -22,7 +24,7 @@ public class HomeController {
 		return "register";
 	}
 	
-<<<<<<< HEAD:Corona/src/main/java/com/fdmgroup/Corona/HomeController.java
+
 	@GetMapping("/ViewShares")
 	public String viewShares() {
 		return "ViewShares";
@@ -43,7 +45,7 @@ public class HomeController {
 		return "BrokerRequestPage";
 	}
 	
-=======
+
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
 		return "helloAdmin";
@@ -64,5 +66,5 @@ public class HomeController {
 	}
 	
 	
->>>>>>> d84b841e908114a54ec35a4e196625b84143881a:Corona/src/main/java/com/fdmgroup/corona/HomeController.java
+
 }
