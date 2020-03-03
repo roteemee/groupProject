@@ -1,9 +1,13 @@
 package com.fdmgroup.entities;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 @Entity (name = "stock_exchanges")
 public class StockExchange {
 	
@@ -13,6 +17,10 @@ public class StockExchange {
 	private int stockExId;
 	@Column
 	private String stockExName;
+	
+	@OneToMany(mappedBy = "se" )
+	List<Trade> tradeList = new ArrayList<Trade>();
+	
 	@Column
 	private String currency;
 	public int getStockExId() {
@@ -41,6 +49,12 @@ public class StockExchange {
 	public StockExchange() {
 		
 	}
+	public List<Trade> getTradeList() {
+		return tradeList;
+	}
+	public void setTradeList(List<Trade> tradeList) {
+		this.tradeList = tradeList;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -48,6 +62,7 @@ public class StockExchange {
 		result = prime * result + ((currency == null) ? 0 : currency.hashCode());
 		result = prime * result + stockExId;
 		result = prime * result + ((stockExName == null) ? 0 : stockExName.hashCode());
+		result = prime * result + ((tradeList == null) ? 0 : tradeList.hashCode());
 		return result;
 	}
 	@Override
@@ -71,7 +86,16 @@ public class StockExchange {
 				return false;
 		} else if (!stockExName.equals(other.stockExName))
 			return false;
+		if (tradeList == null) {
+			if (other.tradeList != null)
+				return false;
+		} else if (!tradeList.equals(other.tradeList))
+			return false;
 		return true;
+	}
+	public void addTrade(Trade trade) {
+		tradeList.add(trade);
+		
 	}
 
 }
