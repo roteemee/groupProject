@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
 import com.fdmgroup.entities.Shareholder;
+import com.fdmgroup.entities.UserRequest;
 
 @Controller
 @SessionAttributes("userName")
@@ -23,6 +24,8 @@ public class HomeController {
 	BrokerDAO bserve = new BrokerDAO();
 	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
+	@Autowired
+	UserRequestDAO urd = new UserRequestDAO();
 	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
@@ -78,10 +81,10 @@ public class HomeController {
 
 	// user
 	@GetMapping("/ViewUserRequest")
-	public String addUser(@ModelAttribute(name = "userName") BasicUser user,Model model) {
-		
-		model.addAttribute("username", user.getUsername());
-		model.addAttribute("username", user.getUserType());
+	public String addUser(Model model) {
+		List<UserRequest> allUserRequest =  urd.listUserRequests();
+		model.addAttribute("username", allUserRequest);
+
 		return "ViewUserRequest";
 	}
 
