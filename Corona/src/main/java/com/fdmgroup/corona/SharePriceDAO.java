@@ -13,8 +13,8 @@ public class SharePriceDAO {
 	@Autowired
 	private SharePriceRep repp;
 
-	Optional<SharePrice> sharePrices;
-	List<SharePrice> allSharePrices;
+	private Optional<SharePrice> sharePrices;
+	private List<SharePrice> allSharePrices;
 
 	public void addSharePrice(SharePrice sharePrice) {
 		sharePrices = repp.findById(sharePrice.getShareId());

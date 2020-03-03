@@ -13,8 +13,8 @@ public class ShareholderDAO {
 	@Autowired
 	private ShareholderRep repp;
 
-	Optional<Shareholder> shareholders;
-	List<Shareholder> allShareholders;
+	private Optional<Shareholder> shareholders;
+	private List<Shareholder> allShareholders;
 
 	public void addShareholder(Shareholder shareholder) {
 		shareholders = repp.findById(shareholder.getUserId());
