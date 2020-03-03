@@ -17,7 +17,7 @@ public class HomeController {
 	ShareholderDAO shserve = new ShareholderDAO();
 
 	// general page stuff
-	@GetMapping("/home")
+	@GetMapping("/")
 	public String doWork() {
 		return "home";
 	}
