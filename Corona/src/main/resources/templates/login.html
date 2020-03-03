@@ -1,10 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Corona</title>
+<link rel="stylesheet" href="styles.css" />
+<style>
+.page-container {
+	margin: 0 auto;
+}
+
+.row {
+	clear: both;
+	padding: 0 0 0 1%; /* THAT'S THE NAME ;) */
+}
+.col {
+	float: left;
+	margin: 0 0% 0 0;
+}
+.last-col {
+	margin: 0;
+}
+
+.col1 { width: 75%; }
+.col2 { width: 10%; }
+.col3 { width: 30%; }
+.col4 { width: 60%; }
+.col5 { width: 99%; }
+.box1 {
+	border: solid 2px black;
+	background: white;
+	text-align: center;
+}
+.box2 {
+	border: none;
+	background: white;
+	text-align: left;
+}
+.box3 {
+	border: none;
+	background: white;
+	text-align: center;
+}
+.box3 {
+	border: none;
+	background: white;
+	text-align: right;
+}
+</style>
 </head>
 <body>
-
+<div class="page-container">
+	<div class="row">
+		<div class="col box3">
+			<h1><a href="/">Corona</a></h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col col3 box2">
+			<h1></h1>
+		</div>
+		<div class="col col3 box1">
+			<div class="row">
+				<h3>Login to corona</h3>
+			</div>
+			<div class="row">
+				<form action="#" th:action="@{/login}" method="post">
+    				<p>Username: <input type="text" /></p>
+        			<p>Password: <input type="text" /></p>
+        			<input type="checkbox" id="shareholder" name="shareholder" value="Shareholder">
+  					<label for="shareholder"> shareholder</label><br>
+  					<input type="checkbox" id="broker" name="broker" value="Broker">
+ 					<label for="broker"> broker</label><br>
+ 					<input type="checkbox" id="admin" name="admin" value="Admin">
+ 					<label for="admin"> admin</label><br>
+ 					<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    			</form>
+			</div>
+		</div>
+		<div class="col col3 box2">
+		</div>
+	</div>
+</div>
 </body>
 </html>

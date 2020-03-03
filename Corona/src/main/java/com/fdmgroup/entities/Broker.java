@@ -54,11 +54,5 @@ public class Broker extends User{
 		// TODO Auto-generated method stub
 		super.setCountry(country);
 	}
-	
-	
-	
-	protected int getBrokerId() {
-		return b.getUserId();
-	}
-	
+
 }

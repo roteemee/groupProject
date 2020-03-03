@@ -14,101 +14,94 @@ import javax.persistence.TemporalType;
 
 @Entity(name = "trades")
 public class Trade {
-	@Id
-	@Column(name = "trade_id")
-	private int tradeId;
 
-	@ManyToOne
-	private Share theShare;
+@Id
+@Column(name =  "trade_id")
+private int tradeId;
 
-	@ManyToOne
-	private StockExchange se;
+@ManyToOne
+private Share theShare;
 
-	@OneToMany
-	@Column(name = "broker_id")
-	private List<Broker> brokerlist = new ArrayList<>();
-	@OneToMany
-	@Column(name = "stock_ex_id")
-	private List<StockExchange> stockExList = new ArrayList<>();;
+@ManyToOne
+private StockExchange se;
 
-	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "transaction_time")
-	private Date orderDate;
-	@Column(name = "share_ammount")
-	private int shareAmmount;
-	@Column(name = "price_total")
-	private int priceTotal;
 
-	public int getTradeId() {
-		return tradeId;
-	}
 
-	public void setTradeId(int tradeId) {
-		this.tradeId = tradeId;
-	}
+@OneToMany
+@Column(name =  "broker_id")
+private List<Broker> brokerlist = new ArrayList<>();
+@OneToMany
+@Column(name =  "stock_ex_id")
+private List<StockExchange> stockExList = new ArrayList<>();;
 
-	public Share getTheShare() {
-		return theShare;
-	}
 
-	public void setTheShare(Share theShare) {
-		this.theShare = theShare;
-	}
+@Temporal(TemporalType.TIMESTAMP)
+@Column(name =  "transaction_time")
+private Date orderDate;	
+@Column(name =  "share_ammount")
+private int shareAmmount;
+@Column(name =  "price_total")
+private int priceTotal;
+public int getTradeId() {
+	return tradeId;
+}
+public void setTradeId(int tradeId) {
+	this.tradeId = tradeId;
+}
 
-	public List<Broker> getBrokerlist() {
-		return brokerlist;
-	}
 
-	public void setBrokerlist(List<Broker> brokerlist) {
-		this.brokerlist = brokerlist;
-	}
 
-	public List<StockExchange> getStockExList() {
-		return stockExList;
-	}
+public Share getTheShare() {
+	return theShare;
+}
+public void setTheShare(Share theShare) {
+	this.theShare = theShare;
+}
+public List<Broker> getBrokerlist() {
+	return brokerlist;
+}
+public void setBrokerlist(List<Broker> brokerlist) {
+	this.brokerlist = brokerlist;
+}
+public List<StockExchange> getStockExList() {
+	return stockExList;
+}
+public void setStockExList(List<StockExchange> stockExList) {
+	this.stockExList = stockExList;
+}
+public Date getOrderDate() {
+	return orderDate;
+}
+public void setOrderDate(Date orderDate) {
+	this.orderDate = orderDate;
+}
+public int getShareAmmount() {
+	return shareAmmount;
+}
+public void setShareAmmount(int shareAmmount) {
+	this.shareAmmount = shareAmmount;
+}
+public int getPriceTotal() {
+	return priceTotal;
+}
+public void setPriceTotal(int priceTotal) {
+	this.priceTotal = priceTotal;
+} 
 
-	public void setStockExList(List<StockExchange> stockExList) {
-		this.stockExList = stockExList;
-	}
+public void addStockExchange(StockExchange se) {
+	stockExList.add(se);
+}
 
-	public Date getOrderDate() {
-		return orderDate;
-	}
+public void addBroker(Broker broker) {
+	brokerlist.add(broker);
+}
 
-	public void setOrderDate(Date orderDate) {
-		this.orderDate = orderDate;
-	}
 
-	public int getShareAmmount() {
-		return shareAmmount;
-	}
-
-	public void setShareAmmount(int shareAmmount) {
-		this.shareAmmount = shareAmmount;
-	}
-
-	public int getPriceTotal() {
-		return priceTotal;
-	}
-
-	public void setPriceTotal(int priceTotal) {
-		this.priceTotal = priceTotal;
-	}
-
-	public void addStockExchange(StockExchange se) {
-		stockExList.add(se);
-	}
-
-	public void addBroker(Broker broker) {
-		brokerlist.add(broker);
-	}
-
-	public StockExchange getSe() {
-		return se;
-	}
-
-	public void setSe(StockExchange se) {
-		this.se = se;
-	}
+public StockExchange getSe() {
+	return se;
+}
+public void setSe(StockExchange se) {
+	this.se = se;
+}
 
 }
