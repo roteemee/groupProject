@@ -11,27 +11,27 @@ import com.fdmgroup.repos.StockExchangeRep;
 
 
 @Service
-public class StockExchangesDAO {
+public class StockExchangeDAO {
 
 	@Autowired
 	private StockExchangeRep repp;
 
-	Optional<StockExchange> stockExchange;
+	Optional<StockExchange> stockExchanges;
 	List<StockExchange> allStockExchanges;
 
 	public void addStockExchange(StockExchange stockExchange) {
-		stockExchange = repp.findById(stockExchange.getStockExchangeId());
-		if (!stockExchange.isPresent()) {
+		stockExchanges = repp.findById(stockExchange.getStockExId());
+		if (!stockExchanges.isPresent()) {
 
 			repp.save(stockExchange);
 		}
 	}
 
 	public StockExchange getStockExchange(int stockExchangeId) {
-		stockExchange = repp.findById(stockExchangeId);
-		if (stockExchange.isPresent()) {
+		stockExchanges = repp.findById(stockExchangeId);
+		if (stockExchanges.isPresent()) {
 
-			return stockExchange.get();
+			return stockExchanges.get();
 		} else {
 			System.out.print("No stockExchange whith this id therefore is ");
 			return null;
@@ -39,10 +39,10 @@ public class StockExchangesDAO {
 	}
 
 	public void removeStockExchange(int stockExchangeId) {
-		stockExchange = repp.findById(stockExchangeId);
+		stockExchanges = repp.findById(stockExchangeId);
 
-		if (stockExchange.isPresent()) {
-			repp.delete(stockExchange.get());
+		if (stockExchanges.isPresent()) {
+			repp.delete(stockExchanges.get());
 			System.out.println("stockExchange removed");
 		} else {
 			System.out.println("No stockExchange under this id");
@@ -52,9 +52,9 @@ public class StockExchangesDAO {
 
 	public void updateStockExchange(StockExchange stockExchange) {
 
-		stockExchange = repp.findById(stockExchange.getStockExchangeId());
-		if (stockExchange.isPresent()) {
-			repp.save(stockExchange.get());
+		stockExchanges = repp.findById(stockExchange.getStockExId());
+		if (stockExchanges.isPresent()) {
+			repp.save(stockExchanges.get());
 			System.out.println("stockExchange changed");
 		}
 	}
@@ -65,7 +65,7 @@ public class StockExchangesDAO {
 		return allStockExchanges;
 	}
 
-	public StockExchangesDAO() {
+	public StockExchangeDAO() {
 
 	}
 	

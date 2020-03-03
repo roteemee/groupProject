@@ -6,9 +6,10 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fdmgroup.entities.SharePrice;
 import com.fdmgroup.repos.SharePriceRep;
 @Service
-public class SharePricesDAO {
+public class SharePriceDAO {
 	@Autowired
 	private SharePriceRep repp;
 
@@ -61,7 +62,7 @@ public class SharePricesDAO {
 		return allSharePrices;
 	}
 
-	public SharePricesDAO() {
+	public SharePriceDAO() {
 
 	}
 

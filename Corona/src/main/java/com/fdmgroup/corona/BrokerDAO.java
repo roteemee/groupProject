@@ -12,7 +12,7 @@ import com.fdmgroup.repos.BrokerRep;
 
 
 @Service
-public class BrokersDAO {
+public class BrokerDAO {
 	@Autowired
 	private BrokerRep repp;
 
@@ -20,7 +20,7 @@ public class BrokersDAO {
 	List<Broker> allBrokers;
 
 	public void addBroker(Broker broker) {
-		brokers = repp.findById(broker.getBrokerId());
+		brokers = repp.findById(broker.getUserId());
 		if (!brokers.isPresent()) {
 
 			repp.save(broker);
@@ -52,7 +52,7 @@ public class BrokersDAO {
 
 	public void updateBroker(Broker broker) {
 
-		brokers = repp.findById(broker.getBrokerId());
+		brokers = repp.findById(broker.getUserId());
 		if (brokers.isPresent()) {
 			repp.save(broker);
 			System.out.println("broker changed");
@@ -65,7 +65,7 @@ public class BrokersDAO {
 		return allBrokers;
 	}
 
-	public BrokersDAO() {
+	public BrokerDAO() {
 
 	}
 

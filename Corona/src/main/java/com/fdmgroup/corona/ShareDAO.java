@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.fdmgroup.entities.Share;
 import com.fdmgroup.repos.ShareRep;
 @Service
-public class SharesDAO {
+public class ShareDAO {
 	@Autowired
 	private ShareRep repp;
 
@@ -17,8 +17,8 @@ public class SharesDAO {
 	List<Share> allShares;
 
 	public void addShare(Share share) {
-		share = repp.findById(share.getShareId());
-		if (!share.isPresent()) {
+		shares = repp.findById(share.getShare_id());
+		if (!shares.isPresent()) {
 
 			repp.save(share);
 		}
@@ -49,7 +49,7 @@ public class SharesDAO {
 
 	public void updateShare(Share share) {
 
-		shares = repp.findById(share.getShareId());
+		shares = repp.findById(share.getShare_id());
 		if (shares.isPresent()) {
 			repp.save(share);
 			System.out.println("share changed");
@@ -62,7 +62,7 @@ public class SharesDAO {
 		return allShares;
 	}
 
-	public SharesDAO() {
+	public ShareDAO() {
 
 	}
 

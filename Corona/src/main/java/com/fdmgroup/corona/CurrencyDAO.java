@@ -10,7 +10,7 @@ import com.fdmgroup.entities.Currency;
 import com.fdmgroup.repos.CurrencyRep;
 
 @Service
-public class CurrenciesDAO {
+public class CurrencyDAO {
 	@Autowired
 	private CurrencyRep repp;
 
@@ -18,7 +18,7 @@ public class CurrenciesDAO {
 	List<Currency> allCurrencies;
 
 	public void addCurrency(Currency currency) {
-		currencies = repp.findById(Currency.getCurrencyId());
+		currencies = repp.findById(currency.getCurrency_id());
 		if (!currencies.isPresent()) {
 
 			repp.save(currency);
@@ -50,7 +50,7 @@ public class CurrenciesDAO {
 
 	public void updateCurrency(Currency currency) {
 
-		currencies = repp.findById(Currency.getCurrencyId());
+		currencies = repp.findById(currency.getCurrency_id());
 		if (currencies.isPresent()) {
 			repp.save(currency);
 			System.out.println("Currency changed");
@@ -63,7 +63,7 @@ public class CurrenciesDAO {
 		return allCurrencies;
 	}
 
-	public CurrenciesDAO() {
+	public CurrencyDAO() {
 
 	}
 
