@@ -3,13 +3,18 @@ package com.fdmgroup.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
 @Entity(name="users")
+@Inheritance(
+	    strategy = InheritanceType.JOINED
+)
 public abstract class User {
 
 	@Id
 	@Column(name="user_id")
-	private int userId;
+	protected int userId;
 	@Column(length=50)
 	private String name;
 	@Column(length=50)
