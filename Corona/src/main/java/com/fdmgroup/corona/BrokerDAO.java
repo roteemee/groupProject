@@ -11,7 +11,7 @@ import com.fdmgroup.repos.BrokerRep;
 
 
 @Service
-public class BrokersDAO {
+public class BrokerDAO {
 	@Autowired
 	private BrokerRep repp;
 
@@ -53,7 +53,7 @@ public class BrokersDAO {
 
 		brokers = repp.findById(broker.getUserId());
 		if (brokers.isPresent()) {
-			repp.save(brokers.get());
+			repp.save(broker);
 			System.out.println("broker changed");
 		}
 	}
@@ -64,7 +64,7 @@ public class BrokersDAO {
 		return allBrokers;
 	}
 
-	public BrokersDAO() {
+	public BrokerDAO() {
 
 	}
 
