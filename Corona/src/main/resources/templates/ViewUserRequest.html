@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<<<<<<< HEAD
+
 	<form method="post" action="UserRequestResult">
 
 		<div>
@@ -18,23 +18,7 @@
 						id="ura" name="ura" th:value="${user.userName} " /></td>
 					<!-- <td>Reject <input type="checkbox" name="urd" th:value="${user.userName+' denied'}" /></td> -->
 				</tr>
-=======
-	<form method="post" action="userAdded">
 
-		<div th:each="item : ${username}">
-			<table>
-
-				<tr>
-					<td th:text="|${item.getUserName} wants to be a ${item.getType}|" />
-					<td>Accept <input type="radio" name="cb" th:value="Yes" /></td>
-					<td>Reject <input type="radio" name="cb" th:value="No" /></td>
-				</tr>
-
->>>>>>> 5b8c24157236db7d775661a228d1ea22e0c27bd7
-			</table>
-		</div>
-
-		<input type="submit" value="Submit">
 	</form>
 </body>
 </html>

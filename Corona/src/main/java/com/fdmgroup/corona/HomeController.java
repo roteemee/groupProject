@@ -65,7 +65,7 @@ public class HomeController {
 	}
 	@GetMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute UserRequest ur) {
-		rserve.addUserRequest(ur);
+		urd.addUserRequest(ur);
 		return "waitForApproval";
 	}
 
@@ -130,7 +130,7 @@ public class HomeController {
 			System.out.println(i);
 			UserRequest lol = urd.getUserRequest(i);
 			BasicUser hello = buserve.getBasicUser(i);
-			hello.setUserType(lol.getType());
+			//hello.setUserType(lol.getType());
 			
 		}
 		return "ViewUserRequest";
@@ -177,7 +177,6 @@ public class HomeController {
 		return "ShareholderTransactions";
 	}
 
-<<<<<<< HEAD
 	@PostMapping("addToWallet")
 	public String addToWallet(@ModelAttribute(name="userName") Shareholder s, @RequestParam String budget) {
 		
@@ -194,8 +193,4 @@ public class HomeController {
 	
 	
 	
-=======
-
-
->>>>>>> 5b8c24157236db7d775661a228d1ea22e0c27bd7
 }
