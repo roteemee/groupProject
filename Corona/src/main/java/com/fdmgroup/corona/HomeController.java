@@ -1,5 +1,6 @@
 package com.fdmgroup.corona;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class HomeController {
 
 	@Autowired
 	BasicUserDAO buserve = new BasicUserDAO();
-	UserRequestDAO rserve = new UserRequestDAO();
+	@Autowired
 	BrokerDAO bserve = new BrokerDAO();
 	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
@@ -57,13 +58,14 @@ public class HomeController {
 		return "register";
 	}
 	
-	@GetMapping("/registerNewUser")
-	public String registerNewUser(@ModelAttribute BasicUser bu) {
+	@PostMapping("/registerNewUser")
+	public String registerNewUser(@ModelAttribute(name="basicUser") BasicUser bu) {
+		bu.setUserType(0);
 		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
 	}
 	@GetMapping("/sendRequest")
-	public String sendRequest(@ModelAttribute UserRequest ur) {
+	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
 		rserve.addUserRequest(ur);
 		return "waitForApproval";
 	}
@@ -98,12 +100,40 @@ public class HomeController {
 		return "helloAdmin";
 	}
 
+	UserRequest rq = new UserRequest();
+	UserRequest rq1 = new UserRequest();
+	UserRequest rq2 = new UserRequest();
+		
+	
 	// user
 	@GetMapping("/ViewUserRequest")
 	public String addUser(Model model) {
+		rq.setType("Broker");
+		rq.setUserName("Mark");
+		rq1.setType("Admin");
+		rq1.setUserName("Tom");
+		rq2.setType("Shareholder");
+		rq2.setUserName("Ben");
+		urd.addUserRequest(rq);
+		urd.addUserRequest(rq1);
+		urd.addUserRequest(rq2);
+		
 		List<UserRequest> allUserRequest =  urd.listUserRequests();
 		model.addAttribute("username", allUserRequest);
 
+		return "ViewUserRequest";
+	}
+	// user
+	@PostMapping("/UserRequestResult")
+	public String userRequestResult(@RequestParam String[] ura) {
+		//System.out.println(urd);
+		for (String i:ura) {
+			System.out.println(i);
+			UserRequest lol = urd.getUserRequest(i);
+			BasicUser hello = buserve.getBasicUser(i);
+			hello.setUserType(lol.getType());
+			
+		}
 		return "ViewUserRequest";
 	}
 
