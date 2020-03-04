@@ -1,61 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="shareholder.css" />
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
+	<div class="page-container">
+		<div class="row">
+			<div class="col col1 box2">
+				<h1>Shares / Transactions</h1>
+			</div>
 
-<h1> Shares / Transactions</h1>
+			<div class="col col2 box1">
+				<h2>
+					<a href="Shareholder">Back to Dashboard</a>
+				</h2>
+			</div>
 
-<h2><a href = "Shareholder">Back to Dashboard</a></h2>
-<h2><a href = "Wallet">View Wallet</a></h2>
+			<div class="col col2 last-col box1">
+				<h2>
+					<a href="Wallet">View Wallet</a>
+				</h2>
+			</div>
+		</div>
 
-<div>Show Owned Shares <input type=checkbox value="sharesToggle"></div>
-<br>
+		<div class="row">
+			<div class="col col1">
+				<div class="selectshares">
+					Show Owned Shares <input type=checkbox value="sharesToggle">
+				</div>
+			</div>
 
+			<div class="col col1">
+				<h3>
+					<label for="share">Select a Share:</label>
+				</h3>
+			</div>
+		</div>
+		<div class="row">
+			<table>
 
-<h4><label for="share">Select a Share:</label></h4>
+				<tr class="tablehead">
+					<th>Share</th>
+					<th>Price</th>
+					<th>Option</th>
+				</tr>
 
-<select id="share">
-  <option value="test1">Test Share</option>
-  <option value="test2">Test Share 2</option>
-  <option value="test3">Test Share 3</option>
-  <option value="test4">Test Share 4</option>
-</select>
+				<tr>
+					<td><select id="share">
+							<option value="test1">Test Share</option>
+							<option value="test2">Test Share 2</option>
+							<option value="test3">Test Share 3</option>
+							<option value="test4">Test Share 4</option>
+					</select></td>
+					<!-- Add th:text="${shareprice.price}" in place of static number -->
+					<td>$7.49</td>
+					<td><input type=submit value="Buy"> <input type=submit
+						value="Sell"></td>
+				</tr>
 
-<input type=submit value="Buy">
-<input type=submit value="Sell">
+				<tr>
+					<td><select id="share">
+							<option value="test1">Test Share</option>
+							<option value="test2">Test Share 2</option>
+							<option value="test3">Test Share 3</option>
+							<option value="test4">Test Share 4</option>
+					</select></td>
+					<!-- Add th:text="${shareprice.price}" in place of static number -->
+					<td>$9.99</td>
+					<td><input type=submit value="Buy"> <input type=submit
+						value="Sell"></td>
+				</tr>
 
-<br><select id="share">
-  <option value="test1">Test Share</option>
-  <option value="test2">Test Share 2</option>
-  <option value="test3">Test Share 3</option>
-  <option value="test4">Test Share 4</option>
-</select>
+				<tr>
+					<td><select id="share">
+							<option value="test1">Test Share</option>
+							<option value="test2">Test Share 2</option>
+							<option value="test3">Test Share 3</option>
+							<option value="test4">Test Share 4</option>
+					</select></td>
+					<!-- Add th:text="${shareprice.price}" in place of static number -->
+					<td>$5.65</td>
+					<td><input type=submit value="Buy"> <input type=submit
+						value="Sell"></td>
+				</tr>
 
-<input type=submit value="Buy">
-<input type=submit value="Sell">
+				<tr>
+					<td><select id="share">
+							<option value="test1">Test Share</option>
+							<option value="test2">Test Share 2</option>
+							<option value="test3">Test Share 3</option>
+							<option value="test4">Test Share 4</option>
+					</select></td>
+					<!-- Add th:text="${shareprice.price}" in place of static number -->
+					<td>$11.33</td>
+					<td><input type=submit value="Buy"> <input type=submit
+						value="Sell"></td>
+				</tr>
 
-<br><select id="share">
-  <option value="test1">Test Share</option>
-  <option value="test2">Test Share 2</option>
-  <option value="test3">Test Share 3</option>
-  <option value="test4">Test Share 4</option>
-</select>
-
-<input type=submit value="Buy">
-<input type=submit value="Sell">
-
-<br><select id="share">
-  <option value="test1">Test Share</option>
-  <option value="test2">Test Share 2</option>
-  <option value="test3">Test Share 3</option>
-  <option value="test4">Test Share 4</option>
-</select>
-
-<input type=submit value="Buy">
-<input type=submit value="Sell">
-
+			</table>
+		</div>
+	</div>
 </body>
 </html>

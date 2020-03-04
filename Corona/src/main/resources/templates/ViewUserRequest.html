@@ -5,21 +5,36 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form  method = "post" action = "userAdded" >
+<<<<<<< HEAD
+	<form method="post" action="UserRequestResult">
 
-							<div th:each="item : ${username}" >
-							<table>
-							    
-								<tr > 
-									<td th:text="|${item} wants to be a ${item}|" />			
-									<td>Accept <input type="radio" name="cb" th:value="Yes" /></td>
-									<td>Reject <input type="radio" name="cb" th:value="No" /></td>
-								</tr>
-								
-								</table>
-							</div>
-					
-						<input type="submit" value = "Submit" >
-</form>
+		<div>
+			<table>
+
+				<tr th:each="user : ${username}">
+					<td th:text="|${user.userName} wants to be a ${user.type}|" />
+
+					<td><label for="ura">Accept </label><input type="checkbox"
+						id="ura" name="ura" th:value="${user.userName} " /></td>
+					<!-- <td>Reject <input type="checkbox" name="urd" th:value="${user.userName+' denied'}" /></td> -->
+				</tr>
+=======
+	<form method="post" action="userAdded">
+
+		<div th:each="item : ${username}">
+			<table>
+
+				<tr>
+					<td th:text="|${item.getUserName} wants to be a ${item.getType}|" />
+					<td>Accept <input type="radio" name="cb" th:value="Yes" /></td>
+					<td>Reject <input type="radio" name="cb" th:value="No" /></td>
+				</tr>
+
+>>>>>>> 5b8c24157236db7d775661a228d1ea22e0c27bd7
+			</table>
+		</div>
+
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.fdmgroup.corona;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -12,10 +13,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+
 import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
+import com.fdmgroup.entities.Wallet;
 import com.fdmgroup.entities.Shareholder;
 import com.fdmgroup.entities.UserRequest;
+import com.fdmgroup.repos.WalletRep;
 
 @Controller
 @SessionAttributes("userName")
@@ -23,10 +27,14 @@ public class HomeController {
 
 	@Autowired
 	BasicUserDAO buserve = new BasicUserDAO();
-	UserRequestDAO rserve = new UserRequestDAO();
+	@Autowired
 	BrokerDAO bserve = new BrokerDAO();
 	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
+	@Autowired
+	UserRequestDAO urd = new UserRequestDAO();
+	@Autowired 
+	private WalletRep wallrep;
 	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
@@ -92,12 +100,40 @@ public class HomeController {
 		return "helloAdmin";
 	}
 
+	UserRequest rq = new UserRequest();
+	UserRequest rq1 = new UserRequest();
+	UserRequest rq2 = new UserRequest();
+		
+	
 	// user
 	@GetMapping("/ViewUserRequest")
-	public String addUser(@ModelAttribute(name = "userName") BasicUser user,Model model) {
+	public String addUser(Model model) {
+		rq.setType("Broker");
+		rq.setUserName("Mark");
+		rq1.setType("Admin");
+		rq1.setUserName("Tom");
+		rq2.setType("Shareholder");
+		rq2.setUserName("Ben");
+		urd.addUserRequest(rq);
+		urd.addUserRequest(rq1);
+		urd.addUserRequest(rq2);
 		
-		model.addAttribute("username", user.getUsername());
-		model.addAttribute("username", user.getUserType());
+		List<UserRequest> allUserRequest =  urd.listUserRequests();
+		model.addAttribute("username", allUserRequest);
+
+		return "ViewUserRequest";
+	}
+	// user
+	@PostMapping("/UserRequestResult")
+	public String userRequestResult(@RequestParam String[] ura) {
+		//System.out.println(urd);
+		for (String i:ura) {
+			System.out.println(i);
+			UserRequest lol = urd.getUserRequest(i);
+			BasicUser hello = buserve.getBasicUser(i);
+			hello.setUserType(lol.getType());
+			
+		}
 		return "ViewUserRequest";
 	}
 
@@ -127,18 +163,40 @@ public class HomeController {
 	@PostMapping("/addShareholder")
 	public String addShareholder(@RequestParam String userid, String username, String usercountry) {
 		Shareholder shareholder = new Shareholder();
+		Wallet blankWallet = new Wallet(0.0);
 		shareholder.setUserId(Integer.parseInt(userid));
 		shareholder.setName(username);
 		shareholder.setCountry(usercountry);
+		shareholder.setWallet(blankWallet);
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
 
-	
+
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions() {
 		return "ShareholderTransactions";
 	}
 
+<<<<<<< HEAD
+	@PostMapping("addToWallet")
+	public String addToWallet(@ModelAttribute(name="userName") Shareholder s, @RequestParam String budget) {
+		
+		System.out.println("first line of createWallet method:" + s);
+		
+		double addBudget = Double.parseDouble(budget);
+		double customerBudget = s.getWallet().getBudget();
+		customerBudget = customerBudget + addBudget;
+		Wallet w = s.getWallet();
+		w.setBudget(customerBudget);
+		wallrep.save(w);
+		return "Wallet";
+	}
+	
+	
+	
+=======
 
+
+>>>>>>> 5b8c24157236db7d775661a228d1ea22e0c27bd7
 }
