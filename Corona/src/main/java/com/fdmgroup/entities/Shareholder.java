@@ -7,6 +7,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 
+
 @Entity(name="shareholders")
 public class Shareholder extends User{
 	
