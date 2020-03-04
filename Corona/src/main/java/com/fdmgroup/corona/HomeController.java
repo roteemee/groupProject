@@ -106,10 +106,5 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-<<<<<<< HEAD
 
-
-=======
-
->>>>>>> d3e873e1340101808339532b3502d788e513d22a
 }
