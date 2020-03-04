@@ -62,8 +62,19 @@ public class HomeController {
 	
 	@PostMapping("/registerNewUser")
 	public String registerNewUser(@ModelAttribute(name="basicUser") BasicUser bu) {
+		boolean check=false;
 		bu.setUserType(0);
-		buserve.addBasicUser(bu);
+		for(BasicUser user:buserve.listBasicUsers()) {
+			if (user.getUsername().equals(bu.getUsername())) {
+				System.out.println("username already exist!");
+				check = true;
+				return "invalidUsername";
+			}
+		}
+		if(!check) {
+			buserve.addBasicUser(bu);
+			System.out.println("user added!");
+		}
 		return "ToSendingRequest";
 	}
 
@@ -72,8 +83,16 @@ public class HomeController {
 
 	@PostMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
-		rserve.addUserRequest(ur);
-
+		boolean check=false;
+		for(UserRequest req:rserve.listUserRequests()) {
+			if (req.getUserName().equals(ur.getUserName())) {
+				check=true;
+				return "invalidRequest";
+			}
+		}
+		if(!check) {
+			rserve.addUserRequest(ur);
+		}
 		return "waitForApproval";
 	}
 
