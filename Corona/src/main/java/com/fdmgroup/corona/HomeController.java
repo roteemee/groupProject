@@ -65,13 +65,10 @@ public class HomeController {
 		return "ToSendingRequest";
 	}
 	@GetMapping("/sendRequest")
-<<<<<<< HEAD
+
 	public String sendRequest(@ModelAttribute UserRequest ur) {
 		urd.addUserRequest(ur);
-=======
-	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
-		rserve.addUserRequest(ur);
->>>>>>> 5d6ea0bd8c38281c007083cd00eb4ffb04863e7b
+
 		return "waitForApproval";
 	}
 
@@ -134,9 +131,9 @@ public class HomeController {
 		//System.out.println(urd);
 		for (String i:ura) {
 			System.out.println(i);
-			UserRequest lol = urd.getUserRequest(i);
-			BasicUser hello = buserve.getBasicUser(i);
-			//hello.setUserType(lol.getType());
+			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);
+			BasicUser BasicUserObtainedFromDatabase = buserve.getBasicUser(i);
+			//BasicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getType());
 			
 		}
 		return "ViewUserRequest";
@@ -197,10 +194,7 @@ public class HomeController {
 		return "Wallet";
 	}
 	
-	
-<<<<<<< HEAD
-	
-=======
-
->>>>>>> 5d6ea0bd8c38281c007083cd00eb4ffb04863e7b
 }
+	
+	
+
