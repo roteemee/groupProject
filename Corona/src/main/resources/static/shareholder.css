@@ -1,5 +1,4 @@
 @charset "ISO-8859-1";
-<style>
 .page-container {
 	margin: 0 auto;
 }
@@ -41,4 +40,30 @@
 	background: white;
 	text-align: right;
 }
-</style>
+
+.h2 {
+	font-size: 60%;
+}
+
+table {
+	table-layout: auto;
+	width: 100%;
+	text-align: center;
+}
+
+.tablehead {
+	background: black;
+	text-decoration: none;
+	text-align: center;
+	color: white;
+}
+
+#share {
+	width: 100%;
+}
+
+.selectshares {
+	text-align: left;
+	font-size: 1.05em;
+	font-size: 105%;
+}

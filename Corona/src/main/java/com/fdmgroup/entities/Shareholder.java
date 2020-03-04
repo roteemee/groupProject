@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class Shareholder extends User{
 	
 	@Column(name="balance")
-	private double balance;
+	private double balance; // Give shareholder a wallet
 	
 	protected double getBalance() {
 		return balance;

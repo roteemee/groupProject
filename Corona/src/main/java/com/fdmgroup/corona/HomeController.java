@@ -164,11 +164,13 @@ public class HomeController {
 		return "/home";
 	}
 
+
 	
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions() {
 		return "ShareholderTransactions";
 	}
+
 
 
 }
