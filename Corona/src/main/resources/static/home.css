@@ -25,6 +25,8 @@
 	border: solid 2px black;
 	background: white;
 	text-align: center;
+	background:dodgerblue;
+	padding:5px;
 }
 .box2 {
 	border: none;
