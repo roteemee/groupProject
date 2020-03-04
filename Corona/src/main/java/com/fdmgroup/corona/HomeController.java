@@ -148,7 +148,6 @@ public class HomeController {
 		return "ShareholderTransactions";
 	}
 
-<<<<<<< HEAD
 	@PostMapping("addToWallet")
 	public String addToWallet(@ModelAttribute(name="userName") Shareholder s, @RequestParam String budget) {
 		
@@ -164,9 +163,5 @@ public class HomeController {
 	}
 	
 	
-	
-=======
 
-
->>>>>>> 5b8c24157236db7d775661a228d1ea22e0c27bd7
 }
