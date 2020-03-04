@@ -182,8 +182,6 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-
-
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions() {
 		return "ShareholderTransactions";
@@ -202,8 +200,6 @@ public class HomeController {
 		wallrep.save(w);
 		return "Wallet";
 	}
-
-	
 }
 
 
