@@ -23,11 +23,11 @@ public class UserRequest {
 		this.userName = userName;
 	}
 
-	public int getuserType() {
+	public int getUserType() {
 		return userType;
 	}
 
-	public void setType(int userType) {
+	public void setUserType(int userType) {
 		this.userType = userType;
 	}
 

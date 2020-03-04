@@ -12,13 +12,15 @@
 			<table>
 
 				<tr th:each="user : ${username}">
-					<td th:text="|${user.userName} wants to be a ${user.type}|" />
+					<td th:text="|${user.userName} wants to be a ${user.userType}|" />
 
 					<td><label for="ura">Accept </label><input type="checkbox"
 						id="ura" name="ura" th:value="${user.userName} " /></td>
 					<!-- <td>Reject <input type="checkbox" name="urd" th:value="${user.userName+' denied'}" /></td> -->
 				</tr>
-
+			</table>
+			<input type="submit" value="Submit">
+		</div>
 	</form>
 </body>
 </html>
