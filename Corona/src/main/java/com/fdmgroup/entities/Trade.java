@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 
 @Entity(name = "trades")
 public class Trade {
+
 @Id
 @Column(name =  "trade_id")
 private int tradeId;
@@ -102,7 +103,5 @@ public StockExchange getSe() {
 public void setSe(StockExchange se) {
 	this.se = se;
 }
-
-
 
 }
