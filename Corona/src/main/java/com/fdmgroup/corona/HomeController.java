@@ -28,6 +28,8 @@ public class HomeController {
 	@Autowired
 	BasicUserDAO buserve = new BasicUserDAO();
 	@Autowired
+	UserRequestDAO rserve = new UserRequestDAO();
+	@Autowired
 	BrokerDAO bserve = new BrokerDAO();
 	@Autowired
 	ShareholderDAO shserve = new ShareholderDAO();
@@ -64,7 +66,7 @@ public class HomeController {
 		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
 	}
-	@GetMapping("/sendRequest")
+	@PostMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
 		rserve.addUserRequest(ur);
 		return "waitForApproval";
@@ -108,11 +110,11 @@ public class HomeController {
 	// user
 	@GetMapping("/ViewUserRequest")
 	public String addUser(Model model) {
-		rq.setType("Broker");
+		rq.setType(3);
 		rq.setUserName("Mark");
-		rq1.setType("Admin");
+		rq1.setType(1);
 		rq1.setUserName("Tom");
-		rq2.setType("Shareholder");
+		rq2.setType(2);
 		rq2.setUserName("Ben");
 		urd.addUserRequest(rq);
 		urd.addUserRequest(rq1);
@@ -131,7 +133,7 @@ public class HomeController {
 			System.out.println(i);
 			UserRequest lol = urd.getUserRequest(i);
 			BasicUser hello = buserve.getBasicUser(i);
-			hello.setUserType(lol.getType());
+			hello.setUserType(lol.getuserType());
 			
 		}
 		return "ViewUserRequest";
@@ -189,6 +191,4 @@ public class HomeController {
 		wallrep.save(w);
 		return "Wallet";
 	}
-	
-	
 }
