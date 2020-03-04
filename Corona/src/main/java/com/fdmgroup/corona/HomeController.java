@@ -104,7 +104,7 @@ public class HomeController {
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
-		return "helloAdmin";
+		return "ViewUserRequest";
 	}
 
 	UserRequest rq = new UserRequest();
@@ -132,17 +132,19 @@ public class HomeController {
 	}
 	// user
 	@PostMapping("/UserRequestResult")
-	public String userRequestResult(@RequestParam String[] ura) {
+	public String userRequestResult(@RequestParam String[] ura , Model model) {
 		//System.out.println(urd);
 		for (String i:ura) {
 			System.out.println(i);
 
-//			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);
-//			BasicUser basicUserObtainedFromDatabase = buserve.getBasicUser(i);
-//			basicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getType());
-//			buserve.updateBasicUser(basicUserObtainedFromDatabase);
-//			urd.removeUserRequest(i);
+			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);
+			BasicUser basicUserObtainedFromDatabase = buserve.getBasicUser(i);
+			basicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getUserType());
+			buserve.updateBasicUser(basicUserObtainedFromDatabase);
+			urd.removeUserRequest(i);
 		}
+		List<UserRequest> allUserRequest =  urd.listUserRequests();
+		model.addAttribute("username", allUserRequest);
 		return "ViewUserRequest";
 	}
 
