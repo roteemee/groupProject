@@ -141,9 +141,7 @@ public class HomeController {
 			BasicUser BasicUserObtainedFromDatabase = buserve.getBasicUser(i);
 			//BasicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getType());
 
-			UserRequest lol = urd.getUserRequest(i);
-			BasicUser hello = buserve.getBasicUser(i);
-			hello.setUserType(lol.getuserType());
+
 
 			
 		}
