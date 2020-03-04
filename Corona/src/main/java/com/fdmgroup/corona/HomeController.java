@@ -193,5 +193,10 @@ public class HomeController {
 		wallrep.save(w);
 		return "Wallet";
 	}
+<<<<<<< HEAD
+=======
+	
+	
+>>>>>>> 5d6ea0bd8c38281c007083cd00eb4ffb04863e7b
 
 }
