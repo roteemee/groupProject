@@ -66,9 +66,14 @@ public class HomeController {
 		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
 	}
+
+
+
+
 	@PostMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
 		rserve.addUserRequest(ur);
+
 		return "waitForApproval";
 	}
 
@@ -110,11 +115,11 @@ public class HomeController {
 	// user
 	@GetMapping("/ViewUserRequest")
 	public String addUser(Model model) {
-		rq.setType(3);
+		rq.setUserType(3);
 		rq.setUserName("Mark");
-		rq1.setType(1);
+		rq1.setUserType(1);
 		rq1.setUserName("Tom");
-		rq2.setType(2);
+		rq2.setUserType(2);
 		rq2.setUserName("Ben");
 		urd.addUserRequest(rq);
 		urd.addUserRequest(rq1);
@@ -131,10 +136,12 @@ public class HomeController {
 		//System.out.println(urd);
 		for (String i:ura) {
 			System.out.println(i);
-			UserRequest lol = urd.getUserRequest(i);
-			BasicUser hello = buserve.getBasicUser(i);
-			hello.setUserType(lol.getuserType());
-			
+
+//			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);
+//			BasicUser basicUserObtainedFromDatabase = buserve.getBasicUser(i);
+//			basicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getType());
+//			buserve.updateBasicUser(basicUserObtainedFromDatabase);
+//			urd.removeUserRequest(i);
 		}
 		return "ViewUserRequest";
 	}
@@ -192,3 +199,5 @@ public class HomeController {
 		return "Wallet";
 	}
 }
+
+
