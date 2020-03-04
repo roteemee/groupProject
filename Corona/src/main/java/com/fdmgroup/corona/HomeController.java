@@ -58,14 +58,20 @@ public class HomeController {
 		return "register";
 	}
 	
-	@GetMapping("/registerNewUser")
-	public String registerNewUser(@ModelAttribute BasicUser bu) {
+	@PostMapping("/registerNewUser")
+	public String registerNewUser(@ModelAttribute(name="basicUser") BasicUser bu) {
+		bu.setUserType(0);
 		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
 	}
 	@GetMapping("/sendRequest")
+<<<<<<< HEAD
 	public String sendRequest(@ModelAttribute UserRequest ur) {
 		urd.addUserRequest(ur);
+=======
+	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
+		rserve.addUserRequest(ur);
+>>>>>>> 5d6ea0bd8c38281c007083cd00eb4ffb04863e7b
 		return "waitForApproval";
 	}
 
@@ -192,5 +198,9 @@ public class HomeController {
 	}
 	
 	
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 5d6ea0bd8c38281c007083cd00eb4ffb04863e7b
 }
