@@ -56,7 +56,6 @@ public class SysAdminDAO {
 
 	public List<Sysadmin> listSysadmins() {
 		List<Sysadmin> allSysadmins = repp.findAll();
-
 		return allSysadmins;
 	}
 
