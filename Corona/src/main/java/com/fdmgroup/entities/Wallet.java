@@ -2,23 +2,25 @@ package com.fdmgroup.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 @Entity(name = "Wallets")
 public class Wallet {
-	@Id 
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "WALLET_SEQ")
+	@SequenceGenerator(sequenceName = "wallet_seq", allocationSize = 1, name = "WALLET_SEQ")
 	@Column(name = "wallet_id", length = 10)
 	private  int walletId;
 	@Column(name = "budget", precision = 10, scale = 2)
 	private double budget;
 
-	public Wallet(int walletId, double budget, User user) {
+	public Wallet(double budget) { //User user
 		super();
-
-		this.walletId = walletId;
-		this.budget = budget;
-		
+		this.budget = budget;	
 	}
 	public Wallet() {
 		super();
@@ -65,6 +67,9 @@ public class Wallet {
 	public void setBudget(double budget) {
 		this.budget = budget;
 	}
+	
+	
+	
 
 	
 }

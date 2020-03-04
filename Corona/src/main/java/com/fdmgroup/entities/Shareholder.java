@@ -3,21 +3,27 @@ package com.fdmgroup.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 
 @Entity(name="shareholders")
 public class Shareholder extends User{
 	
-	@Column(name="balance")
-	private double balance; // Give shareholder a wallet
+	@OneToOne
+	@JoinColumn(name="wallet_id")
+	private Wallet wallet; // Give shareholder a wallet
 	
-	protected double getBalance() {
-		return balance;
+	public Wallet getWallet() {
+		return wallet;
 	}
 
-	public void setBalance(double balance) {
-		this.balance = balance;
+	public void setWallet(Wallet wallet) {
+		this.wallet = wallet;
 	}
 
+	
+	
 	public void requestTrade() {
 		
 		// In here goes code for sending a trade request
