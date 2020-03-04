@@ -134,7 +134,6 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-
 	
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions() {

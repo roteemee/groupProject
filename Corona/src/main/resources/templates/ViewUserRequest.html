@@ -5,21 +5,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form  method = "post" action = "userAdded" >
+	<form method="post" action="userAdded">
 
-							<div th:each="item : ${username}" >
-							<table>
-							    
-								<tr > 
-									<td th:text="|${item.getUserName} wants to be a ${item.getType}|" />			
-									<td>Accept <input type="radio" name="cb" th:value="Yes" /></td>
-									<td>Reject <input type="radio" name="cb" th:value="No" /></td>
-								</tr>
-								
-								</table>
-							</div>
-					
-						<input type="submit" value = "Submit" >
-</form>
+		<div th:each="item : ${username}">
+			<table>
+
+				<tr>
+					<td th:text="|${item.getUserName} wants to be a ${item.getType}|" />
+					<td>Accept <input type="radio" name="cb" th:value="Yes" /></td>
+					<td>Reject <input type="radio" name="cb" th:value="No" /></td>
+				</tr>
+
+			</table>
+		</div>
+
+		<input type="submit" value="Submit">
+	</form>
 </body>
 </html>
