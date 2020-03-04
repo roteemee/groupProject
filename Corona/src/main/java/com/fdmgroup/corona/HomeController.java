@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+
 import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
+import com.fdmgroup.entities.Wallet;
 import com.fdmgroup.entities.Shareholder;
 import com.fdmgroup.entities.UserRequest;
+import com.fdmgroup.repos.WalletRep;
 
 @Controller
 @SessionAttributes("userName")
@@ -29,6 +32,8 @@ public class HomeController {
 	ShareholderDAO shserve = new ShareholderDAO();
 	@Autowired
 	UserRequestDAO urd = new UserRequestDAO();
+	@Autowired 
+	private WalletRep wallrep;
 	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
@@ -128,17 +133,33 @@ public class HomeController {
 	@PostMapping("/addShareholder")
 	public String addShareholder(@RequestParam String userid, String username, String usercountry) {
 		Shareholder shareholder = new Shareholder();
+		Wallet blankWallet = new Wallet(0.0);
 		shareholder.setUserId(Integer.parseInt(userid));
 		shareholder.setName(username);
 		shareholder.setCountry(usercountry);
+		shareholder.setWallet(blankWallet);
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-	
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions() {
 		return "ShareholderTransactions";
 	}
 
-
+	@PostMapping("addToWallet")
+	public String addToWallet(@ModelAttribute(name="userName") Shareholder s, @RequestParam String budget) {
+		
+		System.out.println("first line of createWallet method:" + s);
+		
+		double addBudget = Double.parseDouble(budget);
+		double customerBudget = s.getWallet().getBudget();
+		customerBudget = customerBudget + addBudget;
+		Wallet w = s.getWallet();
+		w.setBudget(customerBudget);
+		wallrep.save(w);
+		return "Wallet";
+	}
+	
+	
+	
 }
