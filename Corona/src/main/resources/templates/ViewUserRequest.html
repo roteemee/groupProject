@@ -16,11 +16,22 @@
 
 					<td><label for="ura">Accept </label><input type="checkbox"
 						id="ura" name="ura" th:value="${user.userName} " /></td>
-					<!-- <td>Reject <input type="checkbox" name="urd" th:value="${user.userName+' denied'}" /></td> -->
+					
 				</tr>
 			</table>
 			<input type="submit" value="Submit">
 		</div>
+		
+		
 	</form>
+				<table>
+
+				<tr th:each="user : ${approvedUsername}">
+					<td th:text="|${user.userName} is now a ${user.userType}|" />
+
+				</tr>
+			</table>
+			<a href="ViewUserRequest">Refresh</a>
+		</div>
 </body>
 </html>

@@ -104,9 +104,27 @@ public class HomeController {
 
 	@GetMapping("/helloAdmin")
 	public String helloAdmin() {
-		return "ViewUserRequest";
+		return "helloAdmin";
 	}
 
+	
+	@PostMapping("/loggedInPage")
+	public String loggedInPage(@RequestParam() String username, @RequestParam String password,Model model){
+		BasicUser userFromDatabase = buserve.getBasicUser(username);
+		if (userFromDatabase==null) {
+			return "home";
+		}
+		
+		else if(!(userFromDatabase.getPassword().equals(password)&&userFromDatabase.getUserType()==1)) {
+			return "acessDenied";
+		}
+		else {
+			List<UserRequest> allUserRequest =  urd.listUserRequests();
+			model.addAttribute("username", allUserRequest);
+			return "ViewUserRequest";
+		}
+		
+	}
 	UserRequest rq = new UserRequest();
 	UserRequest rq1 = new UserRequest();
 	UserRequest rq2 = new UserRequest();
@@ -133,18 +151,21 @@ public class HomeController {
 	// user
 	@PostMapping("/UserRequestResult")
 	public String userRequestResult(@RequestParam String[] ura , Model model) {
-		//System.out.println(urd);
+		List<UserRequest> approvedUserRequest =  new ArrayList<UserRequest>();
 		for (String i:ura) {
 			System.out.println(i);
 
 			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);
 			BasicUser basicUserObtainedFromDatabase = buserve.getBasicUser(i);
 			basicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getUserType());
+			approvedUserRequest.add(userRequestObtainedFromDatabase);
 			buserve.updateBasicUser(basicUserObtainedFromDatabase);
 			urd.removeUserRequest(i);
 		}
 		List<UserRequest> allUserRequest =  urd.listUserRequests();
 		model.addAttribute("username", allUserRequest);
+		model.addAttribute("approvedUsername", approvedUserRequest);
+		
 		return "ViewUserRequest";
 	}
 
