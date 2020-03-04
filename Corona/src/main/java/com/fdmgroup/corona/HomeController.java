@@ -134,9 +134,7 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-<<<<<<< HEAD
 
-=======
 
 	
 	@GetMapping("/ShareholderTransactions")
@@ -145,5 +143,5 @@ public class HomeController {
 	}
 
 
->>>>>>> a72617f35011becc6e12795442a54670feee4ac4
+
 }
