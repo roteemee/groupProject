@@ -50,13 +50,14 @@ public class HomeController {
 		return "register";
 	}
 	
-	@GetMapping("/registerNewUser")
-	public String registerNewUser(@ModelAttribute BasicUser bu) {
+	@PostMapping("/registerNewUser")
+	public String registerNewUser(@ModelAttribute(name="basicUser") BasicUser bu) {
+		bu.setUserType(0);
 		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
 	}
 	@GetMapping("/sendRequest")
-	public String sendRequest(@ModelAttribute UserRequest ur) {
+	public String sendRequest(@ModelAttribute(name="userRequest") UserRequest ur) {
 		rserve.addUserRequest(ur);
 		return "waitForApproval";
 	}
