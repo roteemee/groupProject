@@ -15,14 +15,14 @@ public class SysAdminDAO {
 
 	
 	public void addSysadmin(Sysadmin sysadmin) {
-		Optional<Sysadmin> sysadmins = repp.findById(sysadmin.getUserId());
+		Optional<Sysadmin> sysadmins = repp.findById(sysadmin.getUsername());
 		if (!sysadmins.isPresent()) {
 
 			repp.save(sysadmin);
 		}
 	}
 
-	public Sysadmin getSysadmin(int sysadminId) {
+	public Sysadmin getSysadmin(String sysadminId) {
 		Optional<Sysadmin> sysadmins = repp.findById(sysadminId);
 		if (sysadmins.isPresent()) {
 
@@ -33,7 +33,7 @@ public class SysAdminDAO {
 		}
 	}
 
-	public void removeSysadmin(int sysadminId) {
+	public void removeSysadmin(String sysadminId) {
 		Optional<Sysadmin> sysadmins = repp.findById(sysadminId);
 
 		if (sysadmins.isPresent()) {
@@ -47,7 +47,7 @@ public class SysAdminDAO {
 
 	public void updateSysadmin(Sysadmin sysadmin) {
 
-		Optional<Sysadmin> sysadmins = repp.findById(sysadmin.getUserId());
+		Optional<Sysadmin> sysadmins = repp.findById(sysadmin.getUsername());
 		if (sysadmins.isPresent()) {
 			repp.save(sysadmin);
 			System.out.println("system admin changed");

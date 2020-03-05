@@ -10,6 +10,12 @@ public class UserRequest {
 	private String userName;
 	@Column(name = "user_type")
 	private int userType;
+	@Column(length=50)
+	private String name;
+	@Column(length=50)
+	private String country;
+	@Column
+	private String password;
 
 	public UserRequest() {
 
@@ -29,6 +35,30 @@ public class UserRequest {
 
 	public void setUserType(int userType) {
 		this.userType = userType;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 }
