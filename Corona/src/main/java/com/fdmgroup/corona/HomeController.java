@@ -49,6 +49,10 @@ public class HomeController {
 	public String doWork() {
 		return "home";
 	}
+	@GetMapping("/home")
+	public String doHome() {
+		return "home";
+	}
 
 	@GetMapping("/login")
 	public String login() {
