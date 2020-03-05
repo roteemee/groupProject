@@ -16,6 +16,7 @@ import com.fdmgroup.entities.BasicUser;
 import com.fdmgroup.entities.Broker;
 import com.fdmgroup.entities.Share;
 import com.fdmgroup.entities.Shareholder;
+import com.fdmgroup.entities.Sysadmin;
 import com.fdmgroup.entities.UserFactory;
 import com.fdmgroup.entities.UserRequest;
 import com.fdmgroup.entities.Wallet;
@@ -39,6 +40,8 @@ public class HomeController {
 	private WalletRep wallrep;
 	@Autowired
 	private ShareDAO shdao = new ShareDAO();
+	@Autowired
+	private SysAdminDAO sydao = new SysAdminDAO();
 
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
@@ -50,6 +53,7 @@ public class HomeController {
 	public String doWork() {
 		return "home";
 	}
+
 	@GetMapping("/home")
 	public String doHome() {
 		return "home";
@@ -67,32 +71,31 @@ public class HomeController {
 
 	@PostMapping("/registerNewUser")
 
-	public String registerNewUser(@ModelAttribute(name="userRequest") UserRequest ur) {
-		boolean check=false;
-		for(UserRequest request:rserve.listUserRequests()) {
+	public String registerNewUser(@ModelAttribute(name = "userRequest") UserRequest ur) {
+		boolean check = false;
+		for (UserRequest request : rserve.listUserRequests()) {
 			if (request.getUserName().equals(ur.getUserName())) {
 				System.out.println("username already exist!");
 				check = true;
 				return "invalidUsername";
 			}
 		}
-		if(!check) {
+		if (!check) {
 			rserve.addUserRequest(ur);
 			System.out.println("request sent!");
 			return "waitForApproval";
 		}
 		return "home";
 	}
-/*	public String registerNewUser(@ModelAttribute(name = "basicUser") BasicUser bu) {
-		bu.setUserType(0);
-		buserve.addBasicUser(bu);
-		return "ToSendingRequest";
-	}*/
+	/*
+	 * public String registerNewUser(@ModelAttribute(name = "basicUser") BasicUser
+	 * bu) { bu.setUserType(0); buserve.addBasicUser(bu); return "ToSendingRequest";
+	 * }
+	 */
 
 	@PostMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur) {
 		rserve.addUserRequest(ur);
-
 
 		return "waitForApproval";
 	}
@@ -128,13 +131,14 @@ public class HomeController {
 	}
 
 	@PostMapping("/loggedInPage")
-	public String loggedInPage(@RequestParam() String username, @RequestParam String password,@ModelAttribute(name="userName") BasicUser user, Model model) {
-		BasicUser userFromDatabase = buserve.getBasicUser(username);
+	public String loggedInPage(@RequestParam() String username, @RequestParam String password,
+			@ModelAttribute(name = "userName") BasicUser user, Model model) {
+		Sysadmin userFromDatabase = sydao.getSysadmin(username);
 		if (userFromDatabase == null) {
 			return "home";
 		}
 
-		else if (!(userFromDatabase.getPassword().equals(password) && userFromDatabase.getUserType() == 1)) {
+		else if (!userFromDatabase.getPassword().equals(password)) {
 			return "acessDenied";
 		} else {
 			List<UserRequest> allUserRequest = urd.listUserRequests();
@@ -144,23 +148,12 @@ public class HomeController {
 
 	}
 
-	UserRequest rq = new UserRequest();
-	UserRequest rq1 = new UserRequest();
-	
-	UserRequest rq2 = new UserRequest();
+
 
 	// user
 	@GetMapping("/ViewUserRequest")
 	public String addUser(Model model) {
-		rq.setUserType(3);
-		rq.setUserName("Mark");
-		rq1.setUserType(1);
-		rq1.setUserName("Tom");
-		rq2.setUserType(2);
-		rq2.setUserName("Ben");
-		urd.addUserRequest(rq);
-		urd.addUserRequest(rq1);
-		urd.addUserRequest(rq2);
+
 
 		List<UserRequest> allUserRequest = urd.listUserRequests();
 
@@ -168,10 +161,10 @@ public class HomeController {
 
 		return "ViewUserRequest";
 	}
-protected final int sysadmin = 1;
-protected final int broker = 2;
-protected final int shareholder = 3;
 
+	protected final int sysadmin = 1;
+	protected final int broker = 2;
+	protected final int shareholder = 3;
 
 	// user
 	@PostMapping("/UserRequestResult")
@@ -179,30 +172,33 @@ protected final int shareholder = 3;
 		List<UserRequest> approvedUserRequest = new ArrayList<UserRequest>();
 		for (String i : cb) {
 			System.out.println(i);
-			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);                                  // Getting the users and user request objects from the database
-			
+			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i); // Getting the users and user request
+																					// objects from the database
+
 			buserve.removeBasicUser(i);
-			     BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType());        // Changing the user type with the type from request received from database
-			
-				
-				 bu.setName(userRequestObtainedFromDatabase.getName());
-				 bu.setUsername(userRequestObtainedFromDatabase.getUserName());
-				 bu.setPassword(userRequestObtainedFromDatabase.getPassword());
-				 bu.setCountry(userRequestObtainedFromDatabase.getCountry());
-				 buserve.addBasicUser(bu);
-				
-			
-			approvedUserRequest.add(userRequestObtainedFromDatabase);                                             // Temporarily displaying the users added on the page therefore a list
-			//buserve.updateBasicUser(basicUserObtainedFromDatabase);
-			urd.removeUserRequest(i);      // Removing approved request
-//			Shareholder sh = shserve.getShareholder(i);
-//			if ( sh != null) {
-//				Share share =  new Share();                                         //Add Shares to share holder use it as you like
-//				sh.addShares(share, 2);
-//				System.out.println("share added");
-//				shdao.addShare(share);
-//				shserve.updateShareholder(sh);
-//			}
+			BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType()); // Changing the user type
+																								// with the type from
+																								// request received from
+																								// database
+
+			bu.setName(userRequestObtainedFromDatabase.getName());
+			bu.setUsername(userRequestObtainedFromDatabase.getUserName());
+			bu.setPassword(userRequestObtainedFromDatabase.getPassword());
+			bu.setCountry(userRequestObtainedFromDatabase.getCountry());
+			buserve.addBasicUser(bu);
+
+			approvedUserRequest.add(userRequestObtainedFromDatabase); // Temporarily displaying the users added on the
+																		// page therefore a list
+			// buserve.updateBasicUser(basicUserObtainedFromDatabase);
+			urd.removeUserRequest(i); // Removing approved request
+			// Shareholder sh = shserve.getShareholder(i);
+			// if ( sh != null) {
+			// Share share = new Share(); //Add Shares to share holder use it as you like
+			// sh.addShares(share, 2);
+			// System.out.println("share added");
+			// shdao.addShare(share);
+			// shserve.updateShareholder(sh);
+			// }
 		}
 		List<UserRequest> allUserRequest = urd.listUserRequests();
 		model.addAttribute("username", allUserRequest);
