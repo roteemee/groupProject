@@ -71,21 +71,21 @@ public class HomeController {
 
 	@PostMapping("/registerNewUser")
 
-	public String registerNewUser(@ModelAttribute(name = "userRequest") UserRequest ur) {
-		boolean check = false;
-		for (UserRequest request : rserve.listUserRequests()) {
-			if (request.getUserName().equals(ur.getUserName())) {
-				System.out.println("username already exist!");
-				check = true;
-				return "invalidUsername";
-			}
+
+	public String registerNewUser(@ModelAttribute(name="userRequest") UserRequest ur) {
+		
+		if (rserve.listUserRequests().contains(ur)){
+			return "invalidUsername";
 		}
-		if (!check) {
+		else {
 			rserve.addUserRequest(ur);
 			System.out.println("request sent!");
 			return "waitForApproval";
+			
 		}
-		return "home";
+		
+		
+		
 	}
 	/*
 	 * public String registerNewUser(@ModelAttribute(name = "basicUser") BasicUser
@@ -162,9 +162,8 @@ public class HomeController {
 		return "ViewUserRequest";
 	}
 
-	protected final int sysadmin = 1;
-	protected final int broker = 2;
-	protected final int shareholder = 3;
+
+	
 
 	// user
 	@PostMapping("/UserRequestResult")
