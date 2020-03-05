@@ -9,6 +9,18 @@ public class Broker extends BasicUser{
 	
 	
 	
+	@Override
+	public void initialising() {
+		// TODO Auto-generated method stub
+		super.initialising();
+	}
+
+	@Override
+	public String pageRedirect() {
+		// TODO Auto-generated method stub
+		return "broker";
+	}
+
 	protected void acceptRequest() {
 		
 	}

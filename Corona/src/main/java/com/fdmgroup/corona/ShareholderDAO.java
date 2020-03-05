@@ -31,7 +31,7 @@ public class ShareholderDAO {
 
 			return shareholders.get();
 		} else {
-			System.out.print("No phareholder whith this id therefore is ");
+			System.out.print("No shareholder whith this id therefore is ");
 			return null;
 		}
 	}
