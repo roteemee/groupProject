@@ -254,7 +254,12 @@ public class HomeController {
 	public String viewTransactions() {
 		return "ShareholderTransactions";
 	}
-
+	
+	@GetMapping("/ViewPortfolio")
+	public String viewPortfolio() {
+		return "ViewPortfolio";
+	}
+	
 	@PostMapping("addToWallet")
 	public String addToWallet(@ModelAttribute(name = "userName") Shareholder s, @RequestParam String budget) {
 

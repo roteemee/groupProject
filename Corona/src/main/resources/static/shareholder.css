@@ -46,10 +46,22 @@
 	font-size: 60%;
 }
 
-table {
+table.sharesTransactions {
 	table-layout: auto;
 	width: 100%;
 	text-align: center;
+}
+
+table.sharesList {
+	table-layout: fixed;
+	width: 100%;
+	font-weight: bold;
+}
+
+table.sharesPortfolio {
+	table-layout: fixed;
+	width: 100%;
+	font-weight: bold;
 }
 
 .tablehead {
