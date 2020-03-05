@@ -12,6 +12,7 @@ public class UserFactory {
 		else if (type == 2)
 			return new Broker();
 		else if (type == 3)
+			
 			return new Shareholder();
 
 		return null;

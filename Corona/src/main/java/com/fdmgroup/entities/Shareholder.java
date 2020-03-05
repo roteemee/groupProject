@@ -7,11 +7,14 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.fdmgroup.corona.WalletDAO;
 
 
 
@@ -32,7 +35,18 @@ public class Shareholder extends BasicUser{
 	// must create reference to Map interface - cannot reference concrete class
 	private Map<Share,Integer> portfolio = new HashMap<Share,Integer>();
 
+
 	
+	@Override
+	public void initialising() {
+	}
+
+	@Override
+	public String pageRedirect() {
+		
+		return "Shareholder";
+	}
+
 	public Wallet getWallet() {
 		return wallet;
 	}

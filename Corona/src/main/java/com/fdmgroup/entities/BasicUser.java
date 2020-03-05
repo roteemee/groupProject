@@ -36,6 +36,40 @@ public class BasicUser {
 		this.password = password;
 	}
 
+	
+	// Initialising user method
+	public void initialising() {
+		System.out.println("I don't need initialising");
+	}
+	
+	// Page Re-direct
+	public String pageRedirect() {
+		return "/home";
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public String getUsername() {
 		return username;
 	}
@@ -75,7 +109,7 @@ public class BasicUser {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
+ 
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -16,8 +16,8 @@ import com.fdmgroup.repos.TradeRep;
 @SessionAttributes("userName")
 public class BrokerController {
 
-	private final TradeRep tradeRepository;
 	@Autowired
+	private final TradeRep tradeRepository;
 	public BrokerController(TradeRep tradeRepository) {
 		this.tradeRepository = tradeRepository;
 	}

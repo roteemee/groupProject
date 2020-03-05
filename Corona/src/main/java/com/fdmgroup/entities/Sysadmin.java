@@ -9,6 +9,25 @@ import javax.persistence.PrimaryKeyJoinColumn;
 @PrimaryKeyJoinColumn(name = "username")
 public class Sysadmin extends BasicUser {
 	
+	
+	
+	
+	
+	
+	
+	
+	@Override
+	public void initialising() {
+		// TODO Auto-generated method stub
+		super.initialising();
+	}
+
+	@Override
+	public String pageRedirect() {
+		
+		return "helloAdmin";
+	}
+
 	public void listTrades() {
 		
 	}

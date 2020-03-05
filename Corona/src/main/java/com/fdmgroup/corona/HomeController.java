@@ -37,7 +37,7 @@ public class HomeController {
 	@Autowired
 	UserRequestDAO urd = new UserRequestDAO();
 	@Autowired
-	private WalletRep wallrep;
+	private WalletDAO walldao = new WalletDAO();
 	@Autowired
 	private ShareDAO shdao = new ShareDAO();
 	@Autowired
@@ -64,6 +64,16 @@ public class HomeController {
 		return "login";
 	}
 
+	@GetMapping("/pageRedirect")
+	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user) {
+		BasicUser bu = buserve.getBasicUser(user.getUsername());
+		System.out.println("object type is:" + bu.getClass().getName());
+
+		String page = bu.pageRedirect();
+		System.out.println("page is:" + page);
+		return page;
+	}
+
 	@GetMapping("/register")
 	public String register() {
 		return "register";
@@ -71,21 +81,17 @@ public class HomeController {
 
 	@PostMapping("/registerNewUser")
 
+	public String registerNewUser(@ModelAttribute(name = "userRequest") UserRequest ur) {
 
-	public String registerNewUser(@ModelAttribute(name="userRequest") UserRequest ur) {
-		
-		if (rserve.listUserRequests().contains(ur)){
+		if (rserve.listUserRequests().contains(ur)) {
 			return "invalidUsername";
-		}
-		else {
+		} else {
 			rserve.addUserRequest(ur);
 			System.out.println("request sent!");
 			return "waitForApproval";
-			
+
 		}
-		
-		
-		
+
 	}
 	/*
 	 * public String registerNewUser(@ModelAttribute(name = "basicUser") BasicUser
@@ -148,12 +154,9 @@ public class HomeController {
 
 	}
 
-
-
 	// user
 	@GetMapping("/ViewUserRequest")
 	public String addUser(Model model) {
-
 
 		List<UserRequest> allUserRequest = urd.listUserRequests();
 
@@ -161,9 +164,6 @@ public class HomeController {
 
 		return "ViewUserRequest";
 	}
-
-
-	
 
 	// user
 	@PostMapping("/UserRequestResult")
@@ -184,12 +184,15 @@ public class HomeController {
 			bu.setUsername(userRequestObtainedFromDatabase.getUserName());
 			bu.setPassword(userRequestObtainedFromDatabase.getPassword());
 			bu.setCountry(userRequestObtainedFromDatabase.getCountry());
+
+			bu.initialising();
 			buserve.addBasicUser(bu);
 
 			approvedUserRequest.add(userRequestObtainedFromDatabase); // Temporarily displaying the users added on the
 																		// page therefore a list
-			// buserve.updateBasicUser(basicUserObtainedFromDatabase);
+
 			urd.removeUserRequest(i); // Removing approved request
+
 			// Shareholder sh = shserve.getShareholder(i);
 			// if ( sh != null) {
 			// Share share = new Share(); //Add Shares to share holder use it as you like
@@ -199,6 +202,15 @@ public class HomeController {
 			// shserve.updateShareholder(sh);
 			// }
 		}
+		shserve.listShareholders().forEach(a -> {
+			Wallet w = new Wallet();
+			w.setBudget(0);
+			if (a.getWallet()==null) {
+				a.setWallet(w);
+				walldao.addWallet(w);
+				shserve.updateShareholder(a);
+			}
+		});
 		List<UserRequest> allUserRequest = urd.listUserRequests();
 		model.addAttribute("username", allUserRequest);
 		model.addAttribute("approvedUsername", approvedUserRequest);
@@ -253,7 +265,7 @@ public class HomeController {
 		customerBudget = customerBudget + addBudget;
 		Wallet w = s.getWallet();
 		w.setBudget(customerBudget);
-		wallrep.save(w);
+		walldao.addWallet(w);
 		return "Wallet";
 	}
 }
