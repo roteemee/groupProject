@@ -71,18 +71,19 @@ public class HomeController {
 				check = true;
 				return "invalidUsername";
 			}
-			if(!check) {
-				rserve.addUserRequest(ur);
-				System.out.println("request sent!");
-			}
 		}
-		return null;
+		if(!check) {
+			rserve.addUserRequest(ur);
+			System.out.println("request sent!");
+			return "waitForApproval";
+		}
+		return "home";
 	}
-	public String registerNewUser(@ModelAttribute(name = "basicUser") BasicUser bu) {
+/*	public String registerNewUser(@ModelAttribute(name = "basicUser") BasicUser bu) {
 		bu.setUserType(0);
 		buserve.addBasicUser(bu);
 		return "ToSendingRequest";
-	}
+	}*/
 
 	@PostMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur) {
@@ -175,15 +176,15 @@ protected final int shareholder = 3;
 		for (String i : cb) {
 			System.out.println(i);
 			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i);                                  // Getting the users and user request objects from the database
-			BasicUser basicUserObtainedFromDatabase = buserve.getBasicUser(i);
-			buserve.removeBasicUser(i);
-			basicUserObtainedFromDatabase.setUserType(userRequestObtainedFromDatabase.getUserType());             // Changing the user type with the type from request received from database
 			
-				 BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType());
-			//	 bu.setName(basicUserObtainedFromDatabase.getName());
-				 bu.setUsername(basicUserObtainedFromDatabase.getUsername());
-				 bu.setPassword(basicUserObtainedFromDatabase.getPassword());
-			//	 bu.setCountry(basicUserObtainedFromDatabase.getCountry());
+			buserve.removeBasicUser(i);
+			     BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType());        // Changing the user type with the type from request received from database
+			
+				
+				 bu.setName(userRequestObtainedFromDatabase.getName());
+				 bu.setUsername(userRequestObtainedFromDatabase.getUserName());
+				 bu.setPassword(userRequestObtainedFromDatabase.getPassword());
+				 bu.setCountry(userRequestObtainedFromDatabase.getCountry());
 				 buserve.addBasicUser(bu);
 				
 			
