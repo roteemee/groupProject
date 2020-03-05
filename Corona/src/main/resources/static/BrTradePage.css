@@ -1,0 +1,33 @@
+@charset "ISO-8859-1";
+@charset "ISO-8859-1";
+.page-container{
+  margin:50px;
+display:grid;
+grid-template-columns: 1fr; 
+grid-template-rows: 1fr 1fr;
+grid-template-areas:"header"
+                    "trades-table";
+
+}
+.header{
+    margin:2px;
+  padding:10px;
+      background-color:grey;
+  	grid-area:header;
+  
+}
+.trades-table{
+  
+  grid-area:trades-table;
+}
+th{
+background-color:grey;
+}
+tr{
+  background-color:red;
+  
+}
+.nameTag{
+
+  
+}
