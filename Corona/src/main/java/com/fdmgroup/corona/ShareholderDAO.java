@@ -18,25 +18,25 @@ public class ShareholderDAO {
 	private List<Shareholder> allShareholders;
 
 	public void addShareholder(Shareholder shareholder) {
-		shareholders = repp.findById(shareholder.getUserId());
+		shareholders = repp.findById(shareholder.getUsername());
 		if (!shareholders.isPresent()) {
 
 			repp.save(shareholder);
 		}
 	}
 
-	public Shareholder getShareholder(int shareholder) {
+	public Shareholder getShareholder(String shareholder) {
 		shareholders = repp.findById(shareholder);
 		if (shareholders.isPresent()) {
 
 			return shareholders.get();
 		} else {
-			System.out.print("No phareholder whith this id therefore is ");
+			System.out.print("No shareholder whith this id therefore is ");
 			return null;
 		}
 	}
 
-	public void removeShareholder(int shareholder) {
+	public void removeShareholder(String shareholder) {
 		shareholders = repp.findById(shareholder);
 
 		if (shareholders.isPresent()) {
@@ -50,7 +50,7 @@ public class ShareholderDAO {
 
 	public void updateShareholder(Shareholder shareholder) {
 
-		shareholders = repp.findById(shareholder.getUserId());
+		shareholders = repp.findById(shareholder.getUsername());
 		if (shareholders.isPresent()) {
 			repp.save(shareholder);
 			System.out.println("shareholder changed");
