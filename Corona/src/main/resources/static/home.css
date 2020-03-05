@@ -1,3 +1,4 @@
+@charset "ISO-8859-1";
 
 .page-container {
 	margin: 0 auto;
@@ -24,6 +25,8 @@
 	border: solid 2px black;
 	background: white;
 	text-align: center;
+	background:dodgerblue;
+	padding:5px;
 }
 .box2 {
 	border: none;

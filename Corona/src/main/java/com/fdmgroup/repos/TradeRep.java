@@ -6,7 +6,6 @@ import com.fdmgroup.entities.Trade;
 
 
 
-
 public interface TradeRep extends JpaRepository<Trade, Integer> {
 
 }

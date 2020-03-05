@@ -10,6 +10,7 @@ import com.fdmgroup.entities.SharePrice;
 import com.fdmgroup.repos.SharePriceRep;
 @Service
 public class SharePriceDAO {
+	
 	@Autowired
 	private SharePriceRep repp;
 

@@ -1,16 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="shareholder.css" />
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Shareholder</title>
 </head>
 <body>
 
+<div class="row">
 <h1> Welcome Shareholder!!</h1>
+</div>
 
-<h2> View Shares </h2>
+<div class="row">
+<h2 class = "viewbutton"><a href = "/ViewShares"> View shares</a></h2>
+</div>
 
-<a href = "ViewShares"></a><h2> View shares </h2>
+<div class="row">
+<h2 class = "viewbutton"><a href = "/ShareholderTransactions">View transactions</a></h2>
+</div>
+
+<div class="row">
+<h2 class = "viewbutton"><a href = "/Wallet">View Wallet</a></h2>
+</div>
 
 </body>
 </html>

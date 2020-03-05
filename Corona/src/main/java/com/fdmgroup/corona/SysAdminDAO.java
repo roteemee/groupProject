@@ -13,11 +13,9 @@ public class SysAdminDAO {
 	@Autowired
 	private SysAdminRep repp;
 
-	private Optional<Sysadmin> sysadmins;
-	private List<Sysadmin> allSysadmins;
-
+	
 	public void addSysadmin(Sysadmin sysadmin) {
-		sysadmins = repp.findById(sysadmin.getUserId());
+		Optional<Sysadmin> sysadmins = repp.findById(sysadmin.getUserId());
 		if (!sysadmins.isPresent()) {
 
 			repp.save(sysadmin);
@@ -25,7 +23,7 @@ public class SysAdminDAO {
 	}
 
 	public Sysadmin getSysadmin(int sysadminId) {
-		sysadmins = repp.findById(sysadminId);
+		Optional<Sysadmin> sysadmins = repp.findById(sysadminId);
 		if (sysadmins.isPresent()) {
 
 			return sysadmins.get();
@@ -36,7 +34,7 @@ public class SysAdminDAO {
 	}
 
 	public void removeSysadmin(int sysadminId) {
-		sysadmins = repp.findById(sysadminId);
+		Optional<Sysadmin> sysadmins = repp.findById(sysadminId);
 
 		if (sysadmins.isPresent()) {
 			repp.delete(sysadmins.get());
@@ -49,7 +47,7 @@ public class SysAdminDAO {
 
 	public void updateSysadmin(Sysadmin sysadmin) {
 
-		sysadmins = repp.findById(sysadmin.getUserId());
+		Optional<Sysadmin> sysadmins = repp.findById(sysadmin.getUserId());
 		if (sysadmins.isPresent()) {
 			repp.save(sysadmin);
 			System.out.println("system admin changed");
@@ -57,8 +55,7 @@ public class SysAdminDAO {
 	}
 
 	public List<Sysadmin> listSysadmins() {
-		allSysadmins = repp.findAll();
-
+		List<Sysadmin> allSysadmins = repp.findAll();
 		return allSysadmins;
 	}
 

@@ -1,26 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-<form  method = "post" action = "userAdded">
-<form id="selecting" method="post" action="/">
-							<div>
-							<table>
-							    
-								<tr th:each="item : ${user}" > 
-									<td th:text="|${item} wants to be a ${item}|" />
-									<br />									
-									<td>Accept <input type="checkbox" name="cb" th:value="${item}" /></td>
-									<td>Reject <input type="checkbox" name="cb" th:value="${item}" /></td>
-								</tr>
-								
-								</table>
-							</div>
-						<input type="submit" value = "Submit" >
-						</form>
-</form>
+
+	<form method="post" action="UserRequestResult">
+
+		<div>
+			<table>
+
+				<tr th:each="user : ${username}">
+					<td th:text="|${user.userName} wants to be a ${user.userType}|" />
+
+					<td><label for="ura">Accept </label><input type="checkbox"
+						id="ura" name="ura" th:value="${user.userName} " /></td>
+					
+				</tr>
+			</table>
+			<input type="submit" value="Submit">
+		</div>
+		
+		
+	</form>
+				<table>
+
+				<tr th:each="user : ${approvedUsername}">
+					<td th:text="|${user.userName} is now a ${user.userType}|" />
+
+				</tr>
+			</table>
+			<a href="ViewUserRequest">Refresh</a>
+		</div>
 </body>
 </html>
