@@ -203,11 +203,17 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
+	
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions() {
 		return "ShareholderTransactions";
 	}
-
+	
+	@GetMapping("/ViewPortfolio")
+	public String viewPortfolio() {
+		return "ViewPortfolio";
+	}
+	
 	@PostMapping("addToWallet")
 	public String addToWallet(@ModelAttribute(name="userName") Shareholder s, @RequestParam String budget) {
 		
