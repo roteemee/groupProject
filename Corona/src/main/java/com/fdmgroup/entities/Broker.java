@@ -1,12 +1,26 @@
 package com.fdmgroup.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name="brokers")
-public class Broker extends User{
+@PrimaryKeyJoinColumn(name = "username")
+public class Broker extends BasicUser{
 	
-	//Broker b = new Broker();
 	
+	
+	@Override
+	public void initialising() {
+		// TODO Auto-generated method stub
+		super.initialising();
+	}
+
+	@Override
+	public String pageRedirect() {
+		// TODO Auto-generated method stub
+		return "broker";
+	}
+
 	protected void acceptRequest() {
 		
 	}
@@ -22,40 +36,8 @@ public class Broker extends User{
 	
 	
 	
-	@Override
-	public int getUserId() {
-		// TODO Auto-generated method stub
-		return super.getUserId();
-	}
 
-	@Override
-	public void setUserId(int userId) {
-		// TODO Auto-generated method stub
-		super.setUserId(userId);
-	}
 
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return super.getName();
-	}
 
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		super.setName(name);
-	}
-
-	@Override
-	public String getCountry() {
-		// TODO Auto-generated method stub
-		return super.getCountry();
-	}
-
-	@Override
-	public void setCountry(String country) {
-		// TODO Auto-generated method stub
-		super.setCountry(country);
-	}
 
 }
