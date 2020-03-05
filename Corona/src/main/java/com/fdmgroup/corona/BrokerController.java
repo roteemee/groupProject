@@ -9,14 +9,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-<<<<<<< HEAD
+
 import com.fdmgroup.entities.Trade;
 
 
-
-=======
 import com.fdmgroup.repos.TradeRep;
->>>>>>> bcfd9497db7885de870cebb64fb7013c074ac2ce
 
 
 
@@ -25,18 +22,26 @@ import com.fdmgroup.repos.TradeRep;
 public class BrokerController {
 
 	@Autowired
-	TradeDAO tradeserv;
+	TradeDAO tradeserv = new TradeDAO() ;
 	
-	public BrokerController(TradeDAO tradeserv) {
-		this.tradeserv = tradeserv;
-	}
+	Trade t1 = new Trade();
+	Trade t2 = new Trade();
+	Trade t3 = new Trade();
+	Trade t4 = new Trade();
+	
+	
 	
 	@GetMapping("tradeList")
 	public String showTradeList(Model model) {
+t1.setPriceTotal(24);
+t2.setPriceTotal(24);
+t3.setPriceTotal(24);
+t4.setPriceTotal(24);
 
-		Trade t  = new Trade();
-		t.setTradeId(155);
-		tradeserv.addTrade(t);
+tradeserv.addTrade(t1);
+tradeserv.addTrade(t2);
+tradeserv.addTrade(t3);
+tradeserv.addTrade(t4);
 		model.addAttribute("trades", tradeserv.listTrades());
 		return "BrokerTradePage";
 	}
