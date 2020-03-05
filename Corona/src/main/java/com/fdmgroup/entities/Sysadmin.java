@@ -3,9 +3,11 @@ package com.fdmgroup.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name="sysadmin")
-public class Sysadmin extends User {
+@PrimaryKeyJoinColumn(name = "username")
+public class Sysadmin extends BasicUser {
 	
 	public void listTrades() {
 		
@@ -21,42 +23,6 @@ public class Sysadmin extends User {
 	
 	public void updateFee() {
 		
-	}
-
-	@Override
-	public int getUserId() {
-		// TODO Auto-generated method stub
-		return super.getUserId();
-	}
-
-	@Override
-	public void setUserId(int userId) {
-		// TODO Auto-generated method stub
-		super.setUserId(userId);
-	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return super.getName();
-	}
-
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-		super.setName(name);
-	}
-
-	@Override
-	public String getCountry() {
-		// TODO Auto-generated method stub
-		return super.getCountry();
-	}
-
-	@Override
-	public void setCountry(String country) {
-		// TODO Auto-generated method stub
-		super.setCountry(country);
 	}
 
 	
