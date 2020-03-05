@@ -19,14 +19,14 @@ public class BrokerDAO {
 	private List<Broker> allBrokers;
 
 	public void addBroker(Broker broker) {
-		brokers = repp.findById(broker.getUserId());
+		brokers = repp.findById(broker.getUsername());
 		if (!brokers.isPresent()) {
 
 			repp.save(broker);
 		}
 	}
 
-	public Broker getBroker(int brokerId) {
+	public Broker getBroker(String brokerId) {
 		brokers = repp.findById(brokerId);
 		if (brokers.isPresent()) {
 
@@ -37,7 +37,7 @@ public class BrokerDAO {
 		}
 	}
 
-	public void removeBroker(int brokerId) {
+	public void removeBroker(String brokerId) {
 		brokers = repp.findById(brokerId);
 
 		if (brokers.isPresent()) {
@@ -51,7 +51,7 @@ public class BrokerDAO {
 
 	public void updateBroker(Broker broker) {
 
-		brokers = repp.findById(broker.getUserId());
+		brokers = repp.findById(broker.getUsername());
 		if (brokers.isPresent()) {
 			repp.save(broker);
 			System.out.println("broker changed");

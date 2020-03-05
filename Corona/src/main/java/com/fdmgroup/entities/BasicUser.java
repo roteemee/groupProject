@@ -3,8 +3,12 @@ package com.fdmgroup.entities;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 @Entity(name = "basic_users")
+@Inheritance(
+		strategy = InheritanceType.JOINED
+		)
 public class BasicUser {
 
 	@Id
