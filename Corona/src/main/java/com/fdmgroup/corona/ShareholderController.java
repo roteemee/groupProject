@@ -29,11 +29,16 @@ public class ShareholderController {
 	@Autowired
 	private ShareDAO shdao = new ShareDAO();
 	
+	
+	
+	
 	@GetMapping("/ViewShares")
 	public String viewShares(Model model) {
 		model.addAttribute("shares", shdao.listShares());
 		return "ViewShares";
 	}
+	
+	/*
 	
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions(Model model) {
@@ -47,4 +52,6 @@ public class ShareholderController {
 	public String viewPortfolio() {
 		return "ViewPortfolio";
 	}
+	
+	*/
 }
