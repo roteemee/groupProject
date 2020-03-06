@@ -43,6 +43,7 @@ public class HomeController {
 	@Autowired
 	private SysAdminDAO sydao = new SysAdminDAO();
 
+	UserType ut;
 	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
@@ -114,7 +115,9 @@ public class HomeController {
 	 */
 
 	@PostMapping("/sendRequest")
-	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur) {
+	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur, @RequestParam String userType) {
+
+		
 		rserve.addUserRequest(ur);
 
 		return "waitForApproval";

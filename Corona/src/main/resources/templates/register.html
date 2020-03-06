@@ -33,9 +33,13 @@
 						<input class="input50" type="text" name="country"
 							placeholder="Country" required /> 
 							
-							<select name = "userUpdate">
+
 							
-							<option th:each = "s:${enums}" th:value="${s}" th:text="${s}">
+
+							<select name="userType">
+
+							
+							<option  th:each = "s:${enums}" th:value="${s}" th:text="${s}">
 							
 							</option></select>
 					</div>
