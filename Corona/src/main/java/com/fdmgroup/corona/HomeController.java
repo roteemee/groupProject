@@ -132,8 +132,6 @@ public class HomeController {
 
 		return "waitForApproval";
 	}
-
-
 	
 	@GetMapping("/loginError")
 	public String loginError() {

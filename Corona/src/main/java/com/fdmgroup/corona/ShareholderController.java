@@ -38,8 +38,6 @@ public class ShareholderController {
 		return "ViewShares";
 	}
 	
-	
-	
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions(Model model) {
 		
