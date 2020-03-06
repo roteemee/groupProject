@@ -59,17 +59,27 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login() {
+		
+		
+		
 		return "login";
 	}
 
 	@GetMapping("/pageRedirect")
-	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user) {
+	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
 		System.out.println("object type is:" + bu.getClass().getName());
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
-		return page;
+		
+		if ( password.equals(bu.getPassword())) {
+			return page;
+		}
+		else {
+			return "login";
+		}
+		
 	}
 
 	@GetMapping("/register")
