@@ -61,10 +61,9 @@
 						</tr>
 
 						<tr>
-							<td th:each="share : ${shares}" th:text="${share.name}"></td>
-							<td th:each="share : ${shares}" th:text="${share.price}" ></td>
-							<td th:each="share : ${shares}"
-									th:text="${share.currency}"></td>
+							<td><ol th:each="share : ${shares}" th:text="${share.name}"/></td>
+							<td><ol th:each="share : ${shares}" th:text="${share.price}"/></td>
+							<td><ol th:each="share : ${shares}" th:text="${share.currency}"/></td>
 						</tr>
 
 					</table>
