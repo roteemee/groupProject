@@ -278,16 +278,20 @@ public class HomeController {
 	}
 	
 	@PostMapping("addToWallet")
-	public String addToWallet(@ModelAttribute(name = "userName") Shareholder s, @RequestParam String budget) {
-
+	public String addToWallet(@ModelAttribute(name = "userName") BasicUser s, @RequestParam String budget , Model model) {
+		Shareholder sh =   shserve.getShareholder(s.getUsername());
 		System.out.println("first line of createWallet method:" + s);
 
 		double addBudget = Double.parseDouble(budget);
-		double customerBudget = s.getWallet().getBudget();
+		double customerBudget = sh.getWallet().getBudget();
+		customerBudget += 0;
 		customerBudget = customerBudget + addBudget;
-		Wallet w = s.getWallet();
+		Wallet w = sh.getWallet();
 		w.setBudget(customerBudget);
 		walldao.addWallet(w);
+		shserve.updateShareholder(sh);
+		model.addAttribute("wallet", w);
+		model.addAttribute("shareholder", sh);
 		return "Wallet";
 	}
 }

@@ -8,23 +8,18 @@
 
 <h1> Welcome to your Wallet! </h1>
 <h2> Wallet owner: </h2>
-<!--  <span th:text =  ${customerName.getCustomerName()}> customerName </span>--><!-- To be added into Timi's side bar -->
+
 <p th:text = "|Logged in as ${userName.username}|"></p>
 <h1>Balance: </h1>
-<!-- WAITING ON SESSION SCOPE IN ORDER TO VIEW WALLET BALANCE
 
-<span th:text = ${userName.wallet}> </span>-->
-<tr th:each="userName : ${model}">
-     <td th:text="${userName.wallet}">wallet</td>
-</tr>
+<span th:text = "|Your current balance is: &#163; ${shareholder}|"> </span>
+<br>
 
 
 <form action="addToWallet" method="post">
    Balance to add: <input type="text" name="budget" />
    <input type="submit" value="add to wallet" />
 </form>
-
-
 
 
 </body>
