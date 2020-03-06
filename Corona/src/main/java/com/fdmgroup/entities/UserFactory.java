@@ -1,4 +1,3 @@
-
 package com.fdmgroup.entities;
 
 import com.fdmgroup.corona.UserType;
@@ -25,5 +24,3 @@ public class UserFactory {
 		return null;
 	}
 }
-
-

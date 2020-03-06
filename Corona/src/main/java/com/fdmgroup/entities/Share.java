@@ -57,6 +57,13 @@ public class Share {
 		tradeList.add(trade);
 		
 	}
-
+	
+	@Override
+	public String toString() {
+		return "Share [shareId=" + shareId + ", price=" + price + ", currency=" + currency + ", tradeList=" + tradeList
+				+ ", name=" + name + "]";
+	}
+	
+	
 	
 }

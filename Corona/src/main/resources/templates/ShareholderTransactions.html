@@ -45,72 +45,29 @@
 			</div>
 		</div>
 		<div class="row">
-			<table class="sharesTransactions">
 
+			<table class="sharesTransactions">
 				<tr class="tablehead">
 					<th>Share</th>
-					<th>Price</th>
+					<th>Quantity</th>
 					<th>Option</th>
 				</tr>
 
 				<tr>
-					<td><select id="share">
-							<option value="test1">Test Share</option>
-							<option value="test2">Test Share 2</option>
-							<option value="test3">Test Share 3</option>
-							<option value="test4">Test Share 4</option>
-					</select></td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$7.49</td>
-					<td><input type=button class="buysell" value="Buy"> <input
-						type=button class="buysell" value="Sell"></td>
+					<form th:action="@{/buyshare}" method="get">
+						<td><select id="share" name="shareid">
+								<option th:each="share : ${shares}" th:text="${share.name}+' - '+${share.price}+' GBP'"
+											th:value=${share.shareId} />
+						</select></td>
+						<td><input type="number" name="sharequantity"></td>
+						<td><input type=submit class="buysell" value="Buy"> <input
+							type=button class="buysell" value="Sell"></td>
+					</form>
 				</tr>
-
-				<tr>
-					<td><select id="share">
-							<option value="test1">Test Share</option>
-							<option value="test2">Test Share 2</option>
-							<option value="test3">Test Share 3</option>
-							<option value="test4">Test Share 4</option>
-					</select></td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$9.99</td>
-					<td><input type=button class="buysell" value="Buy"> <input
-						type=button class="buysell" value="Sell"></td>
-				</tr>
-
-				<tr>
-					<td><select id="share">
-							<option value="test1">Test Share</option>
-							<option value="test2">Test Share 2</option>
-							<option value="test3">Test Share 3</option>
-							<option value="test4">Test Share 4</option>
-					</select></td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$5.65</td>
-					<td><input type=button class="buysell" value="Buy"> <input
-						type=button class="buysell" value="Sell"></td>
-				</tr>
-
-				<tr>
-					<td><select id="share">
-							<option value="test1">Test Share</option>
-							<option value="test2">Test Share 2</option>
-							<option value="test3">Test Share 3</option>
-							<option value="test4">Test Share 4</option>
-					</select></td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$11.33</td>
-					<td><input type=button class="buysell" value="Buy"> <input
-						type=button class="buysell" value="Sell"></td>
-				</tr>
-
 			</table>
+
 		</div>
 	</div>
+
 </body>
 </html>

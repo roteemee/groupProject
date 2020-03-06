@@ -30,14 +30,15 @@
 					</div>
 
 					<div class="input_field">
-						<input class="input50" type="text" name="country"
+						<input class="input" type="text" name="country"
 							placeholder="Country" required /> 
-							
-							<select name="userType">
-							
-							<option  th:each = "s:${enums}" th:value="${s}" th:text="${s}">
-							
-							</option></select>
+							<select class="input"
+							name="userType" required>
+
+
+							<option th:each="s:${enums}" th:value="${s}" th:text="${s}">
+						</select>
+
 					</div>
 
 					<div>

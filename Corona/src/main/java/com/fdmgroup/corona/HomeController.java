@@ -72,14 +72,23 @@ public class HomeController {
 	@PostMapping("/pageRedirect")
 	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password,Model model) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
+		
+		if (bu == null) {
+			return "loginError";
+		}
+		
+		
+		
 		System.out.println("object type is:" + bu.getClass().getName());
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
+
 		List<UserRequest> allUserRequest = urd.listUserRequests();
 
 		model.addAttribute("username", allUserRequest);
-		if (password.equals(bu.getPassword())) {
+
+		if ( password.equals(bu.getPassword()) ) {
 			return page;
 		} else {
 			return "loginError";
@@ -123,11 +132,6 @@ public class HomeController {
 		return "waitForApproval";
 	}
 
-	@GetMapping("/ViewShares")
-	public String viewShares() {
-		return "ViewShares";
-	}
-
 	@GetMapping("/loginError")
 	public String loginError() {
 		return "loginError";
@@ -145,12 +149,12 @@ public class HomeController {
 
 	@GetMapping("/BrokerRequestPage")
 	public String brokerRequestPage() {
-		return "BrokerRequestPage";
+		return "shareReqList";
 	}
 
 	@GetMapping("/BrokerTradePage")
 	public String brokerTradePage() {
-		return "BrokerTradePage";
+		return "tradeList";
 	}
 
 	@GetMapping("/helloAdmin")
@@ -208,7 +212,7 @@ public class HomeController {
 			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i); // Getting the users and user request
 																					// objects from the database
 
-			buserve.removeBasicUser(i);
+		
 			BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType()); // Changing the user type
 																								// with the type from
 																								// request received from
@@ -283,16 +287,6 @@ public class HomeController {
 		shareholder.setWallet(blankWallet);
 		this.shserve.addShareholder(shareholder);
 		return "/home";
-	}
-
-	@GetMapping("/ShareholderTransactions")
-	public String viewTransactions() {
-		return "ShareholderTransactions";
-	}
-
-	@GetMapping("/ViewPortfolio")
-	public String viewPortfolio() {
-		return "ViewPortfolio";
 	}
 
 	@PostMapping("addToWallet")
