@@ -1,45 +1,34 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="home.css" />
 <meta charset="ISO-8859-1">
 <title>Corona</title>
-<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="loginPage.css" />
 </head>
 <body>
-	<div class="page-container">
-		<div class="row">
-			<div class="col box3">
-				<h1>
-					<a href="/">Corona</a>
-				</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col col3 box2">
-				<h1></h1>
-			</div>
-			<div class="col col3 box1">
-				<div class="row">
-					<h3>Login to corona</h3>
-				</div>
-				<div class="row">
-					<form action="#" th:action="@{/pageRedirect}" method="get">
-						<p style="padding-right: 2px;">
-							Username: <input type="text" name="username" />
-						</p>
-						<p>
-							Password: <input type="password" name="password"/>
-						</p>
-						<p>
-							<input type="submit" value="Submit" /> <input type="reset"
-								value="Reset" />
-						</p>
-					</form>
-				</div>
-			</div>
-			<div class="col col3 box2"></div>
-		</div>
-	</div>
+	<div class="wrapper">
+  <div class="left">
+      <h3><a href ="/">CORONA </a></h3>   
+    <img src="corona.jpg" alt="Corona">
+  </div>
+  <div class="right">
+  <form class = "box" action="#" th:action="@{/pageRedirect}" method="get">
+  <div> <h3>Login to Corona</h3></div>
+    <div class="login">
+      <div class="input_field">
+        <input type="text" placeholder="Username" class="input" name="username">
+      </div>
+      <div class="input_field">
+        <input type="password" placeholder="Password" class="input" name="password">
+      </div>
+      <div><input type = "submit" value = "Login"></div>
+      <div><input type = "reset" value = "Reset"></div>
+    </div>
+    </form>
+    
+  </div>
+</div>
+	
+	
 </body>
 </html>
