@@ -43,6 +43,7 @@ public class HomeController {
 	@Autowired
 	private SysAdminDAO sydao = new SysAdminDAO();
 
+	UserType ut;
 	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
@@ -62,17 +63,37 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login() {
+		
+		
+		
 		return "login";
 	}
 
-	@GetMapping("/pageRedirect")
-	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user) {
+	@PostMapping("/pageRedirect")
+	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
+		
+		if (bu == null) {
+			return "loginError";
+		}
+		
+		
+		
 		System.out.println("object type is:" + bu.getClass().getName());
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
-		return page;
+		
+		
+		
+		
+		if ( password.equals(bu.getPassword()) ) {
+			return page;
+		}
+		else {
+			return "loginError";
+		}
+		
 	}
 
 	@GetMapping("/register")
@@ -104,15 +125,19 @@ public class HomeController {
 	 */
 
 	@PostMapping("/sendRequest")
-	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur) {
+	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur, @RequestParam String userType) {
+
+		
 		rserve.addUserRequest(ur);
 
 		return "waitForApproval";
 	}
 
-	@GetMapping("/ViewShares")
-	public String viewShares() {
-		return "ViewShares";
+
+	
+	@GetMapping("/loginError")
+	public String loginError() {
+		return "loginError";
 	}
 
 	@GetMapping("/Shareholder")
@@ -127,12 +152,12 @@ public class HomeController {
 
 	@GetMapping("/BrokerRequestPage")
 	public String brokerRequestPage() {
-		return "BrokerRequestPage";
+		return "shareReqList";
 	}
 
 	@GetMapping("/BrokerTradePage")
 	public String brokerTradePage() {
-		return "BrokerTradePage";
+		return "tradeList";
 	}
 
 	@GetMapping("/helloAdmin")
@@ -178,7 +203,7 @@ public class HomeController {
 			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i); // Getting the users and user request
 																					// objects from the database
 
-			buserve.removeBasicUser(i);
+		
 			BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType()); // Changing the user type
 																								// with the type from
 																								// request received from
@@ -252,16 +277,6 @@ public class HomeController {
 		shareholder.setWallet(blankWallet);
 		this.shserve.addShareholder(shareholder);
 		return "/home";
-	}
-
-	@GetMapping("/ShareholderTransactions")
-	public String viewTransactions() {
-		return "ShareholderTransactions";
-	}
-	
-	@GetMapping("/ViewPortfolio")
-	public String viewPortfolio() {
-		return "ViewPortfolio";
 	}
 	
 	@PostMapping("addToWallet")

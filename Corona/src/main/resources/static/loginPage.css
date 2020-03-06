@@ -141,3 +141,7 @@ body{
    display: block;
   font-size: 14px;
 }
+
+.warning {
+  color: red;
+}
