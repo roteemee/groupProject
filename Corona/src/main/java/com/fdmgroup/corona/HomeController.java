@@ -1,7 +1,9 @@
 package com.fdmgroup.corona;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +43,7 @@ public class HomeController {
 	@Autowired
 	private SysAdminDAO sydao = new SysAdminDAO();
 
+	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
 		return new BasicUser();
@@ -83,7 +86,10 @@ public class HomeController {
 	}
 
 	@GetMapping("/register")
-	public String register() {
+	public String register(Model model) {
+		Set s = EnumSet.allOf(UserType.class);
+		model.addAttribute("enums", s);
+		
 		return "register";
 	}
 
