@@ -22,7 +22,7 @@ import com.fdmgroup.repos.TradeRep;
 public class BrokerController {
 
 	@Autowired
-<<<<<<< HEAD
+
 	TradeDAO tradeserv = new TradeDAO() ;
 	
 	Trade t1 = new Trade();
@@ -31,12 +31,12 @@ public class BrokerController {
 	Trade t4 = new Trade();
 	
 	
-=======
+
 	private final TradeRep tradeRepository;
 	public BrokerController(TradeRep tradeRepository) {
 		this.tradeRepository = tradeRepository;
 	}
->>>>>>> c20a4d79bbd7a2ed8dc4131b744908ce4c64392a
+
 	
 	@GetMapping("tradeList")
 	public String showTradeList(Model model) {
