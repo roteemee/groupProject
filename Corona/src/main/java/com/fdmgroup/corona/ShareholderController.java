@@ -23,23 +23,23 @@ import com.fdmgroup.entities.Wallet;
 import com.fdmgroup.repos.WalletRep;
 
 @Controller
-@SessionAttributes("userName")
 
 public class ShareholderController {
 
 	@Autowired
-	ShareholderDAO shserve = new ShareholderDAO();
-	
-	@Autowired
-	private WalletRep wallrep;
+	private ShareDAO shdao = new ShareDAO();
 	
 	@GetMapping("/ViewShares")
-	public String viewShares() {
+	public String viewShares(Model model) {
+		model.addAttribute("shares", shdao.listShares());
 		return "ViewShares";
 	}
 	
 	@GetMapping("/ShareholderTransactions")
-	public String viewTransactions() {
+	public String viewTransactions(Model model) {
+		
+		model.addAttribute("shares", shdao.listShares());
+		
 		return "ShareholderTransactions";
 	}
 	

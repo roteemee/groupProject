@@ -104,11 +104,6 @@ public class HomeController {
 		return "waitForApproval";
 	}
 
-	@GetMapping("/ViewShares")
-	public String viewShares() {
-		return "ViewShares";
-	}
-
 	@GetMapping("/Shareholder")
 	public String shareholder() {
 		return "Shareholder";
@@ -246,16 +241,6 @@ public class HomeController {
 		shareholder.setWallet(blankWallet);
 		this.shserve.addShareholder(shareholder);
 		return "/home";
-	}
-
-	@GetMapping("/ShareholderTransactions")
-	public String viewTransactions() {
-		return "ShareholderTransactions";
-	}
-	
-	@GetMapping("/ViewPortfolio")
-	public String viewPortfolio() {
-		return "ViewPortfolio";
 	}
 	
 	@PostMapping("addToWallet")

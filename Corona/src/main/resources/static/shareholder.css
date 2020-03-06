@@ -53,8 +53,8 @@ table.sharesTransactions {
 }
 
 table.sharesList {
-	table-layout: fixed;
-	width: 100%;
+	table-layout: auto;
+	text-align: center;
 	font-weight: bold;
 }
 
@@ -123,4 +123,10 @@ a:visited {
 
 .viewbutton:hover {
 	background-color: #969696;
+}
+
+ol {
+	text-decoration: none;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
