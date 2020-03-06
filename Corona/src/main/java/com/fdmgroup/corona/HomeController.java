@@ -150,12 +150,12 @@ public class HomeController {
 
 	@GetMapping("/BrokerRequestPage")
 	public String brokerRequestPage() {
-		return "BrokerRequestPage";
+		return "shareReqList";
 	}
 
 	@GetMapping("/BrokerTradePage")
 	public String brokerTradePage() {
-		return "BrokerTradePage";
+		return "tradeList";
 	}
 
 	@GetMapping("/helloAdmin")
@@ -201,7 +201,7 @@ public class HomeController {
 			UserRequest userRequestObtainedFromDatabase = urd.getUserRequest(i); // Getting the users and user request
 																					// objects from the database
 
-			buserve.removeBasicUser(i);
+		
 			BasicUser bu = UserFactory.factory(userRequestObtainedFromDatabase.getUserType()); // Changing the user type
 																								// with the type from
 																								// request received from
