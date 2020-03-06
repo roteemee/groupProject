@@ -1,7 +1,9 @@
 package com.fdmgroup.corona;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,11 +25,13 @@ import com.fdmgroup.entities.Wallet;
 import com.fdmgroup.repos.WalletRep;
 
 @Controller
-
+@SessionAttributes("userName")
 public class ShareholderController {
 
 	@Autowired
 	private ShareDAO shdao = new ShareDAO();
+	@Autowired
+	private ShareholderDAO sholderdao = new ShareholderDAO();
 	
 	
 	
@@ -38,11 +42,35 @@ public class ShareholderController {
 		return "ViewShares";
 	}
 	
-
 	@GetMapping("/ShareholderTransactions")
 	public String viewTransactions(Model model) {
 		
 		model.addAttribute("shares", shdao.listShares());
+		
+		return "ShareholderTransactions";
+	}
+	
+	@GetMapping("/buyshare")
+	public String buyShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid) {
+		
+		model.addAttribute("shares", shdao.listShares());
+		
+		
+		
+		Map<Share,Integer> portfolio = new HashMap<Share,Integer>();
+		portfolio = shareholder.getPortfolio();
+		
+		Share share = shdao.getShare(shareid);
+		System.out.println("---------------------------------------");
+		System.out.println(share);
+		
+		portfolio.put(share, 1);
+		
+		shareholder.setPortfolio(portfolio);
+		
+		sholderdao.updateShareholder(shareholder);
+		
+		
 		
 		return "ShareholderTransactions";
 	}

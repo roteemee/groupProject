@@ -55,16 +55,24 @@
 				</tr>
 
 				<tr>
-					<td><select id="share" name="sharename">
+				<form th:action="@{/buyshare}" method="get">
+					<td><select id="share" name="shareid">
 							<option th:each="share : ${shares}"
 							 th:text="${share.name}"
-							 th:value=${share.price} />
+							 th:value=${share.shareId} />
 					</select></td>
+
+
+					
 
 					<!-- Add th:text="${shares.price}" in place of static number -->
 					<td th:text="${sharename}"></td>
-					<td><input type=button class="buysell" value="Buy"> <input
+					<td><input type=submit class="buysell" value="Buy"> <input
 						type=button class="buysell" value="Sell"></td>
+						
+					</form>
+					
+					
 				</tr>
 			</table>
 		</div>
