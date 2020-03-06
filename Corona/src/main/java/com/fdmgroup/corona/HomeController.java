@@ -89,6 +89,7 @@ public class HomeController {
 		model.addAttribute("username", allUserRequest);
 
 		if ( password.equals(bu.getPassword()) ) {
+			
 			return page;
 		} else {
 			return "loginError";
@@ -293,17 +294,20 @@ public class HomeController {
 	public String addToWallet(@ModelAttribute(name = "userName") BasicUser s, @RequestParam String budget , Model model) {
 		Shareholder sh =   shserve.getShareholder(s.getUsername());
 		System.out.println("first line of createWallet method:" + s);
-
+		System.out.println("first line of shareholder:" + sh);
 		double addBudget = Double.parseDouble(budget);
 		double customerBudget = sh.getWallet().getBudget();
-		customerBudget += 0;
 		customerBudget = customerBudget + addBudget;
 		Wallet w = sh.getWallet();
 		w.setBudget(customerBudget);
+
+	walldao.updateWallet(w);
+
 		walldao.addWallet(w);
 		shserve.updateShareholder(sh);
 		model.addAttribute("wallet", w);
 		model.addAttribute("shareholder", sh);
+
 		return "Wallet";
 	}
 }

@@ -21,7 +21,13 @@
 
 				<li><a href="/Wallet">View Wallet</a></li>
 
+<<<<<<< HEAD
+<span th:text =  ${userName.getUserName()}> userName </span>
+-->
+<span th:text = ${userName.wallet}> </span>
+=======
 			</ul>
+>>>>>>> dad15476e8c8dda0fff8f8c83078d9ceecdb0050
 
 		</div>
 		<div class="main_content">
@@ -30,12 +36,19 @@
 			</div>
 			<div>
 
+<<<<<<< HEAD
+<form action="addToWallet" method="post">
+   Balance to add: <input type="text" name="budget" />
+   <input type="submit" value="add to wallet" />
+</form>
+=======
 				<span th:text="|Balance: &#163; ${shareholder}|"> </span>
 			</div>
 			<form class="box" action="addToWallet" method="post">
 				Balance to add: <input type="text" name="budget" /> <input
 					type="submit" value="add to wallet" />
 			</form>
+>>>>>>> dad15476e8c8dda0fff8f8c83078d9ceecdb0050
 
 		</div>
 	</div>

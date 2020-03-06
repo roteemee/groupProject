@@ -86,8 +86,16 @@ public class ShareholderController {
 		Share share = shdao.getShare(shareid);
 		
 		
+		
+		
 		if (portfolio.get(share) - sharequantity <= 0) {
-			portfolio.remove(share);
+			
+			try {
+				portfolio.remove(share);
+			} catch (Exception e) {
+				return "ShareholderTransactions";
+			}
+			
 		}
 		else {
 			portfolio.put(share, portfolio.get(share) - sharequantity);
