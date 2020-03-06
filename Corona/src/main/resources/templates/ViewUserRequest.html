@@ -2,37 +2,65 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Corona</title>
+<link rel="stylesheet" href="viewUserRequest.css" />
 </head>
 <body>
-<span th:text="${userName.username}"></span>
-	<form method="post" action="UserRequestResult">
 
-		<div>
+	<div class="wrapper">
+		<div class="left">
+			<div>
+				<h3 th:text="${userName.username}"></h3>
+			</div>
+			<div>
+				<h3>Log</h3>
+			</div>
 			<table>
-
-				<tr th:each="user : ${username}">
-					<td th:text="|${user.userName} wants to be a ${user.userType}|" />
-
-					<td><label for="cb">Accept </label><input type="checkbox"
-						id="cb" name="cb" th:value="${user.userName} " /></td>
-					
-				</tr>
-			</table>
-			<input type="submit" value="Submit">
-		</div>
-		
-		
-</br></br></br></br></br></br></br>
-	</form>
-				<table>
-<h1>Log</h1>
 				<tr th:each="user : ${approvedUsername}">
 					<td th:text="|${user.userName} is now a ${user.userType}|" />
 
 				</tr>
 			</table>
+<<<<<<< HEAD
+			
+</br></br></br></br></br></br>
+<button onclick = "viewActivity"> View Users Activity</button></br>
+<a href = "manageUser"> Manage User</a></br>
+
 			<a href="ViewUserRequest">Refresh</a>
 		
+=======
+			<a class="btn" href="ViewUserRequest">Refresh</a>
+
+
+		</div>
+		<div></div>
+		<div class="right">
+			<form class="box" method="post" action="UserRequestResult">
+				<div class="login">
+					<div>
+						<div>
+							<h3>Current Requests</h3>
+						</div>
+						<table>
+
+							<tr th:each="user : ${username}">
+								<td th:text="|${user.userName} wants to be a ${user.userType}|" />
+
+								<td><label for="cb">Accept </label><input type="checkbox"
+									id="cb" name="cb" th:value="${user.userName} " /></td>
+
+							</tr>
+						</table>
+						<input type="submit" value="Submit">
+					</div>
+				</div>
+
+			</form>
+
+		</div>
+	</div>
+
+>>>>>>> 78c1fe3dbf53e712566d5f0d18fc8083c4898661
 </body>
 </html>

@@ -8,6 +8,8 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.MissingServletRequestParameterException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +46,7 @@ public class HomeController {
 	private SysAdminDAO sydao = new SysAdminDAO();
 
 	UserType ut;
-	
+
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
 		return new BasicUser();
@@ -63,14 +65,12 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login() {
-		
-		
-		
+
 		return "login";
 	}
 
 	@PostMapping("/pageRedirect")
-	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
+	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password,Model model) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
 		
 		if (bu == null) {
@@ -83,24 +83,24 @@ public class HomeController {
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
-		
-		
-		
-		
+
+		List<UserRequest> allUserRequest = urd.listUserRequests();
+
+		model.addAttribute("username", allUserRequest);
+
 		if ( password.equals(bu.getPassword()) ) {
 			return page;
-		}
-		else {
+		} else {
 			return "loginError";
 		}
-		
+
 	}
 
 	@GetMapping("/register")
 	public String register(Model model) {
 		Set s = EnumSet.allOf(UserType.class);
 		model.addAttribute("enums", s);
-		
+
 		return "register";
 	}
 
@@ -127,12 +127,11 @@ public class HomeController {
 	@PostMapping("/sendRequest")
 	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur, @RequestParam String userType) {
 
-		
 		rserve.addUserRequest(ur);
 
 		return "waitForApproval";
 	}
-	
+
 	@GetMapping("/loginError")
 	public String loginError() {
 		return "loginError";
@@ -192,9 +191,21 @@ public class HomeController {
 		return "ViewUserRequest";
 	}
 
+//	@ExceptionHandler(MissingServletRequestParameterException.class)
+//	public void handleMissingParams(MissingServletRequestParameterException ex) {
+//	    String name = ex.getParameterName();
+//	    System.out.println(name + " parameter is missing");
+//	    // Actual exception handling
+//	}
 	// user
 	@PostMapping("/UserRequestResult")
-	public String userRequestResult(@RequestParam String[] cb, Model model) {
+	public String userRequestResult(@RequestParam(required = false) String[] cb, Model model) {
+		if (cb == null) {
+			return "ViewUserRequest";
+		}
+		
+		System.out.println("inside controller method");
+
 		List<UserRequest> approvedUserRequest = new ArrayList<UserRequest>();
 		for (String i : cb) {
 			System.out.println(i);
@@ -232,7 +243,7 @@ public class HomeController {
 		shserve.listShareholders().forEach(a -> {
 			Wallet w = new Wallet();
 			w.setBudget(0);
-			if (a.getWallet()==null) {
+			if (a.getWallet() == null) {
 				a.setWallet(w);
 				walldao.addWallet(w);
 				shserve.updateShareholder(a);
@@ -243,6 +254,7 @@ public class HomeController {
 		model.addAttribute("approvedUsername", approvedUserRequest);
 
 		return "ViewUserRequest";
+
 	}
 
 	@GetMapping("/manageUser")
@@ -276,7 +288,7 @@ public class HomeController {
 		this.shserve.addShareholder(shareholder);
 		return "/home";
 	}
-	
+
 	@PostMapping("addToWallet")
 	public String addToWallet(@ModelAttribute(name = "userName") BasicUser s, @RequestParam String budget , Model model) {
 		Shareholder sh =   shserve.getShareholder(s.getUsername());
