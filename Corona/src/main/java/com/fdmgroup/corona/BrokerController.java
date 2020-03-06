@@ -29,7 +29,6 @@ public class BrokerController {
 	Trade t3 = new Trade();
 	Trade t4 = new Trade();
 	
-	
 	private final TradeRep tradeRepository;
 	public BrokerController(TradeRep tradeRepository) {
 		this.tradeRepository = tradeRepository;
