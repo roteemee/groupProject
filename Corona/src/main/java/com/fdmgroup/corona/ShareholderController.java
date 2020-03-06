@@ -50,8 +50,8 @@ public class ShareholderController {
 		return "ShareholderTransactions";
 	}
 	
-	@GetMapping("/buyshare")
-	public String buyShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid) {
+	@GetMapping(value = "/buyshare", params="button=Buy")
+	public String buyShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid, @RequestParam int sharequantity) {
 		
 		model.addAttribute("shares", shdao.listShares());
 		
@@ -61,10 +61,8 @@ public class ShareholderController {
 		portfolio = shareholder.getPortfolio();
 		
 		Share share = shdao.getShare(shareid);
-		System.out.println("---------------------------------------");
-		System.out.println(share);
 		
-		portfolio.put(share, 1);
+		portfolio.put(share, sharequantity);
 		
 		shareholder.setPortfolio(portfolio);
 		
@@ -74,6 +72,49 @@ public class ShareholderController {
 		
 		return "ShareholderTransactions";
 	}
+	
+	@GetMapping(value = "/buyshare", params="button=Sell")
+	public String sellShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid, @RequestParam int sharequantity) {
+		
+		model.addAttribute("shares", shdao.listShares());
+		
+		
+		
+		Map<Share,Integer> portfolio = new HashMap<Share,Integer>();
+		portfolio = shareholder.getPortfolio();
+		
+		Share share = shdao.getShare(shareid);
+		
+		
+		
+		
+		if (portfolio.get(share) - sharequantity <= 0) {
+			
+			try {
+				portfolio.remove(share);
+			} catch (Exception e) {
+				return "ShareholderTransactions";
+			}
+			
+		}
+		else {
+			portfolio.put(share, portfolio.get(share) - sharequantity);
+		}
+		
+		
+		
+		
+		shareholder.setPortfolio(portfolio);
+		
+		sholderdao.updateShareholder(shareholder);
+		
+		
+		
+		return "ShareholderTransactions";
+	}
+	
+	
+	
 	
 	@GetMapping("/ViewPortfolio")
 	public String viewPortfolio() {

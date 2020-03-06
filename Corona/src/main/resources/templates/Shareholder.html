@@ -10,25 +10,16 @@
 
 	<div class="wrapper">
 		<div class="sidebar">
-			<h2>Sidebar</h2>
+			<h3 th:text = "|Logged in as ${userName.username}|"></h3>
 			<ul>
 				<li><a href="/ViewShares">View Shares</a></li>
 
-				<li><a href="/ShareholderTransaction">View Transaction</a></li>
+				<li><a href="/ShareholderTransactions">View Transaction</a></li>
 
 				<li><a href="/ViewPortfolio">View Portfolio</a></li>
 
 				<li><a href="/Wallet">View Wallet</a></li>
 				
-				<li><a href="#">Dummy</a>
-
-					<ul>
-						<li><a href="#">Dummy 1</a></li>
-						<li><a href="#">Dummy 2</a></li>
-						<li><a href="#">Dummy 3</a></li>
-						<li><a href="#">Dummy 4</a></li>
-
-					</ul></li>
 
 
 
@@ -44,12 +35,6 @@
 				<div class="row">
 					<div class="col col1 box2">
 						<h1>All Shares</h1>
-					</div>
-
-					<div class="col col2 box1">
-						<h2>
-							<a href="Shareholder">Back to Dash</a>
-						</h2>
 					</div>
 
 				</div>

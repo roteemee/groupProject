@@ -1,29 +1,57 @@
 <!DOCTYPE html>
-<html lang  = "en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Corona</title>
+<link rel="stylesheet" href="shareholder.css" />
+<link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
 
-<h1> Welcome to your Wallet! </h1>
-<h2> Wallet owner: </h2>
-<!--  <span th:text =  ${customerName.getCustomerName()}> customerName </span>--><!-- To be added into Timi's side bar -->
+	<div class="wrapper">
+		<div class="sidebar">
+			<h3 th:text="|Logged in as ${userName.username}|"></h3>
+			<ul>
+				<li><a href="/ViewShares">View Shares</a></li>
 
-<h1>Balance: </h1>
-<!-- WAITING ON SESSION SCOPE IN ORDER TO VIEW WALLET BALANCE
+				<li><a href="/ShareholderTransactions">View Transaction</a></li>
 
+				<li><a href="/ViewPortfolio">View Portfolio</a></li>
 
+				<li><a href="/Wallet">View Wallet</a></li>
+
+<<<<<<< HEAD
 <span th:text =  ${userName.getUserName()}> userName </span>
-<span th:text = ${userName.getWallet()}> </span>
-
-
 -->
+<span th:text = ${userName.wallet}> </span>
+=======
+			</ul>
+>>>>>>> dad15476e8c8dda0fff8f8c83078d9ceecdb0050
+
+		</div>
+		<div class="main_content">
+			<div>
+				<h3>Welcome to your Wallet!</h3>
+			</div>
+			<div>
+
+<<<<<<< HEAD
 <form action="addToWallet" method="post">
    Balance to add: <input type="text" name="budget" />
    <input type="submit" value="add to wallet" />
 </form>
+=======
+				<span th:text="|Balance: &#163; ${shareholder}|"> </span>
+			</div>
+			<form class="box" action="addToWallet" method="post">
+				Balance to add: <input type="text" name="budget" /> <input
+					type="submit" value="add to wallet" />
+			</form>
+>>>>>>> dad15476e8c8dda0fff8f8c83078d9ceecdb0050
 
+		</div>
+	</div>
 
 
 

@@ -73,6 +73,11 @@ public class Shareholder extends BasicUser{
 
 	
 
+	@Override
+	public String toString() {
+		return wallet + " " ;
+	}
+
 	public void requestTrade() {
 		
 		// In here goes code for sending a trade request

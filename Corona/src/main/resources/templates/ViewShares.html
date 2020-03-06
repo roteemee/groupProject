@@ -19,15 +19,7 @@
 
 				<li><a href="/Wallet">View Wallet</a></li>
 				
-				<li><a href="#">Dummyr</a>
-
-					<ul>
-						<li><a href="#">Dummy 1</a></li>
-						<li><a href="#">Dummy 2</a></li>
-						<li><a href="#">Dummy 3</a></li>
-						<li><a href="#">Dummy 4</a></li>
-
-					</ul></li>
+				
 
 
 
@@ -42,11 +34,6 @@
 						<h1>All Shares</h1>
 					</div>
 
-					<div class="col col2 box1">
-						<h2>
-							<a href="Shareholder">Back to Dash</a>
-						</h2>
-					</div>
 
 				</div>
 
@@ -61,10 +48,9 @@
 						</tr>
 
 						<tr>
-							<td th:each="share : ${shares}" th:text="${share.name}"></td>
-							<td th:each="share : ${shares}" th:text="${share.price}" ></td>
-							<td th:each="share : ${shares}"
-									th:text="${share.currency}"></td>
+							<td><ol th:each="share : ${shares}" th:text="${share.name}"/></td>
+							<td><ol th:each="share : ${shares}" th:text="${share.price}"/></td>
+							<td><ol th:each="share : ${shares}" th:text="${share.currency}"/></td>
 						</tr>
 
 					</table>
