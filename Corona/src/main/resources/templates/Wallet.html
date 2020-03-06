@@ -15,10 +15,10 @@
 
 
 <span th:text =  ${userName.getUserName()}> userName </span>
-<span th:text = ${userName.getWallet()}> </span>
-
-
 -->
+<span th:text = ${userName.wallet}> </span>
+
+
 <form action="addToWallet" method="post">
    Balance to add: <input type="text" name="budget" />
    <input type="submit" value="add to wallet" />

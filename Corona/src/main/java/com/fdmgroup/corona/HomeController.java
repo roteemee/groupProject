@@ -289,7 +289,9 @@ public class HomeController {
 		customerBudget = customerBudget + addBudget;
 		Wallet w = s.getWallet();
 		w.setBudget(customerBudget);
-		walldao.addWallet(w);
+		s.setWallet(w);
+		shserve.updateShareholder(s);
+		walldao.updateWallet(w);
 		return "Wallet";
 	}
 }

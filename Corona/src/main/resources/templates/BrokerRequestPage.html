@@ -12,7 +12,7 @@
 			<table>
 
 				<tr th:each="share : ${shares}">
-					<td th:text="|${share.name} ${share.currency} ${share.price}|" />
+					<td th:text="|${share.name} ${share.currency} ${share.price} ${share.quantity}|" />
 
 					<td><label for="cb">Accept </label><input type="checkbox"
 						id="cb" name="cb" th:value="${share.shareId} " /></td>
