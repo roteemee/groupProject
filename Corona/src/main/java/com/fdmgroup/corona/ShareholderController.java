@@ -51,7 +51,7 @@ public class ShareholderController {
 	}
 	
 	@GetMapping(value = "/buyshare", params="button=Buy")
-	public String buyShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid) {
+	public String buyShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid, @RequestParam int sharequantity) {
 		
 		model.addAttribute("shares", shdao.listShares());
 		
@@ -62,7 +62,7 @@ public class ShareholderController {
 		
 		Share share = shdao.getShare(shareid);
 		
-		portfolio.put(share, 1);
+		portfolio.put(share, sharequantity);
 		
 		shareholder.setPortfolio(portfolio);
 		
@@ -74,7 +74,7 @@ public class ShareholderController {
 	}
 	
 	@GetMapping(value = "/buyshare", params="button=Sell")
-	public String sellShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid) {
+	public String sellShare(@ModelAttribute(name = "userName")Shareholder shareholder, Model model, @RequestParam int shareid, @RequestParam int sharequantity) {
 		
 		model.addAttribute("shares", shdao.listShares());
 		
@@ -85,7 +85,16 @@ public class ShareholderController {
 		
 		Share share = shdao.getShare(shareid);
 		
-		portfolio.remove(share);
+		
+		if (portfolio.get(share) - sharequantity <= 0) {
+			portfolio.remove(share);
+		}
+		else {
+			portfolio.put(share, portfolio.get(share) - sharequantity);
+		}
+		
+		
+		
 		
 		shareholder.setPortfolio(portfolio);
 		
