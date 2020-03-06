@@ -1,20 +1,26 @@
 package com.fdmgroup.entities;
 
+import com.fdmgroup.corona.UserType;
+
 public class UserFactory {
 
 	public UserFactory() {
 
 	}
 
-	public static BasicUser factory(int type) {
-		if (type == 1)
-			return new Sysadmin();
-		else if (type == 2)
-			return new Broker();
-		else if (type == 3)
-			
-			return new Shareholder();
-
+	public static BasicUser factory(UserType type) {
+		
+	    switch(type) {
+	      case SYSTEMADMIN:
+	    	  return new Sysadmin();
+	      case SHAREHOLDER:
+	    	  return new Shareholder();
+	
+	      case BROKER:
+	    	  return new Broker();
+	     
+	    
+	  }
 		return null;
 	}
 }
