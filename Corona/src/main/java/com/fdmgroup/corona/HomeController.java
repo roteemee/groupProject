@@ -68,7 +68,7 @@ public class HomeController {
 		return "login";
 	}
 
-	@GetMapping("/pageRedirect")
+	@PostMapping("/pageRedirect")
 	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
 		System.out.println("object type is:" + bu.getClass().getName());
