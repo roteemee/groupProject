@@ -91,7 +91,7 @@ body {
 }
 
 .wrapper .right .input_field .input50 {
-	width: 49%;
+	width: 48.5%;
 	padding: 10px 15px;
 	border: 0;
 	font-size: 12px;
@@ -138,6 +138,20 @@ body {
 	margin-top: 20px;
 	font-weight: bold;
 	color: #fff;
+	display: block;
+	font-size: 14px;
+}
+
+.box select {
+	width: 100%;
+	text-alight: center;
+	background: #494f57;
+	text-transform: uppercase;
+	padding: 10px;
+	letter-spacing: 3px;
+	margin-top: 20px;
+	font-weight: bold;
+	color: grey;
 	display: block;
 	font-size: 14px;
 }

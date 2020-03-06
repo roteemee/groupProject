@@ -53,7 +53,7 @@ public class Wallet {
 	}
 	@Override
 	public String toString() {
-		return "Wallet [walletId=" + walletId + ", budget=" + budget + "]";
+		return " " + budget;
 	}
 	public int getWalletId() {
 		return walletId;
