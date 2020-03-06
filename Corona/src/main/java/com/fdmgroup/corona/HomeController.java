@@ -71,12 +71,22 @@ public class HomeController {
 	@PostMapping("/pageRedirect")
 	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
+		
+		if (bu == null) {
+			return "loginError";
+		}
+		
+		
+		
 		System.out.println("object type is:" + bu.getClass().getName());
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
 		
-		if ( password.equals(bu.getPassword())) {
+		
+		
+		
+		if ( password.equals(bu.getPassword()) ) {
 			return page;
 		}
 		else {
