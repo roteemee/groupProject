@@ -63,17 +63,27 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login() {
+		
+		
+		
 		return "login";
 	}
 
-	@GetMapping("/pageRedirect")
-	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user) {
+	@PostMapping("/pageRedirect")
+	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
 		System.out.println("object type is:" + bu.getClass().getName());
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
-		return page;
+		
+		if ( password.equals(bu.getPassword())) {
+			return page;
+		}
+		else {
+			return "loginError";
+		}
+		
 	}
 
 	@GetMapping("/register")
@@ -116,6 +126,11 @@ public class HomeController {
 	@GetMapping("/ViewShares")
 	public String viewShares() {
 		return "ViewShares";
+	}
+	
+	@GetMapping("/loginError")
+	public String loginError() {
+		return "loginError";
 	}
 
 	@GetMapping("/Shareholder")
