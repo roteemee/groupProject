@@ -1,25 +1,45 @@
 <!DOCTYPE html>
-<html lang  = "en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Corona</title>
+<link rel="stylesheet" href="shareholder.css" />
+<link rel="stylesheet" href="style.css" />
+
 </head>
 <body>
 
-<h1> Welcome to your Wallet! </h1>
-<h2> Wallet owner: </h2>
+	<div class="wrapper">
+		<div class="sidebar">
+			<h3 th:text="|Logged in as ${userName.username}|"></h3>
+			<ul>
+				<li><a href="/ViewShares">View Shares</a></li>
 
-<p th:text = "|Logged in as ${userName.username}|"></p>
-<h1>Balance: </h1>
+				<li><a href="/ShareholderTransactions">View Transaction</a></li>
 
-<span th:text = "|Your current balance is: &#163; ${shareholder}|"> </span>
-<br>
+				<li><a href="/ViewPortfolio">View Portfolio</a></li>
 
+				<li><a href="/Wallet">View Wallet</a></li>
 
-<form action="addToWallet" method="post">
-   Balance to add: <input type="text" name="budget" />
-   <input type="submit" value="add to wallet" />
-</form>
+			</ul>
+
+		</div>
+		<div class="main_content">
+			<div>
+				<h3>Welcome to your Wallet!</h3>
+			</div>
+			<div>
+
+				<span th:text="|Balance: &#163; ${shareholder}|"> </span>
+			</div>
+			<form class="box" action="addToWallet" method="post">
+				Balance to add: <input type="text" name="budget" /> <input
+					type="submit" value="add to wallet" />
+			</form>
+
+		</div>
+	</div>
+
 
 
 </body>
