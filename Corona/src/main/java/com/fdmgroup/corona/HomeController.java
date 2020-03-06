@@ -132,11 +132,6 @@ public class HomeController {
 
 		return "waitForApproval";
 	}
-
-	@GetMapping("/ViewShares")
-	public String viewShares() {
-		return "ViewShares";
-	}
 	
 	@GetMapping("/loginError")
 	public String loginError() {
