@@ -45,8 +45,8 @@
 			</div>
 		</div>
 		<div class="row">
-			<table class="sharesTransactions">
 
+			<table class="sharesTransactions">
 				<tr class="tablehead">
 					<th>Share</th>
 					<th>Quantity</th>
@@ -54,16 +54,18 @@
 				</tr>
 
 				<tr>
-					<td><select id="share" name="sharename">
-							<option th:each="share : ${shares}" th:text="${share.name}+' - '+${share.price}+' GBP'"/>
-					</select></td>
-
-					<!-- Add th:text="${shares.price}" in place of static number -->
-					<td><input type="text" name="sharequantity"></td>
-					<td><input type=button class="buysell" value="Buy"> <input
-						type=button class="buysell" value="Sell"></td>
+					<form th:action="@{/buyshare}" method="get">
+						<td><select id="share" name="shareid">
+								<option th:each="share : ${shares}" th:text="${share.name}+' - '+${share.price}+' GBP'"
+											th:value=${share.shareId} />
+						</select></td>
+						<td><input type="number" name="sharequantity"></td>
+						<td><input type=submit class="buysell" value="Buy"> <input
+							type=button class="buysell" value="Sell"></td>
+					</form>
 				</tr>
 			</table>
+
 		</div>
 	</div>
 
