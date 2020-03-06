@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package com.fdmgroup.entities;
 
 import com.fdmgroup.corona.UserType;
