@@ -42,41 +42,14 @@
 			<table class="sharesPortfolio">
 
 				<tr class="tablehead">
-					<th>Share</th>
-					<th>Price</th>
 					<th>Quantity</th>
+					<th>Share</th>
 				</tr>
 
-				<tr>
-					<td>Test Share 1</td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$77.42</td>
-					<td>103</td>
-				</tr>
 
 				<tr>
-					<td>Test Share 2</td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$202.73</td>
-					<td>21</td>
-				</tr>
-
-				<tr>
-					<td>Test Share 3</td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$2,470.06</td>
-					<td>3</td>
-				</tr>
-
-				<tr>
-					<td>Test Share 4</td>
-
-					<!-- Add th:text="${shareprice.price}" in place of static number -->
-					<td>$317.40</td>
-					<td>30</td>
+					<td><ol th:each="shares : ${shareholer_shares}" th:text="${shares.quantity}" /></td>
+					<td><ol th:each="shares : ${shareholer_shares}" th:text="${shares.share_id}" /></td>
 				</tr>
 
 			</table>

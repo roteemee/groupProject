@@ -109,7 +109,8 @@ public class ShareholderController {
 	
 	
 	@GetMapping("/ViewPortfolio")
-	public String viewPortfolio() {
+	public String viewPortfolio(Model model) {
+		model.addAttribute("shares", shdao.listShares());
 		return "ViewPortfolio";
 	}
 	
