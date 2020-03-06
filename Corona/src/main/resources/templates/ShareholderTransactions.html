@@ -42,7 +42,6 @@
 				<h3>
 					<label for="share">Select a Share:</label>
 				</h3>
-				<button onclick="window.location.reload()">Update Prices</button>
 			</div>
 		</div>
 		<div class="row">
@@ -50,24 +49,23 @@
 
 				<tr class="tablehead">
 					<th>Share</th>
-					<th>Price</th>
+					<th>Quantity</th>
 					<th>Option</th>
 				</tr>
 
 				<tr>
 					<td><select id="share" name="sharename">
-							<option th:each="share : ${shares}"
-							 th:text="${share.name}"
-							 th:value=${share.price} />
+							<option th:each="share : ${shares}" th:text="${share.name}+' - '+${share.price}+' GBP'"/>
 					</select></td>
 
 					<!-- Add th:text="${shares.price}" in place of static number -->
-					<td th:text="${sharename}"></td>
+					<td><input type="text" name="sharequantity"></td>
 					<td><input type=button class="buysell" value="Buy"> <input
 						type=button class="buysell" value="Sell"></td>
 				</tr>
 			</table>
 		</div>
 	</div>
+
 </body>
 </html>

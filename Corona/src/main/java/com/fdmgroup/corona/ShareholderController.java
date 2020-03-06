@@ -52,4 +52,9 @@ public class ShareholderController {
 		return "ViewPortfolio";
 	}
 	
+	/*public double updatePrice(@RequestParam double price, Share share) {
+		
+		return price;
+	}*/
+	
 }
