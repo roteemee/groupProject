@@ -80,7 +80,7 @@ public class HomeController {
 			return page;
 		}
 		else {
-			return "login";
+			return "loginError";
 		}
 		
 	}
@@ -123,6 +123,11 @@ public class HomeController {
 	@GetMapping("/ViewShares")
 	public String viewShares() {
 		return "ViewShares";
+	}
+	
+	@GetMapping("/loginError")
+	public String loginError() {
+		return "loginError";
 	}
 
 	@GetMapping("/Shareholder")
