@@ -2,14 +2,18 @@ package com.fdmgroup.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+
+import com.fdmgroup.corona.UserType;
 
 @Entity
 public class UserRequest {
 	@Id
 	private String userName;
 	@Column(name = "user_type")
-	private int userType;
+	@Enumerated
+	private UserType userType;
 	@Column(length=50)
 	private String name;
 	@Column(length=50)
@@ -29,11 +33,11 @@ public class UserRequest {
 		this.userName = userName;
 	}
 
-	public int getUserType() {
+	public UserType getUserType() {
 		return userType;
 	}
 
-	public void setUserType(int userType) {
+	public void setUserType(UserType userType) {
 		this.userType = userType;
 	}
 

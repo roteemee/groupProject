@@ -15,8 +15,6 @@ import com.fdmgroup.entities.Trade;
 
 import com.fdmgroup.repos.TradeRep;
 
-
-
 @Controller
 @SessionAttributes("userName")
 public class BrokerController {

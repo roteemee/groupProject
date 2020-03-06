@@ -1,7 +1,9 @@
 package com.fdmgroup.corona;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,6 +43,8 @@ public class HomeController {
 	@Autowired
 	private SysAdminDAO sydao = new SysAdminDAO();
 
+	UserType ut;
+	
 	@ModelAttribute("userName")
 	private BasicUser usermaking() {
 		return new BasicUser();
@@ -59,21 +63,44 @@ public class HomeController {
 
 	@GetMapping("/login")
 	public String login() {
+		
+		
+		
 		return "login";
 	}
 
-	@GetMapping("/pageRedirect")
-	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user) {
+	@PostMapping("/pageRedirect")
+	public String pageRedirect(@ModelAttribute(name = "userName") BasicUser user, @RequestParam String password) {
 		BasicUser bu = buserve.getBasicUser(user.getUsername());
+		
+		if (bu == null) {
+			return "loginError";
+		}
+		
+		
+		
 		System.out.println("object type is:" + bu.getClass().getName());
 
 		String page = bu.pageRedirect();
 		System.out.println("page is:" + page);
-		return page;
+		
+		
+		
+		
+		if ( password.equals(bu.getPassword()) ) {
+			return page;
+		}
+		else {
+			return "loginError";
+		}
+		
 	}
 
 	@GetMapping("/register")
-	public String register() {
+	public String register(Model model) {
+		Set s = EnumSet.allOf(UserType.class);
+		model.addAttribute("enums", s);
+		
 		return "register";
 	}
 
@@ -98,10 +125,22 @@ public class HomeController {
 	 */
 
 	@PostMapping("/sendRequest")
-	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur) {
+	public String sendRequest(@ModelAttribute(name = "userRequest") UserRequest ur, @RequestParam String userType) {
+
+		
 		rserve.addUserRequest(ur);
 
 		return "waitForApproval";
+	}
+
+	@GetMapping("/ViewShares")
+	public String viewShares() {
+		return "ViewShares";
+	}
+	
+	@GetMapping("/loginError")
+	public String loginError() {
+		return "loginError";
 	}
 
 	@GetMapping("/Shareholder")
