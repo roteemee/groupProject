@@ -25,7 +25,7 @@ public class Sysadmin extends BasicUser {
 	@Override
 	public String pageRedirect() {
 		
-		return "helloAdmin";
+		return "ViewUserRequest";
 	}
 
 	public void listTrades() {
